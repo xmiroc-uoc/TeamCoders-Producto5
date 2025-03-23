@@ -1,0 +1,56 @@
+package TeamCoders.modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Datos {
+    private List<Cliente> clientes;
+    private List<Articulo> articulos;
+    private List<Pedido> pedidos;
+    
+    public Datos() {
+        this.clientes = new ArrayList<>();
+        this.articulos = new ArrayList<>();
+        this.pedidos = new ArrayList<>();
+    }
+
+    public void agregarArticulo(Articulo articulo) { 
+        articulos.add(articulo); 
+    }
+
+    public void mostrarArticulos() {
+        for (Articulo a : articulos) {
+            System.out.println(a.toString());
+        }
+    }
+
+    public void agregarCliente(Cliente cliente) { 
+        clientes.add(cliente);
+    }
+
+    public void mostrarClientes() { 
+        for (Cliente c : clientes) {
+            System.out.println(c.toString());
+        } 
+    }
+    
+    public void agregarPedido(Pedido pedido) {
+        pedidos.add(pedido); 
+    }
+
+    public void eliminarPedido(Pedido pedido) {
+        pedidos.remove(pedido);
+    }
+
+    public void mostrarPedidos() {
+        for (Pedido p : pedidos) {
+            System.out.println(p.toString());
+        }
+    }
+
+
+    
+    
+    
+
+}
