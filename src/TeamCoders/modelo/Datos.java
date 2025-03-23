@@ -2,6 +2,8 @@ package TeamCoders.modelo;
 
 import java.util.*;
 
+import javax.management.openmbean.CompositeDataInvocationHandler;
+
 
 public class Datos {
     private List<Cliente> clientes;
@@ -33,7 +35,23 @@ public class Datos {
             System.out.println(c.toString());
         } 
     }
+
+    public void mostrarClientesEstandar() {
+        for (Cliente c : clientes) {
+            if (c instanceof ClienteEstandar) {
+                System.out.println(c.toString());
+            }
+        }
+    }
     
+    public void mostrarClientesPremium() {
+        for (Cliente c : clientes) {
+            if (c instanceof ClientePremium) {
+                System.out.println(c.toString());
+            }
+        }
+    }
+
     public void agregarPedido(Pedido pedido) {
         pedidos.add(pedido); 
     }

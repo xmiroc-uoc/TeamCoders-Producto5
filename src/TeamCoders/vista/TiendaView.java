@@ -11,7 +11,7 @@ public class TiendaView {
     private Scanner scanner;
 
     public TiendaView() {
-        this.controlador = new TiendaController(null);
+        this.controlador = new TiendaController();
         this.scanner = new Scanner(System.in);
     }
 
@@ -21,13 +21,15 @@ public class TiendaView {
             System.out.println("\n--- MENÚ TIENDA ONLINE ---");
             System.out.println("1. Agregar cliente estándar");
             System.out.println("2. Agregar cliente premium");
-            System.out.println("3. Mostrar clientes");
-            System.out.println("4. Agregar artículo");
-            System.out.println("5. Mostrar artículos");
-            System.out.println("6. Agregar pedido");
-            System.out.println("7. Mostrar pedidos");
-            System.out.println("8. Eliminar pedido");
-            System.out.println("9. Salir");
+            System.out.println("3. Mostrar todos los clientes");
+            System.out.println("4. Mostrar clientes estandar");
+            System.out.println("5. Mostrar clientes premium");
+            System.out.println("6. Agregar artículo");
+            System.out.println("7. Mostrar artículos");
+            System.out.println("8. Agregar pedido");
+            System.out.println("9. Mostrar pedidos");
+            System.out.println("10. Eliminar pedido");
+            System.out.println("0. Salir");
             System.out.println("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
@@ -36,15 +38,17 @@ public class TiendaView {
                 case 1 -> agregarClienteEstandar();
                 case 2 -> agregarClientePremium();
                 case 3 -> controlador.mostrarClientes();
-                case 4 -> agregarArticulo();
-                case 5 -> controlador.mostrarArticulos();
-                case 6 -> agregarPedido();
-                case 7 -> controlador.mostrarPedidos();
-                case 8 -> eliminarPedido();
-                case 9 -> System.out.println("Saliendo del programa...");
+                case 4 -> controlador.mostrarClientesEstandar();
+                case 5 -> controlador.mostrarClientesPremium();
+                case 6 -> agregarArticulo();
+                case 7 -> controlador.mostrarArticulos();
+                case 8 -> agregarPedido();
+                case 9 -> controlador.mostrarPedidos();
+                case 10 -> eliminarPedido();
+                case 0 -> System.out.println("Saliendo del programa...");
                 default -> System.out.println("Opción no válida.");
             }
-        } while (opcion != 6 );
+        } while (opcion != 0 );
     }
 
     private void agregarClienteEstandar() {
@@ -88,7 +92,7 @@ public class TiendaView {
         float precioVenta = scanner.nextFloat();
         System.out.println("Gastos de envio: ");
         float gastosEnvio = scanner.nextFloat();
-        System.out.println("Tiempo de preparación (días): ");
+        System.out.println("Tiempo de preparación (minutos): ");
         int tiempoPreparacion = scanner.nextInt();
         scanner.nextLine();
 

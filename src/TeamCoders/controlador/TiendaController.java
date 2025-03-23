@@ -8,7 +8,7 @@ public class TiendaController {
     
     private Datos datosTienda;
 
-    public TiendaController(Datos datosTienda) {
+    public TiendaController() {
         datosTienda = new Datos();
     }
 
@@ -18,6 +18,14 @@ public class TiendaController {
 
     public void mostrarClientes() {
         datosTienda.mostrarClientes();
+    }
+
+    public void mostrarClientesEstandar() {
+        datosTienda.mostrarClientesEstandar();
+    }
+
+    public void mostrarClientesPremium() {
+        datosTienda.mostrarClientesPremium();
     }
 
     public void agregarArticulo(Articulo articulo) {
