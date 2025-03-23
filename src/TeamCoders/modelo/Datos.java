@@ -2,9 +2,6 @@ package TeamCoders.modelo;
 
 import java.util.*;
 
-import javax.management.openmbean.CompositeDataInvocationHandler;
-
-
 public class Datos {
     private List<Cliente> clientes;
     private List<Articulo> articulos;
