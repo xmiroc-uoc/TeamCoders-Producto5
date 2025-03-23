@@ -1,5 +1,6 @@
 package TeamCoders.modelo;
 
+//import java.util.Calendar;
 import java.util.Date;
 
 public class Pedido {
@@ -71,7 +72,14 @@ public class Pedido {
     public boolean cancelable() {
         return (new Date().getTime()) - fechaPedido.getTime() < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
     }
-
+/** 
+    public boolean cancelable(Date fechaActual) {
+        Calendar limite = Calendar.getInstance();
+        limite.setTime(fechaPedido);
+        limite.add(Calendar.DAY_OF_YEAR, articulo.getTiempoPreparacion());
+        return fechaActual.before(limite.getTime());
+    }
+*/
     public float precioPedido() {
         float total = articulo.getPrecioVenta() * unidades;
         float descuento = cliente.descuentoEnvio();

@@ -50,6 +50,5 @@ public abstract class Cliente {
         return "Cliente [nombre=" + nombre + ", domicilio=" + domicilio + ", nif=" + nif + ", email=" + email + "]";
     }
 
-    public abstract float descuentoEnvio();
-    
+    public abstract float descuentoEnvio(); 
 }

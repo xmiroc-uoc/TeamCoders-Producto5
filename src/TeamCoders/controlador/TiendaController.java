@@ -1,5 +1,7 @@
 package TeamCoders.controlador;
 
+import java.util.List;
+
 import TeamCoders.modelo.*;
 
 public class TiendaController {
@@ -36,5 +38,17 @@ public class TiendaController {
 
     public void mostrarPedidos() {
         datosTienda.mostrarPedidos();
+    }
+
+    public List<Articulo> getArticulos() {
+        return datosTienda.getArticulos();
+    }
+
+    public List<Cliente> getClientes() {
+        return datosTienda.getClientes();
+    }
+
+    public List<Pedido> getPedidos() {
+        return datosTienda.getPedidos();
     }
 }

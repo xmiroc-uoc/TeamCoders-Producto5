@@ -1,7 +1,7 @@
 package TeamCoders.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class Datos {
     private List<Cliente> clientes;
@@ -48,9 +48,15 @@ public class Datos {
         }
     }
 
-
+    public List<Articulo> getArticulos() {
+        return articulos;
+    }
     
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
     
-    
-
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
 }
