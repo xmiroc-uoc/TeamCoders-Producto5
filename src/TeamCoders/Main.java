@@ -1,10 +1,10 @@
-package TeamCoders;
+import controlador.*;
 
-import TeamCoders.vista.TiendaView;
 
 public class Main{
-    public static void main(String[] arg) {
-        TiendaView vista = new TiendaView();
-        vista.mostrarMenu();
+    public static void main(String[] args){
+        Tienda tienda = new Tienda();
+
+        tienda.navegarTienda();
     }
 }

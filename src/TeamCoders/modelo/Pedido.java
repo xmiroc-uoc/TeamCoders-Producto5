@@ -1,7 +1,6 @@
-package TeamCoders.modelo;
+package modelo;
 
-//import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 public class Pedido {
     private int numeroPedido;
@@ -10,9 +9,9 @@ public class Pedido {
     private Cliente cliente;
     private Articulo articulo;
 
-    public Pedido(int numeroPedido, int unidades, Date fechaPedido, Cliente cliente,  Articulo articulo) {
+    public Pedido(int numeroPedido, int unidades, Date fechaPedido, Cliente cliente, Articulo articulo) {
         this.numeroPedido = numeroPedido;
-         this.unidades = unidades;
+        this.unidades = unidades;
         this.fechaPedido = fechaPedido;
         this.cliente = cliente;
         this.articulo = articulo;
@@ -61,25 +60,17 @@ public class Pedido {
     @Override
     public String toString() {
         return "Pedido{" +
-                "numeroPedido=" + numeroPedido + 
-                ", unidades=" + unidades + 
-                ", fechaPedido=" + fechaPedido + 
-                ", cliente=" + cliente + 
-                ", articulo=" + articulo + 
-                "}";
+                "numeroPedido=" + numeroPedido +
+                ", unidades=" + unidades +
+                ", fechaPedido=" + fechaPedido +
+                ", cliente=" + cliente +
+                ", articulo=" + articulo +
+                '}';
     }
 
     public boolean cancelable() {
         return (new Date().getTime()) - fechaPedido.getTime() < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
     }
-/** 
-    public boolean cancelable(Date fechaActual) {
-        Calendar limite = Calendar.getInstance();
-        limite.setTime(fechaPedido);
-        limite.add(Calendar.DAY_OF_YEAR, articulo.getTiempoPreparacion());
-        return fechaActual.before(limite.getTime());
-    }
-*/
     public float precioPedido() {
         float total = articulo.getPrecioVenta() * unidades;
         float descuento = cliente.descuentoEnvio();

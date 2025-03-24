@@ -1,11 +1,11 @@
-package TeamCoders.modelo;
+package modelo;
+
 
 public abstract class Cliente {
     private String nombre;
     private String domicilio;
     private String nif;
     private String email;
-    
     public Cliente(String nombre, String domicilio, String nif, String email) {
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -47,8 +47,16 @@ public abstract class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [nombre=" + nombre + ", domicilio=" + domicilio + ", nif=" + nif + ", email=" + email + "]";
+
+        return "Cliente{" +
+                "nombre='" + nombre + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                ", nif='" + nif + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
-    public abstract float descuentoEnvio(); 
+    public abstract float descuentoEnvio();
+
 }
+

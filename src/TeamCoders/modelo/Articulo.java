@@ -1,18 +1,19 @@
-package TeamCoders.modelo;
+package modelo;
 
-public class Articulo {
+public class Articulo{
     private String codigo;
     private String descripcion;
     private float precioVenta;
     private float gastosEnvio;
     private int tiempoPreparacion;
 
-    public Articulo(String codigo, String descripcion, float precioVenta, float gastosEnvio, int tiempoPreparacion) {
+    public Articulo(String codigo, int tiempoPreparacion, float gastosEnvio, float precioVenta, String descripcion) {
         this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precioVenta = precioVenta;
-        this.gastosEnvio = gastosEnvio;
         this.tiempoPreparacion = tiempoPreparacion;
+        this.gastosEnvio = gastosEnvio;
+        this.precioVenta = precioVenta;
+        this.descripcion = descripcion;
+
     }
 
     public String getCodigo() {
@@ -57,7 +58,13 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", precioVenta=" + precioVenta
-                + ", gastosEnvio=" + gastosEnvio + ", tiempoPreparacion=" + tiempoPreparacion + "]";
+
+        return "Articulo{" +
+                "codigo='" + codigo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precioVenta=" + precioVenta +
+                ", gastosEnvio=" + gastosEnvio +
+                ", tiempoPreparacion=" + tiempoPreparacion +
+                '}';
     }
 }
