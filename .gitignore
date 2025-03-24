@@ -1,1 +1,12 @@
+# Java compilados
+bin/
+*.class
+
+# IDEs comunes
+.vscode/
+.idea/
+*.iml
+
+# Archivos temporales de sistema
 **/.DS_Store
+Thumbs.db
