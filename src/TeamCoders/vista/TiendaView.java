@@ -103,15 +103,14 @@ public class TiendaView {
             System.out.println(i + ". " + clientes.get(i).getNombre());
         }
 
-        int idxCliente = scanner.nextInt();
+        int idxCliente = leerEntero("Número de cliente: ");
 
         System.out.println("Seleccione un artículo: ");
         for (int i = 0; i < articulos.size(); i++) {
             System.out.println((i + ". " + articulos.get(i).getDescripcion()));
         }
 
-        int idxArticulo = scanner.nextInt();
-        scanner.nextLine();
+        int idxArticulo = leerEntero("Número de artículo:");
 
         Cliente cliente = clientes.get(idxCliente);
         Articulo articulo = articulos.get(idxArticulo);
