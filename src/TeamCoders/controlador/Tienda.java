@@ -55,7 +55,19 @@ public class Tienda {
 
             switch (opcion) {
                 case "1":
-                    agregarArticulo();
+                    try {
+                        agregarArticulo();
+                    }
+                    catch (InputMismatchException ime){
+                        System.out.print("\n");
+                        System.out.println("Tipo de dato erroneo");
+                        System.out.print("\n");
+                        teclado.nextLine();
+                    }
+                    catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.print("\n");
+                    }
                     break;
                 case "2":
                     datos.mostrarArticulo();
@@ -80,7 +92,19 @@ public class Tienda {
 
             switch (opcion) {
                 case "1":
-                    agregarCliente();
+                    try{
+                        agregarCliente();
+                    }
+                    catch (InputMismatchException ime){
+                        System.out.print("\n");
+                        System.out.println("Tipo de dato erroneo");
+                        System.out.print("\n");
+                        teclado.nextLine();
+                    }
+                    catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.print("\n");
+                    }
                     break;
                 case "2":
                     datos.mostrarClientes();
@@ -113,10 +137,26 @@ public class Tienda {
 
             switch (opcion) {
                 case "1":
-                    agregarPedido();
+                    try{
+                        agregarPedido();
+                    }
+                    catch (InputMismatchException ime){
+                        System.out.print("\n");
+                        System.out.println("Tipo de dato erroneo");
+                        System.out.print("\n");
+                        teclado.nextLine();
+                    }
                     break;
                 case "2":
-                    eliminarPedido();
+                    try{
+                        eliminarPedido();
+                    }
+                    catch (InputMismatchException ime){
+                        System.out.print("\n");
+                        System.out.println("Tipo de dato erroneo");
+                        System.out.print("\n");
+                        teclado.nextLine();
+                    }
                     break;
                 case "3":
                     datos.mostrarPedidosPendientes();
@@ -135,7 +175,7 @@ public class Tienda {
         }
     }
 
-    public void agregarArticulo(){
+    public void agregarArticulo() throws Exception{
         String codigo = "";
         int tiempoPreparacion;
         float gastosEnvio;
@@ -144,6 +184,9 @@ public class Tienda {
 
         System.out.println("Introduzca el codigo\n");
         codigo = teclado.nextLine();
+        if(codigo.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         System.out.println("Introduzca el timepo de preparación en minutos\n");
@@ -161,6 +204,9 @@ public class Tienda {
         System.out.println("Introduzca una descripción\n");
         teclado.nextLine();
         descripcion = teclado.nextLine();
+        if(descripcion.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         Articulo newArticulo = new Articulo(codigo, tiempoPreparacion, gastosEnvio, precioVenta, descripcion);
@@ -168,7 +214,7 @@ public class Tienda {
         datos.agregarArticulo(newArticulo);
     }
 
-    public void agregarCliente(){
+    public void agregarCliente() throws Exception{
         String nombre = "";
         String domicilio = "";
         String nif = "";
@@ -195,18 +241,30 @@ public class Tienda {
 
         System.out.println("Introduzca el nombre\n");
         nombre = teclado.nextLine();
+        if(nombre.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         System.out.println("Introduzca el domicilio\n");
         domicilio = teclado.nextLine();
+        if(domicilio.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         System.out.println("Introduzca el NIF\n");
         nif = teclado.nextLine();
+        if(nif.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         System.out.println("Introduzca el mail\n");
         email = teclado.nextLine();
+        if(email.equals("")){
+            throw new Exception("Dato no introducido");
+        }
         System.out.print("\n");
 
         if(opcion.equals("1")){
@@ -260,8 +318,23 @@ public class Tienda {
         }
 
         if(opcion.equals("2")){
-            agregarCliente();
-            clienteSeleccionado = datos.getClientes().get((datos.getClientes().size())-1);
+            try{
+                agregarCliente();
+                clienteSeleccionado = datos.getClientes().get((datos.getClientes().size())-1);
+            }
+            catch (InputMismatchException ime){
+                System.out.print("\n");
+                System.out.println("Tipo de dato erroneo");
+                System.out.print("\n");
+                teclado.nextLine();
+                return;
+            }
+            catch (Exception e){
+                System.out.println(e.getMessage());
+                System.out.print("\n");
+                return;
+            }
+            
         }else{
             int opcionCliente = 0;
             while(opcionPosible){
