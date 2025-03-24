@@ -385,11 +385,12 @@ public class Tienda {
             opcionPedido = teclado.nextInt();
             if(opcionPedido>0 && opcionPedido <= datos.getPedidos().size()){
                 opcionPedPosible = true;
-                boolean eliminarPosible = checkPedidoEnviado(datos.getPedidos().get(opcionPedido-1));
+                boolean eliminarPosible = datos.getPedidos().get(opcionPedido-1).cancelable();
                 if(eliminarPosible){
                     datos.eliminarPedido(datos.getPedidos().get(opcionPedido - 1));
                 }else{
                     System.out.println("Este pedido no se puede eliminar");
+                    teclado.nextLine();
                 }
                 
             }else{
@@ -397,19 +398,6 @@ public class Tienda {
             }
 
         }
-    }
-
-    public boolean checkPedidoEnviado(Pedido pedido){
-        boolean eliminar = false;
-        Calendar calendar = Calendar.getInstance();
-        Date actualidad = new Date();
-        calendar.setTime(pedido.getFechaPedido());
-        calendar.add(Calendar.MINUTE, pedido.getArticulo().getTiempoPreparacion());
-        if(!calendar.getTime().before(actualidad)){
-            eliminar = true;
-        }
-
-        return eliminar;
     }
 
 }

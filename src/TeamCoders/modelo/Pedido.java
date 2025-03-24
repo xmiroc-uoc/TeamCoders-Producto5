@@ -70,7 +70,7 @@ public class Pedido {
     }
 
     public boolean cancelable() {
-        return (new Date().getTime() - fechaPedido.getTime()) < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
+        return (new Date().getTime()) - fechaPedido.getTime() < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
     }
 
     public float precioPedido() {
