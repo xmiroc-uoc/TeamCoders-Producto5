@@ -52,14 +52,10 @@ public class TiendaView {
     }
 
     private void agregarClienteEstandar() {
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.println("Domicilio: ");
-        String domicilio = scanner.nextLine();
-        System.out.println("NIF: ");
-        String nif = scanner.nextLine();
-        System.out.println("Email: ");
-        String email = scanner.nextLine();
+        String nombre = pedirTexto("Nombre: ");
+        String domicilio = pedirTexto("Domicilio: ");
+        String nif = pedirTexto("NIF: ");
+        String email = pedirTexto("Email: ");
 
         Cliente cliente = new ClienteEstandar(nombre, domicilio, nif, email);
         controlador.agregarCliente(cliente);
@@ -67,16 +63,11 @@ public class TiendaView {
     }
 
     private void agregarClientePremium() {
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.println("Domicilio: ");
-        String domicilio = scanner.nextLine();
-        System.out.println("NIF: ");
-        String nif = scanner.nextLine();
-        System.out.println("Email: ");
-        String email = scanner.nextLine();
-        System.out.println("Cuota anual: ");
-        int cuotaAnual = scanner.nextInt();
+        String nombre = pedirTexto("Nombre: ");
+        String domicilio = pedirTexto("Domicilio: ");
+        String nif = pedirTexto("NIF: ");
+        String email = pedirTexto("Email: ");
+        int cuotaAnual = leerEntero("Cuota anual: ");
 
         Cliente cliente = new ClientePremium(nombre, domicilio, nif, email, cuotaAnual);
         controlador.agregarCliente(cliente);
@@ -84,17 +75,11 @@ public class TiendaView {
     }
 
     private void agregarArticulo() {
-        System.out.println("Código: ");
-        String codigo = scanner.nextLine();
-        System.out.println("Descripción: ");
-        String descripcion = scanner.nextLine();
-        System.out.println("Precio de venta: ");
-        float precioVenta = scanner.nextFloat();
-        System.out.println("Gastos de envio: ");
-        float gastosEnvio = scanner.nextFloat();
-        System.out.println("Tiempo de preparación (minutos): ");
-        int tiempoPreparacion = scanner.nextInt();
-        scanner.nextLine();
+        String codigo = pedirTexto("Código: ");
+        String descripcion = pedirTexto("Descripción: ");
+        float precioVenta = leerDecimal("Precio de venta: ");
+        float gastosEnvio = leerDecimal("Gastos de envio: ");
+        int tiempoPreparacion = leerEntero("Tiempo de preparación (minutos): ");
 
         Articulo articulo = new Articulo(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
         controlador.agregarArticulo(articulo);
@@ -102,10 +87,8 @@ public class TiendaView {
     }
 
     private void agregarPedido() {
-        System.out.println("Número de pedido: ");
-        int numero = scanner.nextInt();
-        System.out.println("Unidades: ");
-        int unidades = scanner.nextInt();
+        int numero = leerEntero("Número de pedido: ");
+        int unidades = leerEntero("Unidades: ");
 
         List<Articulo> articulos = controlador.getArticulos();
         List<Cliente> clientes = controlador.getClientes();
@@ -142,9 +125,7 @@ public class TiendaView {
     }
 
     private void eliminarPedido() {
-        System.out.println("Ingrese el número del pedido a eliminar: ");
-        int numero = scanner.nextInt();
-        scanner.nextLine();
+        int numero = leerEntero("Igrese el número del predido a eliminar: ");
 
         List<Pedido> pedidos = controlador.getPedidos();
         Pedido pedidoEliminar = null;
@@ -161,5 +142,42 @@ public class TiendaView {
         } else {
             System.out.println("Pedido no encontrado.");
         }
+    }
+
+    private int leerEntero(String mensaje) {
+        int valor = -1;
+        while (true) {
+            try {
+                System.out.println(mensaje);
+                valor = scanner.nextInt();
+                scanner.nextLine(); // Limpiar buffer
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Debe ser un número entero.");
+                scanner.nextLine(); // Limpiar entrada incorrecta
+            }
+        }
+        return valor;
+    }
+
+    private float leerDecimal(String mensaje) {
+        float valor = -1;
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                valor = scanner.nextFloat();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Debe ser un número decimal.");
+                scanner.nextLine();
+            }
+        }
+        return valor;
+    }
+
+    private String pedirTexto(String mensaje) {
+        System.out.println(mensaje);
+        return scanner.nextLine();
     }
 }
