@@ -1,70 +1,68 @@
 package modelo;
 
-public class Articulo{
-    private String codigo;
-    private String descripcion;
-    private float precioVenta;
-    private float gastosEnvio;
-    private int tiempoPreparacion;
+public class Articulo {
+  private String codigo;
+  private String descripcion;
+  private float precioVenta;
+  private float gastosEnvio;
+  private int tiempoPreparacion;
 
-    public Articulo(String codigo, int tiempoPreparacion, float gastosEnvio, float precioVenta, String descripcion) {
-        this.codigo = codigo;
-        this.tiempoPreparacion = tiempoPreparacion;
-        this.gastosEnvio = gastosEnvio;
-        this.precioVenta = precioVenta;
-        this.descripcion = descripcion;
+  public Articulo(String codigo, int tiempoPreparacion, float gastosEnvio, float precioVenta, String descripcion) {
+    this.codigo = codigo;
+    this.tiempoPreparacion = tiempoPreparacion;
+    this.gastosEnvio = gastosEnvio;
+    this.precioVenta = precioVenta;
+    this.descripcion = descripcion;
+  }
 
-    }
+  public String getCodigo() {
+    return codigo;
+  }
 
-    public String getCodigo() {
-        return codigo;
-    }
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-    public float getPrecioVenta() {
-        return precioVenta;
-    }
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-    public float getGastosEnvio() {
-        return gastosEnvio;
-    }
+  public float getPrecioVenta() {
+    return precioVenta;
+  }
 
-    public int getTiempoPreparacion() {
-        return tiempoPreparacion;
-    }
+  public void setPrecioVenta(float precioVenta) {
+    this.precioVenta = precioVenta;
+  }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+  public float getGastosEnvio() {
+    return gastosEnvio;
+  }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+  public void setGastosEnvio(float gastosEnvio) {
+    this.gastosEnvio = gastosEnvio;
+  }
 
-    public void setPrecioVenta(float precioVenta) {
-        this.precioVenta = precioVenta;
-    }
+  public int getTiempoPreparacion() {
+    return tiempoPreparacion;
+  }
 
-    public void setGastosEnvio(float gastosEnvio) {
-        this.gastosEnvio = gastosEnvio;
-    }
+  public void setTiempoPreparacion(int tiempoPreparacion) {
+    this.tiempoPreparacion = tiempoPreparacion;
+  }
 
-    public void setTiempoPreparacion(int tiempoPreparacion) {
-        this.tiempoPreparacion = tiempoPreparacion;
-    }
-
-    @Override
-    public String toString() {
-
-        return "Articulo{" +
-                "codigo='" + codigo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precioVenta=" + precioVenta +
-                ", gastosEnvio=" + gastosEnvio +
-                ", tiempoPreparacion=" + tiempoPreparacion +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Articulo{" +
+        "codigo='" + codigo + '\'' +
+        ", descripcion='" + descripcion + '\'' +
+        ", precioVenta=" + precioVenta +
+        ", gastosEnvio=" + gastosEnvio +
+        ", tiempoPreparacion=" + tiempoPreparacion +
+        '}';
+  }
 }

@@ -1,62 +1,59 @@
 package modelo;
 
-
 public abstract class Cliente {
-    private String nombre;
-    private String domicilio;
-    private String nif;
-    private String email;
-    public Cliente(String nombre, String domicilio, String nif, String email) {
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.nif = nif;
-        this.email = email;
-    }
+  private String nombre;
+  private String domicilio;
+  private String nif;
+  private String email;
 
-    public String getNombre() {
-        return nombre;
-    }
+  public Cliente(String nombre, String domicilio, String nif, String email) {
+    this.nombre = nombre;
+    this.domicilio = domicilio;
+    this.nif = nif;
+    this.email = email;
+  }
 
-    public String getDomicilio() {
-        return domicilio;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
-    public String getNif() {
-        return nif;
-    }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getDomicilio() {
+    return domicilio;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public void setDomicilio(String domicilio) {
+    this.domicilio = domicilio;
+  }
 
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
-    }
+  public String getNif() {
+    return nif;
+  }
 
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
+  public void setNif(String nif) {
+    this.nif = nif;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    @Override
-    public String toString() {
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-        return "Cliente{" +
-                "nombre='" + nombre + '\'' +
-                ", domicilio='" + domicilio + '\'' +
-                ", nif='" + nif + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+  public abstract float descuentoEnvio();
 
-    public abstract float descuentoEnvio();
-
+  @Override
+  public String toString() {
+    return "Cliente{" +
+        "nombre='" + nombre + '\'' +
+        ", domicilio='" + domicilio + '\'' +
+        ", nif='" + nif + '\'' +
+        ", email='" + email + '\'' +
+        '}';
+  }
 }
-
