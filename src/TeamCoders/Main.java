@@ -6,5 +6,6 @@ public class Main{
         Tienda tienda = new Tienda();
 
         tienda.navegarTienda();
+
     }
 }

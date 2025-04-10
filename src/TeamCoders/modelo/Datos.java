@@ -3,23 +3,23 @@ package modelo;
 import java.util.*;
 
 public class Datos{
-    private ArrayList<Articulo> articulos = new ArrayList<>();
-    private ArrayList<Cliente> clientes = new ArrayList<>();;
-    private ArrayList<Pedido> pedidos = new ArrayList<>();;
+    private static ArrayList<Articulo> articulos = new ArrayList<>();
+    private static ArrayList<Cliente> clientes = new ArrayList<>();;
+    private static ArrayList<Pedido> pedidos = new ArrayList<>();;
 
     public Datos(){
         initialize();
     }
 
-    public ArrayList<Articulo> getArticulos(){
+    public static ArrayList<Articulo> getArticulos(){
         return articulos;
     }
 
-    public ArrayList<Cliente> getClientes(){
+    public static ArrayList<Cliente> getClientes(){
         return clientes;
     }
 
-    public ArrayList<Pedido> getPedidos(){
+    public static ArrayList<Pedido> getPedidos(){
         return pedidos;
     }
 
@@ -51,55 +51,23 @@ public class Datos{
         pedidos.add(pedido3);
     }
 
-    public void agregarArticulo(Articulo articulo) {
+    public static void agregarArticulo(Articulo articulo) {
         articulos.add(articulo);
     }
 
-    public void mostrarArticulo() {
-        int count = 1;
-        for (Articulo a : articulos){
-            System.out.println(count + ". " + a.getDescripcion());
-            count ++;
-        }
-    }
 
-    public void agregarCliente(Cliente cliente) {
+
+    public static void agregarCliente(Cliente cliente) {
         clientes.add(cliente);
     }
 
-    public void mostrarClientes() {
-        int count = 1;
-        for (Cliente c : clientes){
-            System.out.println(count + ". " + c.getNombre());
-            count++;
-        }
-    }
+    
 
-    public void mostrarClientesEstandar(){
-        int count = 1;
-        for (Cliente c : clientes){
-            if(c instanceof ClienteEstandar){
-                System.out.println(count + ". " + c.getNombre());
-                count++;
-            }
-        }
-    }
-
-    public void mostrarClientesPremium(){
-        int count = 1;
-        for (Cliente c : clientes){
-            if(!(c instanceof ClienteEstandar)){
-                System.out.println(count + ". " + c.getNombre());
-                count++;
-            }
-        }
-    }
-
-    public void agregarPedido(Pedido pedido) {
+    public static void agregarPedido(Pedido pedido) {
         pedidos.add(pedido);
     }
 
-    public void eliminarPedido(Pedido pedido) {
+    public static void eliminarPedido(Pedido pedido) {
         pedidos.remove(pedido);
     }
 
@@ -111,31 +79,4 @@ public class Datos{
         }
     }
 
-    public void mostrarPedidosPendientes() {
-        int count = 1;
-        Calendar calendar = Calendar.getInstance();
-        Date actualidad = new Date();
-        for (Pedido p : pedidos){
-            calendar.setTime(p.getFechaPedido());
-            calendar.add(Calendar.MINUTE, p.getArticulo().getTiempoPreparacion());
-            if(!calendar.getTime().before(actualidad)){
-                System.out.println(count + ". " + "Pedido #" + p.getNumeroPedido());
-                count++;
-            }
-        }
-    }
-
-    public void mostrarPedidosEnviados() {
-        int count = 1;
-        Calendar calendar = Calendar.getInstance();
-        Date actualidad = new Date();
-        for (Pedido p : pedidos){
-            calendar.setTime(p.getFechaPedido());
-            calendar.add(Calendar.MINUTE, p.getArticulo().getTiempoPreparacion());
-            if(calendar.getTime().before(actualidad)){
-                System.out.println(count + ". " + "Pedido #" + p.getNumeroPedido());
-                count++;
-            }
-        }
-    }
 }
