@@ -1,10 +1,8 @@
-import controlador.*;
+import controlador.Tienda;
 
-
-public class Main{
-    public static void main(String[] args){
-        Tienda tienda = new Tienda();
-
-        tienda.navegarTienda();
-    }
+public class Main {
+  public static void main(String[] args) {
+    Tienda tienda = new Tienda();
+    tienda.navegarTienda();
+  }
 }
