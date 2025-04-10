@@ -47,17 +47,25 @@ public class PedidoVista {
     }
 
     private static void añadirPedidoDesdeVista() {
-        System.out.println("\n--- Añadir Pedido ---");
-        String email = EntradaUsuario.leerTexto("Email del cliente: ");
-        String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
-        int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
-
-        PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
+        try {
+            System.out.println("\n--- Añadir Pedido ---");
+            String email = EntradaUsuario.leerTexto("Email del cliente: ");
+            String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
+            int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
+    
+            PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
+        } catch (Exception e) {
+            System.out.println("Error al añadir pedido: " + e.getMessage());
+        }
     }
 
     private static void eliminarPedidoDesdeVista() {
-        System.out.println("\n--- Eliminar Pedido ---");
-        int numero = EntradaUsuario.leerEntero("Número de pedido a eliminar: ");
-        PedidoControlador.eliminarPedidoSiNoEnviado(numero);
+        try {
+            System.out.println("\n--- Eliminar Pedido ---");
+            int numero = EntradaUsuario.leerEntero("Número de pedido a eliminar: ");
+            PedidoControlador.eliminarPedidoSiNoEnviado(numero);
+        } catch (Exception e) {
+            System.out.println("Error al eliminar pedido: " + e.getMessage());
+        }
     }
 }

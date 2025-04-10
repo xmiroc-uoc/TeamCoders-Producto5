@@ -12,19 +12,24 @@ import modelo.Pedido;
 public class PedidoControlador {
   
     public static void añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
-        Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
-        Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
+        try {
+            Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
+            Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
+    
+            if (cliente == null || articulo == null) {
+                System.out.println("Cliente o articulo no encontrado.");
+                return;
+            }
+    
+            int numeroPedido = Datos.getPedidos().size() + 1;
+            LocalDateTime fecha = LocalDateTime.now();
+            Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
+            agregarPedido(pedido);
+            System.out.println("Pedido añadido correctamente.");
+        } catch (Exception e) {
+            System.out.println("Error al añadir pedido: " + e.getMessage());
 
-        if (cliente == null || articulo == null) {
-            System.out.println("Cliente o articulo no encontrado.");
-            return;
         }
-
-        int numeroPedido = Datos.getPedidos().size() + 1;
-        LocalDateTime fecha = LocalDateTime.now();
-        Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
-        agregarPedido(pedido);
-        System.out.println("Pedido añadido correctamente.");
     }
 
     public static void agregarPedido(Pedido pedido) {
@@ -37,17 +42,21 @@ public class PedidoControlador {
     }
 
     public static void eliminarPedidoSiNoEnviado(int numero) {
-        Pedido pedidoAEliminar = buscarPedidoPorNumero(numero);
+        try {
+            Pedido pedidoAEliminar = buscarPedidoPorNumero(numero);
 
-        if (pedidoAEliminar == null) {
-            System.out.println("Pedido no encontrado.");
-            return;
-        }
-
-        if (pedidoAEliminar.cancelable()) {
-            eliminarPedido(pedidoAEliminar);
-        } else {
-            System.out.println("El pedido ya fue enviado y no puede eliminarse.");
+            if (pedidoAEliminar == null) {
+                System.out.println("Pedido no encontrado.");
+                return;
+            }
+    
+            if (pedidoAEliminar.cancelable()) {
+                eliminarPedido(pedidoAEliminar);
+            } else {
+                System.out.println("El pedido ya fue enviado y no puede eliminarse.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al eliminar pedido: " + e.getMessage());
         }
     }
 

@@ -42,18 +42,23 @@ public class ClienteVista {
     }
 
     private static void añadirClienteDesdeVista() {
-        System.out.println("\n--- Añadir Cliente ---");
-        String tipo = EntradaUsuario.leerConfirmacion("Tipo de cliente (E)standar / (P)remium: ", "E", "P");
-        String nombre = EntradaUsuario.leerTexto("Nombre: ");
-        String email = EntradaUsuario.leerTexto("Email: ");
-        String nif = EntradaUsuario.leerTexto("NIF: ");
-        String domicilio = EntradaUsuario.leerTexto("Domicilio: ");
-        if (tipo.equals("P")) {
-            int cuotaAnual = EntradaUsuario.leerEntero("Cuota anual (euros): ");
-            ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
-        } else {
-            ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
+        try {
+            System.out.println("\n--- Añadir Cliente ---");
+            String tipo = EntradaUsuario.leerConfirmacion("Tipo de cliente (E)standar / (P)remium: ", "E", "P");
+            String nombre = EntradaUsuario.leerTexto("Nombre: ");
+            String email = EntradaUsuario.leerTexto("Email: ");
+            String nif = EntradaUsuario.leerTexto("NIF: ");
+            String domicilio = EntradaUsuario.leerTexto("Domicilio: ");
+            if (tipo.equals("P")) {
+                int cuotaAnual = EntradaUsuario.leerEntero("Cuota anual (euros): ");
+                ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
+            } else {
+                ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al procesar la entrada del cliente: " + e.getMessage());
         }
+        
         
     }
 

@@ -35,15 +35,17 @@ public class ArticuloVista {
     }
 
     private static void añadirArticuloDesdeVista() {
-        System.out.println("\n--- Añadir Artículo ---");
-        String codigo = EntradaUsuario.leerTexto("Código: ");
-        String descripcion = EntradaUsuario.leerTexto("Descripción: ");
-        double precioVenta = EntradaUsuario.leerDecimal("Precio: ");
-        double gastosEnvio = EntradaUsuario.leerDecimal("Gastos de envío: ");
-        int tiempoPreparacion = EntradaUsuario.leerEntero("Tiempo preparación (minutos): ");
-
-        ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+        try {
+            System.out.println("\n--- Añadir Artículo ---");
+            String codigo = EntradaUsuario.leerTexto("Código: ");
+            String descripcion = EntradaUsuario.leerTexto("Descripción: ");
+            double precioVenta = EntradaUsuario.leerDecimal("Precio: ");
+            double gastosEnvio = EntradaUsuario.leerDecimal("Gastos de envío: ");
+            int tiempoPreparacion = EntradaUsuario.leerEntero("Tiempo preparación (minutos): ");
+    
+            ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+        } catch (Exception e) {
+            System.out.println("Error al añadir artículo: " + e.getMessage());
+        }
     }
-
-
 }
