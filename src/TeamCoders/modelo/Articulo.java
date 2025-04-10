@@ -3,11 +3,11 @@ package modelo;
 public class Articulo{
     private String codigo;
     private String descripcion;
-    private float precioVenta;
-    private float gastosEnvio;
+    private double precioVenta;
+    private double gastosEnvio;
     private int tiempoPreparacion;
 
-    public Articulo(String codigo, int tiempoPreparacion, float gastosEnvio, float precioVenta, String descripcion) {
+    public Articulo(String codigo, int tiempoPreparacion, double gastosEnvio, double precioVenta, String descripcion) {
         this.codigo = codigo;
         this.tiempoPreparacion = tiempoPreparacion;
         this.gastosEnvio = gastosEnvio;
@@ -24,11 +24,11 @@ public class Articulo{
         return descripcion;
     }
 
-    public float getPrecioVenta() {
+    public double getPrecioVenta() {
         return precioVenta;
     }
 
-    public float getGastosEnvio() {
+    public double getGastosEnvio() {
         return gastosEnvio;
     }
 
@@ -44,11 +44,11 @@ public class Articulo{
         this.descripcion = descripcion;
     }
 
-    public void setPrecioVenta(float precioVenta) {
+    public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
 
-    public void setGastosEnvio(float gastosEnvio) {
+    public void setGastosEnvio(double gastosEnvio) {
         this.gastosEnvio = gastosEnvio;
     }
 

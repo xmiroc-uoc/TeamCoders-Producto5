@@ -1,15 +1,15 @@
 package modelo;
 
-import java.util.*;
+import java.time.LocalDateTime;
 
 public class Pedido {
     private int numeroPedido;
     private int unidades;
-    private Date fechaPedido;
+    private LocalDateTime fechaPedido;
     private Cliente cliente;
     private Articulo articulo;
 
-    public Pedido(int numeroPedido, int unidades, Date fechaPedido, Cliente cliente, Articulo articulo) {
+    public Pedido(int numeroPedido, int unidades, LocalDateTime fechaPedido, Cliente cliente, Articulo articulo) {
         this.numeroPedido = numeroPedido;
         this.unidades = unidades;
         this.fechaPedido = fechaPedido;
@@ -25,7 +25,7 @@ public class Pedido {
         return unidades;
     }
 
-    public Date getFechaPedido() {
+    public LocalDateTime getFechaPedido() {
         return fechaPedido;
     }
 
@@ -45,7 +45,7 @@ public class Pedido {
         this.unidades = unidades;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(LocalDateTime fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
@@ -69,11 +69,13 @@ public class Pedido {
     }
 
     public boolean cancelable() {
-        return (new Date().getTime()) - fechaPedido.getTime() < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
+        long minutosTranscurridos = java.time.Duration.between(fechaPedido, LocalDateTime.now()).toMinutes();
+        return minutosTranscurridos < articulo.getTiempoPreparacion();
     }
-    public float precioPedido() {
-        float total = articulo.getPrecioVenta() * unidades;
-        float descuento = cliente.descuentoEnvio();
+
+    public double precioPedido() {
+        double total = articulo.getPrecioVenta() * unidades;
+        double descuento = cliente.descuentoEnvio();
         return total + (articulo.getGastosEnvio() * (1 - descuento));
     }
 }

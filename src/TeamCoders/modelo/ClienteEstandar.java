@@ -11,4 +11,9 @@ public class ClienteEstandar extends Cliente {
 
         return 0.0f;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente Estandar: " + super.toString();
+    }
 }

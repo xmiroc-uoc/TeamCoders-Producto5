@@ -21,5 +21,10 @@ public class ClientePremium extends Cliente {
 
         return 0.20f;
     }
+
+    @Override
+    public String toString() {
+        return "ClientePremium: " + super.toString() + " [cuotaAnual=" + cuotaAnual + "]";
+    }
 }
 
