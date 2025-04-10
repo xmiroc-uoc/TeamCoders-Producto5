@@ -1,62 +1,47 @@
-package modelo;
 
+package TeamCoders.modelo;
 
-public abstract class Cliente {
+public class Cliente {
     private String nombre;
-    private String domicilio;
-    private String nif;
-    private String email;
-    public Cliente(String nombre, String domicilio, String nif, String email) {
+    private String dni;
+    private String tipo; // Estandar o Premium
+
+    public Cliente(String nombre, String dni, String tipo) {
         this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.nif = nif;
-        this.email = email;
+        this.dni = dni;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public String getDomicilio() {
-        return domicilio;
+    public String getDni() {
+        return dni;
     }
 
-    public String getNif() {
-        return nif;
-    }
-
-    public String getEmail() {
-        return email;
+    public String getTipo() {
+        return tipo;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
-
         return "Cliente{" +
                 "nombre='" + nombre + '\'' +
-                ", domicilio='" + domicilio + '\'' +
-                ", nif='" + nif + '\'' +
-                ", email='" + email + '\'' +
+                ", dni='" + dni + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
-
-    public abstract float descuentoEnvio();
-
 }
-

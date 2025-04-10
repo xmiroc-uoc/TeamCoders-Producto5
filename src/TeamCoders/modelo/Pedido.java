@@ -1,79 +1,58 @@
-package modelo;
 
-import java.util.*;
+package TeamCoders.modelo;
 
 public class Pedido {
-    private int numeroPedido;
-    private int unidades;
-    private Date fechaPedido;
-    private Cliente cliente;
-    private Articulo articulo;
+    private String codigo;
+    private String dniCliente;
+    private String codigoArticulo;
+    private int cantidad;
 
-    public Pedido(int numeroPedido, int unidades, Date fechaPedido, Cliente cliente, Articulo articulo) {
-        this.numeroPedido = numeroPedido;
-        this.unidades = unidades;
-        this.fechaPedido = fechaPedido;
-        this.cliente = cliente;
-        this.articulo = articulo;
+    public Pedido(String codigo, String dniCliente, String codigoArticulo, int cantidad) {
+        this.codigo = codigo;
+        this.dniCliente = dniCliente;
+        this.codigoArticulo = codigoArticulo;
+        this.cantidad = cantidad;
     }
 
-    public int getNumeroPedido() {
-        return numeroPedido;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public int getUnidades() {
-        return unidades;
+    public String getDniCliente() {
+        return dniCliente;
     }
 
-    public Date getFechaPedido() {
-        return fechaPedido;
+    public String getCodigoArticulo() {
+        return codigoArticulo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public Articulo getArticulo() {
-        return articulo;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
+    public void setDniCliente(String dniCliente) {
+        this.dniCliente = dniCliente;
     }
 
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
+    public void setCodigoArticulo(String codigoArticulo) {
+        this.codigoArticulo = codigoArticulo;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
-        this.fechaPedido = fechaPedido;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public void setArticulo(Articulo articulo) {
-        this.articulo = articulo;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "numeroPedido=" + numeroPedido +
-                ", unidades=" + unidades +
-                ", fechaPedido=" + fechaPedido +
-                ", cliente=" + cliente +
-                ", articulo=" + articulo +
+                "codigo='" + codigo + '\'' +
+                ", dniCliente='" + dniCliente + '\'' +
+                ", codigoArticulo='" + codigoArticulo + '\'' +
+                ", cantidad=" + cantidad +
                 '}';
-    }
-
-    public boolean cancelable() {
-        return (new Date().getTime()) - fechaPedido.getTime() < ((long)articulo.getTiempoPreparacion() * 60 * 1000);
-    }
-    public float precioPedido() {
-        float total = articulo.getPrecioVenta() * unidades;
-        float descuento = cliente.descuentoEnvio();
-        return total + (articulo.getGastosEnvio() * (1 - descuento));
     }
 }

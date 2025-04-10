@@ -1,6 +1,7 @@
-package modelo;
 
-public class Articulo{
+package TeamCoders.modelo;
+
+public class Articulo {
     private String codigo;
     private String descripcion;
     private float precioVenta;
@@ -13,7 +14,6 @@ public class Articulo{
         this.gastosEnvio = gastosEnvio;
         this.precioVenta = precioVenta;
         this.descripcion = descripcion;
-
     }
 
     public String getCodigo() {
@@ -58,7 +58,6 @@ public class Articulo{
 
     @Override
     public String toString() {
-
         return "Articulo{" +
                 "codigo='" + codigo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
