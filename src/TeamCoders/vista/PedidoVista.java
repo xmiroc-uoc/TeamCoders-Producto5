@@ -1,9 +1,19 @@
 package vista;
 
-import controlador.PedidoControlador;
+import java.util.List;
 
+import controlador.PedidoControlador;
+import modelo.Pedido;
+
+/**
+ * Clase de la vista responsable de la interacción con el usuario para la gestión de pedidos.
+ * Permite añadir y eliminar pedidos, así como mostrar distintos listados de pedidos según su estado.
+ */
 public class PedidoVista {
     
+    /**
+     * Muestra el menú de opciones para la gestión de pedidos en consola.
+     */
     public void mostrarMenuPedido() {
         
         int option;
@@ -17,8 +27,10 @@ public class PedidoVista {
             System.out.println("5. Mostrar pedidos enviados");
             System.out.println("0. Volver");
 
+            // Solicita al usuario una opción válida dentro del rango permitido
             option = EntradaUsuario.leerEnteroRango("Elige una opción: ", 0, 5);
 
+            // Ejecuta la acción correspondiente a la opción seleccionada
             switch (option) {
                 case 1:
                     añadirPedidoDesdeVista();
@@ -27,13 +39,13 @@ public class PedidoVista {
                     eliminarPedidoDesdeVista();
                     break;
                 case 3:
-                    PedidoControlador.mostrarPedidos();
+                    mostrarPedidos();
                     break;
                 case 4:
-                    PedidoControlador.mostrarPedidosPendientesDeEnvio();
+                    mostrarPedidosPendientesDeEnvio();
                     break;
                 case 5:
-                    PedidoControlador.mostrarPedidosEnviados();
+                    mostrarPedidosEnviados();
                     break;
                 case 0:
                     System.out.println("Volviendo al menú principal...");
@@ -46,6 +58,9 @@ public class PedidoVista {
         } while (option != 0);
     }
 
+    /**
+     * Solicita al usuario los datos de un pedido y lo añade si el cliente y artículo existen.
+     */
     private static void añadirPedidoDesdeVista() {
         try {
             System.out.println("\n--- Añadir Pedido ---");
@@ -53,8 +68,10 @@ public class PedidoVista {
             String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
             int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
     
+            // Intenta añadir el pedido a través del controlador
             boolean pedidoAñadido = PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
 
+            // Informa del resultado
             if (pedidoAñadido) {
                 System.out.println("Pedido añadido correctamente.");
             } else {
@@ -65,13 +82,67 @@ public class PedidoVista {
         }
     }
 
+    /**
+     * Solicita al usuario el número de pedido a eliminar e intenta eliminarlo si aún no ha sido enviado.
+     */
     private static void eliminarPedidoDesdeVista() {
         try {
             System.out.println("\n--- Eliminar Pedido ---");
             int numero = EntradaUsuario.leerEntero("Número de pedido a eliminar: ");
-            PedidoControlador.eliminarPedidoSiNoEnviado(numero);
+
+            // Intenta eliminar el pedido con verificación de cancelación
+            boolean pedidoEliminado = PedidoControlador.eliminarPedidoSiNoEnviado(numero);
+
+            // Muestra el resultado al usuario
+            if (pedidoEliminado) {
+                System.out.println("Pedido eliminado correctamente.");
+            } else {
+                System.out.println("No se puede eliminar el pedido. Puede que ya haya sido enviado o no exista.");
+            }
         } catch (Exception e) {
             System.out.println("Error al eliminar pedido: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Muestra todos los pedidos registrados por consola.
+     */
+    public static void mostrarPedidos() {
+        List<Pedido> pedidos = PedidoControlador.obtenerPedidos();
+        if (pedidos.isEmpty()) {
+            System.out.println("No hay pedidos registrados.");
+        } else {
+            for (Pedido pedido : pedidos) {
+                System.out.println(pedido);
+            }
+        }
+    }
+
+    /**
+     * Muestra los pedidos pendientes de envío por consola.
+     */
+    public static void mostrarPedidosPendientesDeEnvio() {
+        List<Pedido> pedidos = PedidoControlador.obtenerPedidosPendientesDeEnvio();
+        if (pedidos.isEmpty()) {
+            System.out.println("No hay pedidos pendientes de envío.");
+        } else {
+            for (Pedido pedido : pedidos) {
+                System.out.println(pedido);
+            }
+        }
+    }
+
+    /**
+     * Muestra los pedidos que ya han sido enviados por consola.
+     */
+    public static void mostrarPedidosEnviados() {
+        List<Pedido> pedidos = PedidoControlador.obtenerPedidosEnviados();
+        if (pedidos.isEmpty()) {
+            System.out.println("No hay pedidos enviados.");
+        } else {
+            for (Pedido pedido : pedidos) {
+                System.out.println(pedido);
+            }
         }
     }
 }
