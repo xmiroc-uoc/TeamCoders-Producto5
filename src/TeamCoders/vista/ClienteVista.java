@@ -49,11 +49,20 @@ public class ClienteVista {
             String email = EntradaUsuario.leerTexto("Email: ");
             String nif = EntradaUsuario.leerTexto("NIF: ");
             String domicilio = EntradaUsuario.leerTexto("Domicilio: ");
+
+            boolean clienteAñadido;
+
             if (tipo.equals("P")) {
                 int cuotaAnual = EntradaUsuario.leerEntero("Cuota anual (euros): ");
-                ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
+                clienteAñadido = ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
             } else {
-                ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
+                clienteAñadido = ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
+            }
+
+            if (clienteAñadido) {
+                System.out.println("Cliente estándar añadido correctamente.");
+            } else {
+                System.out.println("Ya existe un cliente con este email.");
             }
         } catch (Exception e) {
             System.out.println("Error al procesar la entrada del cliente: " + e.getMessage());

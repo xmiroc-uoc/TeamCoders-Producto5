@@ -53,7 +53,13 @@ public class PedidoVista {
             String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
             int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
     
-            PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
+            boolean pedidoAñadido = PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
+
+            if (pedidoAñadido) {
+                System.out.println("Pedido añadido correctamente.");
+            } else {
+                System.out.println("Cliente o articulo no encontrado.");
+            }
         } catch (Exception e) {
             System.out.println("Error al añadir pedido: " + e.getMessage());
         }

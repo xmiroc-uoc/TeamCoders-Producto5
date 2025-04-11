@@ -8,14 +8,13 @@ import modelo.Datos;
 
 public class ArticuloControlador {
     
-    public static void añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta, double gastosEnvio, int tiempoPreparacion) {
+    public static boolean añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta, double gastosEnvio, int tiempoPreparacion) {
         if (buscarArticuloPorCodigo(codigo) != null) {
-            System.out.println("Ya existe un artículo con ese código.");
-            return;
+            return false;
         }
         Articulo articulo = new Articulo(codigo, tiempoPreparacion, gastosEnvio, precioVenta, descripcion);
         agregarArticulo(articulo);
-        System.out.println("Artículo añadido correctamente.");
+        return true;
     }
 
     public static void agregarArticulo(Articulo articulo) {

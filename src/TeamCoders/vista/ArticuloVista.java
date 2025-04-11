@@ -42,8 +42,15 @@ public class ArticuloVista {
             double precioVenta = EntradaUsuario.leerDecimal("Precio: ");
             double gastosEnvio = EntradaUsuario.leerDecimal("Gastos de envío: ");
             int tiempoPreparacion = EntradaUsuario.leerEntero("Tiempo preparación (minutos): ");
-    
-            ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+            
+            boolean articuloAñadido = ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+
+            if (articuloAñadido) {
+                System.out.println("Artículo añadido correctamente.");
+            } else {
+                System.out.println("Ya existe un artículo con ese código.");
+            }
+
         } catch (Exception e) {
             System.out.println("Error al añadir artículo: " + e.getMessage());
         }

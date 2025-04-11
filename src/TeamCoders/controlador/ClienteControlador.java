@@ -10,33 +10,26 @@ import modelo.Datos;
 
 public class ClienteControlador {
     
-    public static void añadirClienteEstandarDesdeVista(String nombre, String domicilio, String nif, String email) {
-        try {
-            if (buscarClientePorEmail(email) != null) {
-                System.out.println("Ya existe un cliente con este email.");
-                return;
-            }
-            Cliente cliente = new ClienteEstandar(nombre, domicilio, nif, email);
-            agregarCliente(cliente);
-            System.out.println("Cliente estándar añadido correctamente.");
-        } catch (Exception e) {
-            System.out.println("Error al añadir cliente estándar: " + e.getMessage());
-        }      
+    public static boolean añadirClienteEstandarDesdeVista(String nombre, String domicilio, String nif, String email) {
+  
+        if (buscarClientePorEmail(email) != null) {
+            return false;
+        }
+        Cliente cliente = new ClienteEstandar(nombre, domicilio, nif, email);
+        agregarCliente(cliente);
+        return true;
     }
 
-    public static void añadirClientePremiumDesdeVista(String nombre, String domicilio, String nif, String email, int cuotaAnual) {
-        try {
-            if (buscarClientePorEmail(email) != null) {
-                System.out.println("Ya existe un cliente con este email.");
-                return;
-            }
-            Cliente cliente = new ClientePremium(nombre, domicilio, nif, email, cuotaAnual);
-            agregarCliente(cliente);
-            System.out.println("Cliente premium añadido correctamente.");
+    public static boolean añadirClientePremiumDesdeVista(String nombre, String domicilio, String nif, String email, int cuotaAnual) {
 
-        } catch (Exception e) {
-            System.out.println("Error al añadir cliente premium: " + e.getMessage());
-        }      
+        if (buscarClientePorEmail(email) != null) {
+            // System.out.println("Ya existe un cliente con este email.");
+            return false;
+        }
+        Cliente cliente = new ClientePremium(nombre, domicilio, nif, email, cuotaAnual);
+        agregarCliente(cliente);
+        // System.out.println("Cliente premium añadido correctamente.");
+        return true;  
     }
 
     public static Cliente buscarClientePorEmail(String email) {

@@ -11,25 +11,20 @@ import modelo.Pedido;
 
 public class PedidoControlador {
   
-    public static void añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
-        try {
+    public static boolean añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
             Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
             Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
     
             if (cliente == null || articulo == null) {
-                System.out.println("Cliente o articulo no encontrado.");
-                return;
+                return false;
             }
     
             int numeroPedido = Datos.getPedidos().size() + 1;
             LocalDateTime fecha = LocalDateTime.now();
             Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
             agregarPedido(pedido);
-            System.out.println("Pedido añadido correctamente.");
-        } catch (Exception e) {
-            System.out.println("Error al añadir pedido: " + e.getMessage());
+            return true;
 
-        }
     }
 
     public static void agregarPedido(Pedido pedido) {
