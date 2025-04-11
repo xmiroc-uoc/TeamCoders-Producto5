@@ -14,27 +14,24 @@ import modelo.Datos;
 public class ArticuloControlador {
     
     /**
-     * Añade un nuevo artículo desde la vista, verificando previamente que no exista ya un artículo con el mismo código.
+     * Añade un nuevo artículo desde la vista. La validación de duplicado se realiza en Datos.agregarArticulo.
      * @param codigo Código identificador único del artículo.
-         * @param descripcion Descripción detallada del artículo.
+     * @param descripcion Descripción detallada del artículo.
      * @param precioVenta Precio al que se vende el artículo.
      * @param gastosEnvio Coste adicional por el envío del artículo.
      * @param tiempoPreparacion Tiempo necesario para preparar el artículo para envío (en minutos).
-     * @return true si el artículo se añadió correctamente, false si ya existía uno con ese código.
+     * @throws IllegalArgumentException si ya existe un artículo con ese código.
      */
-    public static boolean añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta, double gastosEnvio, int tiempoPreparacion) {
-        // Comprueba si ya existe un artículo con el mismo código para evitar duplicados.
-        if (buscarArticuloPorCodigo(codigo) != null) {
-            return false;
-        }
+    public static void añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta, double gastosEnvio, int tiempoPreparacion) {
         Articulo articulo = new Articulo(codigo, tiempoPreparacion, gastosEnvio, precioVenta, descripcion);
         agregarArticulo(articulo);
-        return true;
     }
 
     /**
      * Agrega un nuevo artículo directamente al almacén de datos.
+     * Este método delega la validación de duplicados a la clase Datos.
      * @param articulo Instancia del artículo que será añadida.
+     * @throws IllegalArgumentException si ya existe un artículo con el mismo código.
      */
     public static void agregarArticulo(Articulo articulo) {
         Datos.agregarArticulo(articulo);

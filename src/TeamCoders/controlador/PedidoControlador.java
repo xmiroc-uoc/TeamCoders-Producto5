@@ -18,25 +18,27 @@ public class PedidoControlador {
     
     /**
      * Añade un pedido desde la vista si el cliente y el artículo existen.
+     * Si alguno no existe, se lanza una excepción.
      * @param email Email del cliente que realiza el pedido.
      * @param codigoArticulo Código del artículo solicitado.
      * @param cantidad Cantidad de unidades del artículo.
-     * @return true si se añadió correctamente, false si el cliente o artículo no existen.
+     * @throws IllegalArgumentException si el cliente o el artículo no existen.
      */
-    public static boolean añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
-            Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
-            Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
-    
-            // Comprueba si el cliente y artículo existen.
-            if (cliente == null || articulo == null) {
-                return false;
-            }
-    
-            int numeroPedido = Datos.getPedidos().size() + 1;
-            LocalDateTime fecha = LocalDateTime.now();
-            Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
-            agregarPedido(pedido);
-            return true;
+    public static void añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
+        Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
+        Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
+
+        if (cliente == null) {
+            throw new IllegalArgumentException("No se encontró un cliente con el email: " + email);
+        }
+        if (articulo == null) {
+            throw new IllegalArgumentException("No se encontró un artículo con el código: " + codigoArticulo);
+        }
+
+        int numeroPedido = Datos.getPedidos().size() + 1;
+        LocalDateTime fecha = LocalDateTime.now();
+        Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
+        agregarPedido(pedido);
     }
 
     /**

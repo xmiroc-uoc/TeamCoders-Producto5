@@ -16,40 +16,32 @@ import modelo.Datos;
 public class ClienteControlador {
     
     /**
-     * Añade un cliente estándar desde la vista si no existe otro con el mismo email.
+     * Añade un cliente estándar si no existe uno con el mismo email.
+     * La validación de duplicado se realiza en Datos.agregarCliente.
      * @param nombre Nombre del cliente.
      * @param domicilio Dirección del cliente.
      * @param nif Número de identificación fiscal.
-     * @param email Correo electrónico único del cliente.
-     * @return true si el cliente se añadió correctamente, false si ya existía.
+     * @param email Correo electrónico del cliente.
+     * @throws IllegalArgumentException si ya existe un cliente con ese email.
      */
-    public static boolean añadirClienteEstandarDesdeVista(String nombre, String domicilio, String nif, String email) {
-        // Verifica que no exista ya un cliente con ese email.
-        if (buscarClientePorEmail(email) != null) {
-            return false;
-        }
+    public static void añadirClienteEstandarDesdeVista(String nombre, String domicilio, String nif, String email) {
         Cliente cliente = new ClienteEstandar(nombre, domicilio, nif, email);
         agregarCliente(cliente);
-        return true;
     }
 
     /**
-     * Añade un cliente premium desde la vista si no existe otro con el mismo email.
+     * Añade un cliente premium si no existe uno con el mismo email.
+     * La validación de duplicado se realiza en Datos.agregarCliente.
      * @param nombre Nombre del cliente.
      * @param domicilio Dirección del cliente.
      * @param nif Número de identificación fiscal.
-     * @param email Correo electrónico único del cliente.
-     * @param cuotaAnual Cuota anual pagada por el cliente premium.
-     * @return true si el cliente se añadió correctamente, false si ya existía.
+     * @param email Correo electrónico del cliente.
+     * @param cuotaAnual Cuota anual en euros.
+     * @throws IllegalArgumentException si ya existe un cliente con ese email.
      */
-    public static boolean añadirClientePremiumDesdeVista(String nombre, String domicilio, String nif, String email, int cuotaAnual) {
-        // Verifica que no exista ya un cliente con ese email.
-        if (buscarClientePorEmail(email) != null) {
-            return false;
-        }
+    public static void añadirClientePremiumDesdeVista(String nombre, String domicilio, String nif, String email, int cuotaAnual) {
         Cliente cliente = new ClientePremium(nombre, domicilio, nif, email, cuotaAnual);
         agregarCliente(cliente);
-        return true;  
     }
 
     /**
@@ -67,24 +59,26 @@ public class ClienteControlador {
     }
 
     /**
-     * Agrega un cliente al almacén de datos.
+     * Agrega un cliente a la lista de clientes.
+     * Este método delega la validación de duplicados a la clase Datos.
      * @param cliente Cliente a agregar.
+     * @throws IllegalArgumentException si ya existe un cliente con ese email.
      */
     public static void agregarCliente(Cliente cliente) {
         Datos.agregarCliente(cliente);
     }
 
     /**
-     * Obtiene la lista completa de clientes.
-     * @return Lista de todos los clientes registrados.
+     * Devuelve la lista actual de clientes.
+     * @return Lista de todos los clientes.
      */
     public static List<Cliente> obtenerClientes() {
         return new ArrayList<>(Datos.getClientes());
     }
     
     /**
-     * Obtiene la lista de clientes estándar.
-     * @return Lista de clientes tipo estándar.
+     * Devuelve la lista de clientes registrados de tipo estándar.
+     * @return Lista de clientes estándar.
      */
     public static List<Cliente> obtenerClientesEstandar() {
         List<Cliente> estandar = new ArrayList<>();
@@ -97,8 +91,8 @@ public class ClienteControlador {
     }
 
     /**
-     * Obtiene la lista de clientes premium.
-     * @return Lista de clientes tipo premium.
+     * Devuelve la lista de clientes registrados de tipo premium.
+     * @return Lista de clientes premium.
      */
     public static List<Cliente> obtenerClientesPremium() {
         List<Cliente> premium = new ArrayList<>();

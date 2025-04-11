@@ -55,6 +55,7 @@ public class ClienteVista {
 
     /**
      * Solicita los datos al usuario y añade un cliente estándar o premium.
+     * Captura excepciones si ya existe un cliente con el mismo email.
      */
     private static void añadirClienteDesdeVista() {
         try {
@@ -66,24 +67,18 @@ public class ClienteVista {
             String nif = EntradaUsuario.leerTexto("NIF: ");
             String domicilio = EntradaUsuario.leerTexto("Domicilio: ");
 
-            boolean clienteAñadido;
-
             // Crea y registra el cliente según el tipo seleccionado
             if (tipo.equals("P")) {
                 int cuotaAnual = EntradaUsuario.leerEntero("Cuota anual (euros): ");
-                clienteAñadido = ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
+                ClienteControlador.añadirClientePremiumDesdeVista(nombre, domicilio, nif, email, cuotaAnual);
             } else {
-                clienteAñadido = ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
+                ClienteControlador.añadirClienteEstandarDesdeVista(nombre, domicilio, nif, email);
             }
-
-            // Notifica al usuario si el cliente se registró correctamente o si ya existía
-            if (clienteAñadido) {
-                System.out.println("Cliente estándar añadido correctamente.");
-            } else {
-                System.out.println("Ya existe un cliente con este email.");
-            }
+            System.out.println("Cliente añadido correctamente.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Error al procesar la entrada del cliente: " + e.getMessage());
+            System.out.println("Error inesperado al añadir cliente: " + e.getMessage());
         }
     }
 

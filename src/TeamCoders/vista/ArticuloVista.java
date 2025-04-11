@@ -48,6 +48,7 @@ public class ArticuloVista {
 
     /**
      * Solicita al usuario los datos necesarios y añade un nuevo artículo si el código no está duplicado.
+     * Captura excepciones si ya existe un artículo con el mismo código o si ocurre otro error inesperado.
      */
     private static void añadirArticuloDesdeVista() {
         try {
@@ -57,19 +58,15 @@ public class ArticuloVista {
             double precioVenta = EntradaUsuario.leerDecimal("Precio: ");
             double gastosEnvio = EntradaUsuario.leerDecimal("Gastos de envío: ");
             int tiempoPreparacion = EntradaUsuario.leerEntero("Tiempo preparación (minutos): ");
-            
-            // Intenta añadir el artículo usando el controlador
-            boolean articuloAñadido = ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
 
-            // Informa al usuario del resultado del intento de inserción
-            if (articuloAñadido) {
-                System.out.println("Artículo añadido correctamente.");
-            } else {
-                System.out.println("Ya existe un artículo con ese código.");
-            }
+            // Intenta registrar el artículo; puede lanzar excepción si ya existe el código
+            ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+            System.out.println("Artículo añadido correctamente.");
 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Error al añadir artículo: " + e.getMessage());
+            System.out.println("Error inesperado al añadir artículo: " + e.getMessage());
         }
     }
 

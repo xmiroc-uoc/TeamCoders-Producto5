@@ -19,8 +19,15 @@ public class Pedido {
      * @param fechaPedido Fecha y hora del pedido.
      * @param cliente Cliente que realiza el pedido.
      * @param articulo Artículo solicitado en el pedido.
+     * @throws IllegalArgumentException si hay valores nulos o inválidos.
      */
     public Pedido(int numeroPedido, int unidades, LocalDateTime fechaPedido, Cliente cliente, Articulo articulo) {
+        if (cliente == null || articulo == null || fechaPedido == null) {
+            throw new IllegalArgumentException("Cliente, artículo y fecha del pedido no pueden ser nulos.");
+        }
+        if (unidades <= 0) {
+            throw new IllegalArgumentException("El número de unidades debe ser mayor que 0.");
+        }
         this.numeroPedido = numeroPedido;
         this.unidades = unidades;
         this.fechaPedido = fechaPedido;
@@ -90,8 +97,12 @@ public class Pedido {
     /**
      * Indica si el pedido aún puede ser cancelado.
      * @return true si no ha pasado el tiempo de preparación, false en caso contrario.
+     * @throws IllegalStateException si la fecha del pedido o el artículo no están definidos.
      */
     public boolean cancelable() {
+        if (fechaPedido == null || articulo == null) {
+            throw new IllegalStateException("El pedido no está completamente definido: falta fecha o artículo.");
+        }
         long minutosTranscurridos = java.time.Duration.between(fechaPedido, LocalDateTime.now()).toMinutes();
         return minutosTranscurridos < articulo.getTiempoPreparacion();
     }
@@ -99,8 +110,12 @@ public class Pedido {
     /**
      * Calcula el precio total del pedido incluyendo el descuento en gastos de envío.
      * @return Precio total del pedido.
+     * @throws IllegalStateException si el cliente o el artículo no están definidos.
      */
     public double precioPedido() {
+        if (cliente == null || articulo == null) {
+            throw new IllegalStateException("El pedido no está completamente definido: falta cliente o artículo.");
+        }
         double total = articulo.getPrecioVenta() * unidades;
         double descuento = cliente.descuentoEnvio();
         return total + (articulo.getGastosEnvio() * (1 - descuento));

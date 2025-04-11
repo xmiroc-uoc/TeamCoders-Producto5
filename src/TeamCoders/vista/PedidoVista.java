@@ -60,6 +60,10 @@ public class PedidoVista {
 
     /**
      * Solicita al usuario los datos de un pedido y lo añade si el cliente y artículo existen.
+     * Captura y muestra errores si alguno de los datos es inválido o no existe.
+     *
+     * @throws IllegalArgumentException si el cliente o artículo no existen
+     * @throws Exception si ocurre cualquier otro error inesperado
      */
     private static void añadirPedidoDesdeVista() {
         try {
@@ -68,17 +72,13 @@ public class PedidoVista {
             String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
             int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
     
-            // Intenta añadir el pedido a través del controlador
-            boolean pedidoAñadido = PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
-
-            // Informa del resultado
-            if (pedidoAñadido) {
-                System.out.println("Pedido añadido correctamente.");
-            } else {
-                System.out.println("Cliente o articulo no encontrado.");
-            }
+            // Intenta registrar el pedido; puede lanzar excepciones si cliente o artículo no existen
+            PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
+            System.out.println("Pedido añadido correctamente.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Error al añadir pedido: " + e.getMessage());
+            System.out.println("Error inesperado al añadir el pedido: " + e.getMessage());
         }
     }
 

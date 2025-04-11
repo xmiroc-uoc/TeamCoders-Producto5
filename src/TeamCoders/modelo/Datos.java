@@ -40,16 +40,30 @@ public class Datos{
     /**
      * Agrega un artículo a la lista de artículos.
      * @param articulo el artículo a agregar
+     * @throws IllegalArgumentException si ya existe un artículo con ese código
      */
     public static void agregarArticulo(Articulo articulo) {
+        // Verifica si ya existe un artículo con el mismo código (ignorando mayúsculas/minúsculas)
+        for (Articulo a : articulos) {
+            if (a.getCodigo().equalsIgnoreCase(articulo.getCodigo())) {
+                throw new IllegalArgumentException("Ya existe un artículo con el código: " + articulo.getCodigo());
+            }
+        }
         articulos.add(articulo);
     }
 
     /**
      * Agrega un cliente a la lista de clientes.
      * @param cliente el cliente a agregar
+     * @throws IllegalArgumentException si ya existe un cliente con ese email
      */
     public static void agregarCliente(Cliente cliente) {
+        // Verifica si ya existe un cliente con el mismo email (ignorando mayúsculas/minúsculas)
+        for (Cliente c : clientes) {
+            if (c.getEmail().equalsIgnoreCase(cliente.getEmail())) {
+                throw new IllegalArgumentException("Ya existe un cliente con el email: " + cliente.getEmail());
+            }
+        }
         clientes.add(cliente);
     }
 
