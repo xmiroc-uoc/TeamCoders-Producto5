@@ -2,20 +2,155 @@
 USE TeamCodersBD;
 
 -- Inserta clientes
-INSERT INTO clientes (email, nombre, domicilio, nif, tipo, cuota_anual) VALUES
-('ana@example.com', 'Ana Torres', 'Calle Falsa 123', '12345678A', 'estandar', NULL),
-('luis@example.com', 'Luis Pérez', 'Avenida Real 456', '87654321B', 'premium', 30.0),
-('maria@example.com', 'Maria Ruiz', 'Calle Luna 789', '23456789C', 'premium', 50.0);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Ana', 'Calle Falsa 123', '12345678A', 'ana@email.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Luis', 'Avenida Real 456', '87654321B', 'luis@email.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Jose Manuel', 'Via de Florina Lobato 313 Puerta 3 , Girona, 57241', '85779209P', 'susanita70@hotmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Clímaco', 'Pasaje Casandra Maestre 6, Barcelona, 38972', '04634663M', 'kalamo@gmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Selena', 'Ronda de Poncio Granados 8, Ávila, 35373', '88419957N', 'fajardozaida@gmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Zaira', 'Pasaje de Pepe Teruel 53 Puerta 2 , Las Palmas, 31555', '33540256E', 'izquierdoagustin@pulido.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Marciano', 'Paseo Xiomara Higueras 78, Lugo, 95780', '68684311Z', 'romulomorcillo@hotmail.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Clarisa', 'Paseo Benigna Isern 67, Segovia, 00128', '73372089A', 'telmo84@herrera.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Emilia', 'Cañada de Augusto Ferrández 8, Cádiz, 12366', '36980342C', 'calista56@villalonga.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Albert', 'Cuesta de Carlota Anaya 35 Piso 6 , Ourense, 82266', '29484897N', 'anitahoyos@gmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Toribio', 'Rambla de Bernabé Priego 589 Apt. 27 , Barcelona, 47281', '00308570V', 'casanovassamanta@hotmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Bernabé', 'Acceso de Haydée Bello 36 Apt. 49 , Barcelona, 21292', '65132486J', 'selena25@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Marcos', 'Via de Vinicio Recio 28, Soria, 84018', '37022637T', 'cuencaflor@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Alberto', 'Urbanización de Ramiro Benavente 301 Apt. 85 , Sevilla, 25597', '94782628C', 'fausto21@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Teófilo', 'Avenida Conrado Torrens 53 Piso 9 , Sevilla, 44341', '94341991L', 'pioctavia@roman.org', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Camilo', 'Pasadizo Emiliana Gras 98 Apt. 35 , Lugo, 48773', '47856012R', 'joaquinplana@perera.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Natalio', 'Pasaje de Noa Cases 506 Piso 9 , Valencia, 47793', '40131672Z', 'utorre@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Inés', 'Callejón de Cebrián Sancho 93, Toledo, 52896', '78644654P', 'borja47@hotmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Primitivo', 'Pasaje de Hernán Iborra 46, Navarra, 62987', '28037367X', 'wmoraleda@arroyo-daza.es', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Marina', 'C. de Erasmo Villa 74 Apt. 35 , Ávila, 37191', '71188509N', 'violetamate@guardiola-sureda.org', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Zoraida', 'Alameda de Herberto Montenegro 92, Girona, 24326', '22976230D', 'lupitaalcazar@gmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Sofía', 'Plaza Leticia Múgica 96 Apt. 11 , Valencia, 70505', '95570399V', 'adolfo35@yahoo.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Bienvenida', 'Alameda de Marco Roig 97, Soria, 79486', '21038992T', 'lastrajuan-carlos@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Martin', 'Via Olimpia Montenegro 6 Puerta 9 , Cuenca, 89425', '48132979N', 'ameliazurita@olivares-giron.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Lina', 'Cañada Pili Zapata 52, Sevilla, 58703', '13196037A', 'qgalindo@gmail.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Dionisio', 'Glorieta Arturo Armas 471 Apt. 06 , Burgos, 48639', '16370376Y', 'vcobo@fabregas-saavedra.es', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Yaiza', 'Avenida de Jose Luis Lledó 1 Apt. 86 , León, 49096', '03523591W', 'cllorens@gmail.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Evangelina', 'Vial de Azahara Sanmartín 43 Piso 1 , Almería, 61870', '05988260H', 'juan-pablovillena@gmail.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Matías', 'Avenida de Ainoa Gual 92 Piso 6 , Tarragona, 93658', '30237251Z', 'bernardomorales@zabala-robledo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Ramona', 'Avenida de Estrella Sáez 61, Ceuta, 96226', '10595687Z', 'hrosa@machado.org', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Benigno', 'Urbanización de Apolonia Oller 23 Piso 2 , Barcelona, 03460', '22442120E', 'wvillegas@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Lina', 'Urbanización Alex Codina 31 Apt. 75 , Soria, 72025', '49493721L', 'vilaltageraldo@yahoo.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Ambrosio', 'Via de Victorino Parejo 45 Puerta 4 , Ávila, 25405', '91249396D', 'jonatanborja@bosch-fernandez.es', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Marciano', 'Callejón Yago Fernandez 5, Lugo, 96336', '64172245X', 'yrivas@santamaria-tirado.es', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Luciana', 'Alameda Zaida Rojas 5 Apt. 07 , Albacete, 47475', '73931119Q', 'casandrapazos@pascual-rodrigo.es', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Jordana', 'C. Custodia Gual 366 Piso 0 , Murcia, 12704', '14371034E', 'mariscalodalis@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Goyo', 'Calle Hilda Santamaría 45 Apt. 28 , Sevilla, 31514', '20882157K', 'ferrandizpelayo@yahoo.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Amancio', 'Paseo de Edmundo Comas 64, Lugo, 53429', '66295948E', 'armando17@montoya.es', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Ignacia', 'Alameda Reyes Marí 99, Guadalajara, 01789', '45794891A', 'pacacamino@prats-murillo.net', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Teófilo', 'Avenida Modesta Donoso 4, La Rioja, 86480', '97004396L', 'nereaarjona@yahoo.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Guiomar', 'Cuesta Pastora Solera 774 Piso 6 , Valladolid, 71912', '33790926G', 'imeldallanos@gmail.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Buenaventura', 'Camino de Fito Hierro 86, Palencia, 16286', '19310549R', 'eutimiocapdevila@carmona.org', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Azeneth', 'Cañada Ciriaco Mateos 68 Apt. 10 , Zamora, 82113', '15603286H', 'sotoruth@rodriguez.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Sandra', 'C. Ambrosio Sevillano 87 Puerta 3 , Sevilla, 80823', '29623174J', 'rosalva86@gmail.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Alonso', 'Pasaje Francisco Jose Carpio 6 Apt. 50 , Las Palmas, 02540', '13797010P', 'bsegarra@olive.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Domingo', 'Cuesta Guadalupe Chacón 57, Albacete, 88548', '67482623W', 'borja16@bayon-pedraza.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Jacinto', 'Avenida Ceferino Esteban 3 Puerta 6 , Baleares, 50644', '27486020X', 'eibanez@font.es', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Guadalupe', 'Plaza de Victorino Jara 3 Apt. 89 , Sevilla, 16627', '97229957V', 'heribertoreina@juan-figueras.com', 'Estandar', NULL);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Amada', 'Vial Cándida Pascual 642, Ceuta, 58324', '49783583M', 'jcamara@andreu-riquelme.com', 'Premium', 30);
+INSERT INTO cliente (nombre, direccion, nif, email, tipo, cuota_anual) VALUES ('Natividad', 'Ronda Maxi Peña 93, Cantabria, 45255', '61365041K', 'loreto62@tamarit.net', 'Estandar', NULL);
 
 -- Inserta artículos
-INSERT INTO articulos (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES
-('A001', 'Laptop Lenovo 14"', 1200.00, 20.00, 30),
-('A002', 'Smartphone Samsung Galaxy', 850.00, 15.00, 20),
-('A003', 'Tablet Apple iPad', 990.00, 18.00, 25);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A001', 'Laptop', 1200.0, 12.0, 30);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A002', 'Smartphone', 800.0, 15.0, 15);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A100', 'Consequatur', 758.79, 8.25, 49);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A101', 'Enim', 1116.29, 11.76, 43);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A102', 'Officiis', 1451.28, 19.52, 33);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A103', 'Itaque', 907.03, 19.48, 12);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A104', 'Cupiditate', 764.14, 10.58, 45);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A105', 'Repellat', 275.08, 13.85, 24);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A106', 'Autem', 1429.6, 16.3, 33);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A107', 'Nisi', 909.04, 14.2, 34);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A108', 'Error', 137.56, 16.43, 45);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A109', 'Aliquid', 643.88, 5.63, 14);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A110', 'Enim', 135.93, 16.33, 42);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A111', 'Cupiditate', 1379.63, 15.48, 50);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A112', 'Minus', 1450.55, 9.16, 46);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A113', 'Dignissimos', 323.08, 15.09, 40);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A114', 'Eos', 1201.07, 14.9, 10);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A115', 'Suscipit', 1042.27, 5.42, 35);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A116', 'Repellat', 196.4, 6.26, 31);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A117', 'Beatae', 1402.42, 8.01, 35);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A118', 'Minima', 476.51, 17.32, 53);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A119', 'Maiores', 1453.17, 14.97, 32);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A120', 'Inventore', 415.32, 9.35, 43);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A121', 'Consequuntur', 1254.35, 14.04, 14);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A122', 'Unde', 1177.28, 12.72, 10);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A123', 'Quae', 968.89, 17.41, 45);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A124', 'Necessitatibus', 632.98, 11.79, 34);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A125', 'Officia', 1325.24, 5.77, 36);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A126', 'Tenetur', 995.91, 5.01, 39);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A127', 'Exercitationem', 352.74, 10.47, 40);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A128', 'Nisi', 629.25, 8.32, 29);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A129', 'Consequuntur', 512.95, 7.3, 44);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A130', 'Esse', 1118.25, 6.73, 27);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A131', 'Ex', 907.68, 16.36, 14);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A132', 'Reprehenderit', 1174.89, 5.09, 17);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A133', 'Aspernatur', 1021.32, 6.34, 10);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A134', 'Vero', 558.39, 5.72, 21);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A135', 'Voluptates', 724.42, 13.43, 44);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A136', 'Iste', 477.96, 8.38, 59);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A137', 'Itaque', 1138.39, 6.41, 53);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A138', 'Aliquam', 1054.15, 11.85, 25);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A139', 'Sint', 1213.05, 6.61, 42);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A140', 'Amet', 965.7, 12.69, 24);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A141', 'Nesciunt', 1242.31, 7.18, 59);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A142', 'Sapiente', 849.68, 14.6, 38);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A143', 'Asperiores', 381.93, 12.45, 18);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A144', 'Autem', 784.79, 5.03, 10);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A145', 'Ipsum', 1188.22, 16.7, 41);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A146', 'Nam', 590.21, 10.62, 36);
+INSERT INTO articulo (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES ('A147', 'Facere', 119.07, 5.93, 26);
 
 -- Inserta pedidos (algunos enviados, otros pendientes según tiempo_preparacion)
--- Supongamos fecha actual es '2024-04-10 10:00:00'
-INSERT INTO pedidos (unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES
-(1, '2024-04-10 09:40:00', 'ana@example.com', 'A001'), -- ya enviado
-(2, '2024-04-10 09:50:00', 'luis@example.com', 'A002'), -- enviado
-(1, '2024-04-10 09:55:00', 'maria@example.com', 'A003'); -- pendiente
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (3, 2, '2025-04-11 12:50:41', 'adolfo35@yahoo.com', 'A143');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (4, 4, '2025-04-11 13:12:41', 'joaquinplana@perera.com', 'A134');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (5, 4, '2025-04-11 13:08:41', 'casandrapazos@pascual-rodrigo.es', 'A126');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (6, 5, '2025-04-11 13:02:41', 'qgalindo@gmail.com', 'A103');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (7, 3, '2025-04-11 12:38:41', 'borja47@hotmail.com', 'A116');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (8, 2, '2025-04-11 12:55:41', 'izquierdoagustin@pulido.com', 'A137');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (9, 4, '2025-04-11 12:52:41', 'eibanez@font.es', 'A002');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (10, 3, '2025-04-11 12:50:41', 'imeldallanos@gmail.com', 'A124');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (11, 4, '2025-04-11 12:33:41', 'ana@email.com', 'A104');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (12, 3, '2025-04-11 12:26:41', 'bsegarra@olive.com', 'A113');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (13, 4, '2025-04-11 13:21:41', 'telmo84@herrera.com', 'A112');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (14, 1, '2025-04-11 13:09:41', 'pioctavia@roman.org', 'A138');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (15, 4, '2025-04-11 12:58:41', 'ameliazurita@olivares-giron.com', 'A110');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (16, 5, '2025-04-11 12:53:41', 'eutimiocapdevila@carmona.org', 'A115');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (17, 1, '2025-04-11 13:57:41', 'kalamo@gmail.com', 'A108');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (18, 2, '2025-04-11 12:24:41', 'loreto62@tamarit.net', 'A002');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (19, 1, '2025-04-11 14:10:41', 'cuencaflor@yahoo.com', 'A111');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (20, 2, '2025-04-11 12:58:41', 'casanovassamanta@hotmail.com', 'A130');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (21, 3, '2025-04-11 12:29:41', 'loreto62@tamarit.net', 'A116');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (22, 5, '2025-04-11 12:39:41', 'eutimiocapdevila@carmona.org', 'A124');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (23, 1, '2025-04-11 13:12:41', 'pioctavia@roman.org', 'A136');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (24, 3, '2025-04-11 12:40:41', 'jcamara@andreu-riquelme.com', 'A109');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (25, 3, '2025-04-11 13:55:41', 'cllorens@gmail.com', 'A123');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (26, 5, '2025-04-11 13:40:41', 'romulomorcillo@hotmail.com', 'A136');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (27, 2, '2025-04-11 13:38:41', 'jcamara@andreu-riquelme.com', 'A143');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (28, 2, '2025-04-11 12:32:41', 'borja16@bayon-pedraza.com', 'A106');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (29, 3, '2025-04-11 13:13:41', 'pacacamino@prats-murillo.net', 'A106');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (30, 4, '2025-04-11 12:29:41', 'bsegarra@olive.com', 'A002');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (31, 4, '2025-04-11 13:49:41', 'hrosa@machado.org', 'A140');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (32, 3, '2025-04-11 13:09:41', 'pacacamino@prats-murillo.net', 'A142');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (33, 3, '2025-04-11 12:34:41', 'borja16@bayon-pedraza.com', 'A140');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (34, 4, '2025-04-11 12:36:41', 'susanita70@hotmail.com', 'A139');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (35, 1, '2025-04-11 12:13:41', 'nereaarjona@yahoo.com', 'A128');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (36, 5, '2025-04-11 13:05:41', 'luis@email.com', 'A140');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (37, 2, '2025-04-11 13:02:41', 'nereaarjona@yahoo.com', 'A140');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (38, 4, '2025-04-11 12:19:41', 'borja47@hotmail.com', 'A115');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (39, 1, '2025-04-11 13:15:41', 'qgalindo@gmail.com', 'A120');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (40, 1, '2025-04-11 13:12:41', 'nereaarjona@yahoo.com', 'A105');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (41, 4, '2025-04-11 12:41:41', 'ferrandizpelayo@yahoo.com', 'A132');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (42, 2, '2025-04-11 12:26:41', 'casanovassamanta@hotmail.com', 'A105');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (43, 5, '2025-04-11 14:07:41', 'jonatanborja@bosch-fernandez.es', 'A100');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (44, 1, '2025-04-11 13:54:41', 'heribertoreina@juan-figueras.com', 'A105');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (45, 1, '2025-04-11 14:10:41', 'susanita70@hotmail.com', 'A126');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (46, 4, '2025-04-11 13:26:41', 'kalamo@gmail.com', 'A125');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (47, 5, '2025-04-11 13:25:41', 'juan-pablovillena@gmail.com', 'A145');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (48, 5, '2025-04-11 13:44:41', 'mariscalodalis@yahoo.com', 'A138');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (49, 5, '2025-04-11 13:07:41', 'juan-pablovillena@gmail.com', 'A114');
+INSERT INTO pedido (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (50, 5, '2025-04-11 13:55:41', 'fajardozaida@gmail.com', 'A001');
