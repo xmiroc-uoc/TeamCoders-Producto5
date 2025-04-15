@@ -34,8 +34,9 @@ public class PedidoControlador {
      * @param emailCliente   Email del cliente que realiza el pedido.
      * @param codigoArticulo Código del artículo solicitado.
      * @param cantidad       Número de unidades pedidas.
-     * @throws IllegalArgumentException Si el cliente o artículo no existen, o la
-     *                                  cantidad es inválida.
+     * @throws IllegalArgumentException si el cliente o el artículo no existen,
+     *                                  si la cantidad es inválida,
+     *                                  o si ocurre un error al crear el pedido.
      */
     public static void añadirPedidoDesdeVista(String emailCliente, String codigoArticulo, int cantidad) {
         try {
@@ -47,13 +48,13 @@ public class PedidoControlador {
             // Obtener el cliente
             Cliente cliente = clienteDAO.buscarClientePorEmail(emailCliente);
             if (cliente == null) {
-                throw new IllegalArgumentException("Cliente no encontrado con email: " + emailCliente);
+                throw new IllegalArgumentException("El cliente con email " + emailCliente + " no existe.");
             }
 
             // Obtener el artículo
             Articulo articulo = articuloDAO.buscarArticuloPorCodigo(codigoArticulo);
             if (articulo == null) {
-                throw new IllegalArgumentException("Artículo no encontrado con código: " + codigoArticulo);
+                throw new IllegalArgumentException("El artículo con código " + codigoArticulo + " no existe.");
             }
 
             // Generar número de pedido (se podría mejorar con una secuencia o UUID)

@@ -30,7 +30,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
      */
     @Override
     public void crearPedido(Pedido pedido) throws SQLException {
-        String sqlInsertarPedido = "INSERT INTO pedidos (numero, unidades, fecha_pedido, cliente_email, articulo_codigo)";
+        String sqlInsertarPedido = "INSERT INTO pedidos (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?, ?)";
 
         Connection conexion = null;
         PreparedStatement sentenciaPreparada = null;
