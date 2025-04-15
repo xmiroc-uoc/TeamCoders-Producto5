@@ -57,11 +57,11 @@ public class PedidoControlador {
                 throw new IllegalArgumentException("El artículo con código " + codigoArticulo + " no existe.");
             }
 
-            // Generar número de pedido (se podría mejorar con una secuencia o UUID)
-            int numeroPedido = generarNumeroPedido();
+            // Generar número de pedido
+            // int numeroPedido = generarNumeroPedido();
 
             // Crear el pedido con la fecha actual
-            Pedido nuevoPedido = new Pedido(numeroPedido, cantidad, LocalDateTime.now(), cliente, articulo);
+            Pedido nuevoPedido = new Pedido(0, cantidad, LocalDateTime.now(), cliente, articulo);
 
             // Guardar el pedido en la base de datos
             pedidoDAO.crearPedido(nuevoPedido);

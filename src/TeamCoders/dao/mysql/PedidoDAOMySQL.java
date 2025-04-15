@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
      */
     @Override
     public void crearPedido(Pedido pedido) throws SQLException {
-        String sqlInsertarPedido = "INSERT INTO pedidos (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?, ?)";
+        String sqlInsertarPedido = "INSERT INTO pedidos (unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?)";
 
         Connection conexion = null;
         PreparedStatement sentenciaPreparada = null;
@@ -39,22 +40,21 @@ public class PedidoDAOMySQL implements IPedidoDAO {
             // Obtiene la conexión
             conexion = ConexionBD.getConnection();
             // Prepara la sentencia con la consulta SQL
-            sentenciaPreparada = conexion.prepareStatement(sqlInsertarPedido);
+            sentenciaPreparada = conexion.prepareStatement(sqlInsertarPedido, Statement.RETURN_GENERATED_KEYS);
 
             // Asigna los parametros a la consulta
-            sentenciaPreparada.setInt(1, pedido.getNumeroPedido());
-            sentenciaPreparada.setInt(2, pedido.getUnidades());
+            sentenciaPreparada.setInt(1, pedido.getUnidades());
 
             // Convierte LocalDateTime a Timestamp
             Timestamp timestampFecha = Timestamp.valueOf(pedido.getFechaPedido());
-            sentenciaPreparada.setTimestamp(3, timestampFecha);
+            sentenciaPreparada.setTimestamp(2, timestampFecha);
 
             // Se almacenan las claves foráneas: email del cliente y código del artículo
             // Suponemos que la tabla "pedido" guarda estos valores para relacionarse con
             // las tablas correspondientes
-            sentenciaPreparada.setString(4, pedido.getCliente().getEmail());
+            sentenciaPreparada.setString(3, pedido.getCliente().getEmail());
             // Se asume que Articulo tiene el método getCodigo() para identificarlo
-            sentenciaPreparada.setString(5, pedido.getArticulo().getCodigo());
+            sentenciaPreparada.setString(4, pedido.getArticulo().getCodigo());
 
             // Ejecuta el INSERT
             sentenciaPreparada.executeUpdate();
