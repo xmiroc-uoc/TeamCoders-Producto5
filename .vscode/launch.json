@@ -1,22 +1,19 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "TeamCoders-Producto3_a3008df4"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "TeamCoders.Main",
-            "classPaths": [
-                "${workspaceFolder}/bin",
-                "${workspaceFolder}/lib/mysql-connector-java-9.1.0.jar"
-            ]
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "TeamCoders-Producto3_a3008df4"
+    },
+    {
+      "type": "java",
+      "name": "Ejecutar Main",
+      "request": "launch",
+      "mainClass": "TeamCoders.Main",
+      "vmArgs": "--class-path bin;lib/mysql-connector-j-9.1.0.jar"
+    }
+  ]
 }

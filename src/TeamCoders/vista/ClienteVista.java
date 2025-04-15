@@ -6,18 +6,21 @@ import controlador.ClienteControlador;
 import modelo.Cliente;
 
 /**
- * Clase de la vista responsable de la interacción con el usuario para la gestión de clientes.
- * Permite añadir clientes y mostrar clientes registrados, filtrando por tipo si se desea.
+ * Clase de la vista responsable de la interacción con el usuario para la
+ * gestión de clientes.
+ * Permite añadir clientes y mostrar clientes registrados, filtrando por tipo si
+ * se desea.
  */
 public class ClienteVista {
-   
+
     /**
      * Muestra el menú de opciones para la gestión de clientes en consola.
+     * Permite al usuario añadir, ver todos, o ver clientes filtrados por tipo.
      */
     public void mostrarMenuClientes() {
         int option;
 
-        do{
+        do {
             System.out.println("=== Menú Gestión de Clientes");
             System.out.println("1. Añadir Cliente");
             System.out.println("2. Mostrar Clientes");
@@ -49,7 +52,7 @@ public class ClienteVista {
                     System.out.println("Opción no válida.");
                     break;
             }
-            
+
         } while (option != 0);
     }
 
@@ -90,6 +93,7 @@ public class ClienteVista {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
         } else {
+            System.out.println("\n--- Lista de Clientes ---");
             for (Cliente cliente : clientes) {
                 System.out.println(cliente);
             }
@@ -104,6 +108,7 @@ public class ClienteVista {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes estándar registrados.");
         } else {
+            System.out.println("\n--- Clientes Estándar ---");
             for (Cliente cliente : clientes) {
                 System.out.println(cliente);
             }
@@ -118,6 +123,7 @@ public class ClienteVista {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes premium registrados.");
         } else {
+            System.out.println("\n--- Clientes Premium ---");
             for (Cliente cliente : clientes) {
                 System.out.println(cliente);
             }

@@ -1,62 +1,75 @@
 package controlador;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
+import dao.DAOFactory;
+import dao.IArticuloDAO;
 import modelo.Articulo;
-import modelo.Datos;
 
 /**
- * Clase controladora responsable de gestionar operaciones relacionadas con los artículos,
- * incluyendo añadir nuevos artículos, buscar artículos por código y listar artículos disponibles.
- * Forma parte del patrón MVC y actúa como intermediaria entre la vista y el modelo.
+ * Clase controladora responsable de gestionar operaciones relacionadas con los
+ * artículos.
+ * Forma parte del patrón MVC y actúa como intermediaria entre la vista y el
+ * modelo.
+ * 
  */
 public class ArticuloControlador {
-    
+
+    // Obtenemos la fábrica de DAOs específica para MySQL
+    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    private static final IArticuloDAO articuloDAO = factory.getArticuloDAO();
+
     /**
-     * Añade un nuevo artículo desde la vista. La validación de duplicado se realiza en Datos.agregarArticulo.
-     * @param codigo Código identificador único del artículo.
-     * @param descripcion Descripción detallada del artículo.
-     * @param precioVenta Precio al que se vende el artículo.
-     * @param gastosEnvio Coste adicional por el envío del artículo.
-     * @param tiempoPreparacion Tiempo necesario para preparar el artículo para envío (en minutos).
-     * @throws IllegalArgumentException si ya existe un artículo con ese código.
+     * Añade un nuevo artículo desde la vista.
+     * 
+     * @param codigo            Código identificador único del artículo.
+     * @param descripcion       Descripción detallada del artículo.
+     * @param precioVenta       Precio al que se vende el artículo.
+     * @param gastosEnvio       Coste adicional por el envío del artículo.
+     * @param tiempoPreparacion Tiempo necesario para preparar el artículo para
+     *                          envío (en minutos).
+     * @throws RuntimeException Si ocurre un error al insertar en base de datos.
      */
-    public static void añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta, double gastosEnvio, int tiempoPreparacion) {
-        Articulo articulo = new Articulo(codigo, tiempoPreparacion, gastosEnvio, precioVenta, descripcion);
-        agregarArticulo(articulo);
+    public static void añadirArticuloDesdeVista(String codigo, String descripcion, double precioVenta,
+            double gastosEnvio, int tiempoPreparacion) {
+        try {
+            // Creamos el objeto artículo con los datos proporcionados por la vista
+            Articulo articulo = new Articulo(codigo, tiempoPreparacion, gastosEnvio, precioVenta, descripcion);
+
+            // Guardamos el artículo a través del DAO correspondiente
+            articuloDAO.crearArticulo(articulo);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al crear artículo en BD: " + e.getMessage(), e);
+        }
     }
 
     /**
-     * Agrega un nuevo artículo directamente al almacén de datos.
-     * Este método delega la validación de duplicados a la clase Datos.
-     * @param articulo Instancia del artículo que será añadida.
-     * @throws IllegalArgumentException si ya existe un artículo con el mismo código.
-     */
-    public static void agregarArticulo(Articulo articulo) {
-        Datos.agregarArticulo(articulo);
-    }
-
-    /**
-     * Obtiene una lista con todos los artículos disponibles actualmente.
-     * @return Lista de artículos disponibles.
+     * Recupera todos los artículos disponibles desde la base de datos.
+     * 
+     * @return Lista de artículos.
+     * @throws RuntimeException Si ocurre un error al obtener los datos.
      */
     public static List<Articulo> obtenerArticulos() {
-        return new ArrayList<>(Datos.getArticulos());
+        try {
+            return articuloDAO.obtenerTodosLosArticulos();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener la lista de artículos: " + e.getMessage(), e);
+        }
     }
 
     /**
-     * Busca un artículo por su código identificador.
-     * @param codigo Código único del artículo a buscar.
+     * Busca un artículo en la base de datos usando su código identificador.
+     * 
+     * @param codigo Código del artículo a buscar.
      * @return Artículo encontrado o null si no existe.
+     * @throws RuntimeException Si ocurre un error en la búsqueda.
      */
     public static Articulo buscarArticuloPorCodigo(String codigo) {
-        // Recorre todos los artículos existentes en busca del código proporcionado.
-        for (Articulo a : Datos.getArticulos()) {
-            if (a.getCodigo().equalsIgnoreCase(codigo)) {
-                return a;
-            }
+        try {
+            return articuloDAO.buscarArticuloPorCodigo(codigo);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error buscando artículo por codigo: " + e.getMessage(), e);
         }
-        return null;
     }
 }

@@ -1,14 +1,12 @@
-
-import utils.DatosIniciales;
 import vista.EntradaUsuario;
 import vista.MenuPrincipal;
 
-public class Main{
+public class Main {
 
-    public static void main(String[] args){
-        
+    public static void main(String[] args) {
+
         // Carga inicial de datos para pruebas
-        DatosIniciales.cargar();
+        // DatosIniciales.cargar();
 
         // Muestra el menú principal de la aplicación
         MenuPrincipal menuPrincipal = new MenuPrincipal();

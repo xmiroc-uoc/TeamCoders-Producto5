@@ -4,126 +4,168 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.DAOFactory;
+import dao.IArticuloDAO;
+import dao.IClienteDAO;
+import dao.IPedidoDAO;
 import modelo.Articulo;
 import modelo.Cliente;
-import modelo.Datos;
 import modelo.Pedido;
 
 /**
- * Clase controladora responsable de gestionar operaciones relacionadas con los pedidos,
- * incluyendo añadir, eliminar y listar pedidos según distintos criterios.
- * Forma parte del patrón MVC y actúa como intermediaria entre la vista y el modelo.
+ * Clase controladora que gestiona operaciones relacionadas con los pedidos.
+ * Actúa como intermediaria entre la vista y la lógica de negocio (modelo).
+ * 
  */
 public class PedidoControlador {
-    
+
+    // Fábrica de DAOs para MySQL
+    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+    // DAO específico para pedidos
+    private static final IPedidoDAO pedidoDAO = factory.getPedidoDAO();
+    private static final IClienteDAO clienteDAO = factory.getClienteDAO();
+    private static final IArticuloDAO articuloDAO = factory.getArticuloDAO();
+
     /**
-     * Añade un pedido desde la vista si el cliente y el artículo existen.
-     * Si alguno no existe, se lanza una excepción.
-     * @param email Email del cliente que realiza el pedido.
+     * Añade un nuevo pedido desde la vista.
+     * Verifica que el cliente y el artículo existan antes de crear el pedido.
+     *
+     * @param emailCliente   Email del cliente que realiza el pedido.
      * @param codigoArticulo Código del artículo solicitado.
-     * @param cantidad Cantidad de unidades del artículo.
-     * @throws IllegalArgumentException si el cliente o el artículo no existen.
+     * @param cantidad       Número de unidades pedidas.
+     * @throws IllegalArgumentException Si el cliente o artículo no existen, o la
+     *                                  cantidad es inválida.
      */
-    public static void añadirPedidoDesdeVista(String email, String codigoArticulo, int cantidad) {
-        Cliente cliente = ClienteControlador.buscarClientePorEmail(email);
-        Articulo articulo = ArticuloControlador.buscarArticuloPorCodigo(codigoArticulo);
+    public static void añadirPedidoDesdeVista(String emailCliente, String codigoArticulo, int cantidad) {
+        try {
+            // Validación de unidades
+            if (cantidad <= 0) {
+                throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
+            }
 
-        if (cliente == null) {
-            throw new IllegalArgumentException("No se encontró un cliente con el email: " + email);
+            // Obtener el cliente
+            Cliente cliente = clienteDAO.buscarClientePorEmail(emailCliente);
+            if (cliente == null) {
+                throw new IllegalArgumentException("Cliente no encontrado con email: " + emailCliente);
+            }
+
+            // Obtener el artículo
+            Articulo articulo = articuloDAO.buscarArticuloPorCodigo(codigoArticulo);
+            if (articulo == null) {
+                throw new IllegalArgumentException("Artículo no encontrado con código: " + codigoArticulo);
+            }
+
+            // Generar número de pedido (se podría mejorar con una secuencia o UUID)
+            int numeroPedido = generarNumeroPedido();
+
+            // Crear el pedido con la fecha actual
+            Pedido nuevoPedido = new Pedido(numeroPedido, cantidad, LocalDateTime.now(), cliente, articulo);
+
+            // Guardar el pedido en la base de datos
+            pedidoDAO.crearPedido(nuevoPedido);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error al crear pedido: " + e.getMessage(), e);
         }
-        if (articulo == null) {
-            throw new IllegalArgumentException("No se encontró un artículo con el código: " + codigoArticulo);
-        }
-
-        int numeroPedido = Datos.getPedidos().size() + 1;
-        LocalDateTime fecha = LocalDateTime.now();
-        Pedido pedido = new Pedido(numeroPedido, cantidad, fecha, cliente, articulo);
-        agregarPedido(pedido);
     }
 
     /**
-     * Agrega un pedido a la lista de pedidos.
-     * @param pedido Pedido a agregar.
-     */
-    public static void agregarPedido(Pedido pedido) {
-        Datos.agregarPedido(pedido); 
-    }
-
-    /**
-     * Eliminar un pedido de la lista de pedidos.
-     * @param pedido Pedido a eliminar.
-     */
-    public static void eliminarPedido(Pedido pedido) {
-        Datos.eliminarPedido(pedido);
-    }
-
-    /**
-     * Elimina un pedido si aún no ha sido enviado.
-     * @param numero Número del pedido a eliminar.
-     * @return true si se eliminó correctamente, false si no existe o ya fue enviado.
+     * Elimina un pedido si aún no ha sido enviado (cancelable).
+     *
+     * @param numero Número identificador del pedido.
+     * @return true si fue eliminado, false si no existe o ya fue enviado.
      */
     public static boolean eliminarPedidoSiNoEnviado(int numero) {
-        Pedido pedidoAEliminar = buscarPedidoPorNumero(numero);
+        try {
+            Pedido pedido = pedidoDAO.buscarPedidoPorNumero(numero);
 
-        // Verifica si el pedido existe y aún es cancelable.
-        if (pedidoAEliminar == null) {
-            return false;
-        }
-        if (pedidoAEliminar.cancelable()) {
-            eliminarPedido(pedidoAEliminar);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Busca un pedido por su número.
-     * @param numero Número del pedido.
-     * @return El pedido encontrado o null si no existe.
-     */
-    private static Pedido buscarPedidoPorNumero(int numero) {
-        for (Pedido p : Datos.getPedidos()) {
-            if (p.getNumeroPedido() == numero) {
-                return p;
+            if (pedido == null) {
+                return false;
             }
+
+            // Solo se elimina si aún es cancelable
+            if (pedido.cancelable()) {
+                pedidoDAO.borrarPedido(numero);
+                return true;
+            }
+
+            return false;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al eliminar pedido: " + e.getMessage(), e);
         }
-        return null;
     }
 
     /**
-     * Obtiene la lista completa de pedidos.
-     * @return Lista de todos los pedidos registrados.
+     * Recupera todos los pedidos registrados.
+     *
+     * @return Lista completa de pedidos.
      */
     public static List<Pedido> obtenerPedidos() {
-        return new ArrayList<>(Datos.getPedidos());
+        try {
+            return pedidoDAO.obtenerTodosLosPedidos();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener pedidos: " + e.getMessage(), e);
+        }
     }
 
     /**
-     * Obtiene la lista de pedidos que aún no han sido enviados.
-     * @return Lista de pedidos pendientes de envío.
+     * Recupera los pedidos pendientes de envío (cancelables).
+     *
+     * @return Lista de pedidos pendientes.
      */
     public static List<Pedido> obtenerPedidosPendientesDeEnvio() {
-        List<Pedido> pendientes = new ArrayList<>();
-        for (Pedido p : Datos.getPedidos()) {
-            if (p.cancelable()) {
-                pendientes.add(p);
+        try {
+            List<Pedido> pendientes = new ArrayList<>();
+            for (Pedido p : pedidoDAO.obtenerTodosLosPedidos()) {
+                if (p.cancelable()) {
+                    pendientes.add(p);
+                }
             }
+            return pendientes;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener pedidos pendientes: " + e.getMessage(), e);
         }
-        return pendientes;
     }
 
     /**
-     * Obtiene la lista de pedidos que ya han sido enviados.
+     * Recupera los pedidos que ya han sido enviados (no cancelables).
+     *
      * @return Lista de pedidos enviados.
      */
     public static List<Pedido> obtenerPedidosEnviados() {
-        List<Pedido> enviados = new ArrayList<>();
-        for (Pedido p : Datos.getPedidos()) {
-            if (!p.cancelable()) {
-                enviados.add(p);
+        try {
+            List<Pedido> enviados = new ArrayList<>();
+            for (Pedido p : pedidoDAO.obtenerTodosLosPedidos()) {
+                if (!p.cancelable()) {
+                    enviados.add(p);
+                }
             }
+            return enviados;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener pedidos enviados: " + e.getMessage(), e);
         }
-        return enviados;
     }
 
+    /**
+     * Genera un número de pedido incremental de forma sencilla.
+     * Este método debería reemplazarse por una secuencia de base de datos en un
+     * entorno real.
+     *
+     * @return Un número de pedido no repetido.
+     */
+    private static int generarNumeroPedido() {
+        try {
+            List<Pedido> todos = pedidoDAO.obtenerTodosLosPedidos();
+            int max = 0;
+            for (Pedido p : todos) {
+                if (p.getNumeroPedido() > max) {
+                    max = p.getNumeroPedido();
+                }
+            }
+            return max + 1;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al generar número de pedido: " + e.getMessage(), e);
+        }
+    }
 }

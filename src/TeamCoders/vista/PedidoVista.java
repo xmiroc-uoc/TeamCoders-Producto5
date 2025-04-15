@@ -6,19 +6,22 @@ import controlador.PedidoControlador;
 import modelo.Pedido;
 
 /**
- * Clase de la vista responsable de la interacción con el usuario para la gestión de pedidos.
- * Permite añadir y eliminar pedidos, así como mostrar distintos listados de pedidos según su estado.
+ * Clase de la vista responsable de la interacción con el usuario para la
+ * gestión de pedidos.
+ * Permite añadir y eliminar pedidos, así como mostrar distintos listados de
+ * pedidos según su estado.
  */
 public class PedidoVista {
-    
+
     /**
      * Muestra el menú de opciones para la gestión de pedidos en consola.
+     * Permite al usuario realizar acciones como añadir, eliminar y listar pedidos.
      */
     public void mostrarMenuPedido() {
-        
+
         int option;
 
-        do{
+        do {
             System.out.println("=== Menú Gestión de Pedidos");
             System.out.println("1. Añadir Pedido");
             System.out.println("2. Eliminar Pedido");
@@ -54,16 +57,17 @@ public class PedidoVista {
                     System.out.println("Opción no válida.");
                     break;
             }
-            
+
         } while (option != 0);
     }
 
     /**
-     * Solicita al usuario los datos de un pedido y lo añade si el cliente y artículo existen.
+     * Solicita al usuario los datos de un pedido y lo añade si el cliente y
+     * artículo existen.
      * Captura y muestra errores si alguno de los datos es inválido o no existe.
      *
      * @throws IllegalArgumentException si el cliente o artículo no existen
-     * @throws Exception si ocurre cualquier otro error inesperado
+     * @throws Exception                si ocurre cualquier otro error inesperado
      */
     private static void añadirPedidoDesdeVista() {
         try {
@@ -71,8 +75,9 @@ public class PedidoVista {
             String email = EntradaUsuario.leerTexto("Email del cliente: ");
             String codigoArticulo = EntradaUsuario.leerTexto("Código del artículo: ");
             int cantidad = EntradaUsuario.leerEntero("Cantidad: ");
-    
-            // Intenta registrar el pedido; puede lanzar excepciones si cliente o artículo no existen
+
+            // Intenta registrar el pedido; puede lanzar excepciones si cliente o artículo
+            // no existen
             PedidoControlador.añadirPedidoDesdeVista(email, codigoArticulo, cantidad);
             System.out.println("Pedido añadido correctamente.");
         } catch (IllegalArgumentException e) {
@@ -83,7 +88,8 @@ public class PedidoVista {
     }
 
     /**
-     * Solicita al usuario el número de pedido a eliminar e intenta eliminarlo si aún no ha sido enviado.
+     * Solicita al usuario el número de pedido a eliminar e intenta eliminarlo si
+     * aún no ha sido enviado.
      */
     private static void eliminarPedidoDesdeVista() {
         try {

@@ -6,8 +6,10 @@ import controlador.ArticuloControlador;
 import modelo.Articulo;
 
 /**
- * Clase de la vista responsable de la interacción con el usuario para la gestión de artículos.
- * Permite añadir nuevos artículos y mostrar todos los artículos registrados en la tienda.
+ * Clase de la vista responsable de la interacción con el usuario para la
+ * gestión de artículos.
+ * Permite añadir nuevos artículos y mostrar todos los artículos registrados en
+ * la tienda.
  */
 public class ArticuloVista {
 
@@ -18,12 +20,12 @@ public class ArticuloVista {
 
         int option;
 
-        do{
+        do {
             System.out.println("=== Menú Gestión de Articulos ===");
             System.out.println("1. Añadir Articulos");
             System.out.println("2. Mostrar Articulos");
             System.out.println("0. Volver");
-            
+
             // Solicita al usuario una opción válida dentro del rango permitido
             option = EntradaUsuario.leerEnteroRango("Elige una opción: ", 0, 2);
 
@@ -42,25 +44,29 @@ public class ArticuloVista {
                     System.out.println("Opción no válida.");
                     break;
             }
-            
+
         } while (option != 0);
     }
 
     /**
-     * Solicita al usuario los datos necesarios y añade un nuevo artículo si el código no está duplicado.
-     * Captura excepciones si ya existe un artículo con el mismo código o si ocurre otro error inesperado.
+     * Solicita al usuario los datos necesarios y añade un nuevo artículo si el
+     * código no está duplicado.
+     * Captura excepciones si ya existe un artículo con el mismo código o si ocurre
+     * otro error inesperado.
      */
     private static void añadirArticuloDesdeVista() {
         try {
             System.out.println("\n--- Añadir Artículo ---");
+
             String codigo = EntradaUsuario.leerTexto("Código: ");
             String descripcion = EntradaUsuario.leerTexto("Descripción: ");
             double precioVenta = EntradaUsuario.leerDecimal("Precio: ");
             double gastosEnvio = EntradaUsuario.leerDecimal("Gastos de envío: ");
             int tiempoPreparacion = EntradaUsuario.leerEntero("Tiempo preparación (minutos): ");
 
-            // Intenta registrar el artículo; puede lanzar excepción si ya existe el código
-            ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio, tiempoPreparacion);
+            // Llama al controlador para añadir el artículo
+            ArticuloControlador.añadirArticuloDesdeVista(codigo, descripcion, precioVenta, gastosEnvio,
+                    tiempoPreparacion);
             System.out.println("Artículo añadido correctamente.");
 
         } catch (IllegalArgumentException e) {
@@ -75,6 +81,7 @@ public class ArticuloVista {
      */
     public static void mostrarArticulos() {
         List<Articulo> articulos = ArticuloControlador.obtenerArticulos();
+
         System.out.println("\n--- Lista de Artículos ---");
         if (articulos.isEmpty()) {
             System.out.println("No hay artículos registrados.");
