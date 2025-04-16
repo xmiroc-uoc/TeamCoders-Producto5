@@ -1,11 +1,18 @@
-import controlador.*;
 
+import vista.EntradaUsuario;
+import vista.MenuPrincipal;
 
 public class Main{
-    public static void main(String[] args){
-        Tienda tienda = new Tienda();
 
-        tienda.navegarTienda();
+    public static void main(String[] args){
+        
+        // Muestra el menú principal de la aplicación
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.mostrarMenuPrincipal();
+
+        // Cierra el Scanner para liberar recursos
+        EntradaUsuario.cerrarScanner();
+        
 
     }
 }

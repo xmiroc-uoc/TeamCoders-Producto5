@@ -2,81 +2,84 @@ package modelo;
 
 import java.util.*;
 
+/**
+* Clase de utilidad que almacena los datos en memoria para la tienda online.
+* Administra listas estáticas de artículos, clientes y pedidos.
+*/
 public class Datos{
+
+    // Listas que actúan como "base de datos" en memoria
     private static ArrayList<Articulo> articulos = new ArrayList<>();
-    private static ArrayList<Cliente> clientes = new ArrayList<>();;
-    private static ArrayList<Pedido> pedidos = new ArrayList<>();;
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Pedido> pedidos = new ArrayList<>();
 
-    public Datos(){
-        initialize();
-    }
-
+    /**
+     * Devuelve la lista actual de artículos.
+     * @return lista de artículos
+     */
     public static ArrayList<Articulo> getArticulos(){
         return articulos;
     }
 
+    /**
+     * Devuelve la lista actual de clientes.
+     * @return lista de clientes
+     */
     public static ArrayList<Cliente> getClientes(){
         return clientes;
     }
 
+    /**
+     * Devuelve la lista actual de pedidos.
+     * @return lista de pedidos
+     */
     public static ArrayList<Pedido> getPedidos(){
         return pedidos;
     }
 
-    public void initialize(){
-        //Articulos
-        Articulo articulo1 = new Articulo("0001", 0, 12.5f, 50.0f, "Ejemplo Articulo 1");
-        Articulo articulo2 = new Articulo("0002", 1, 5f, 15f, "Ejemplo Articulo 2");
-        Articulo articulo3 = new Articulo("0003", 20, 9.99f, 23.5f, "Ejemplo Articulo 3");
-
-        articulos.add(articulo1);
-        articulos.add(articulo2);
-        articulos.add(articulo3);
-
-        //Clientes
-        Cliente cliente1 = new ClienteEstandar("Nombre1", "Calle de la piruleta", "3938123123", "ejemplo1@ejemplo");
-        Cliente cliente2 = new ClientePremium("Nombre2", "Calle falsa", "3938234234", "ejemplo2@ejemplo", 50);
-
-        clientes.add(cliente1);
-        clientes.add(cliente2);
-
-        //Pedidos
-        Date fecha = new Date();
-        Pedido pedido1 = new Pedido(1, 2, fecha, cliente1, articulo1);
-        Pedido pedido2 = new Pedido(2, 5, fecha, cliente2, articulo3);
-        Pedido pedido3 = new Pedido(3, 3, fecha, cliente2, articulo2);
-
-        pedidos.add(pedido1);
-        pedidos.add(pedido2);
-        pedidos.add(pedido3);
-    }
-
+    /**
+     * Agrega un artículo a la lista de artículos.
+     * @param articulo el artículo a agregar
+     * @throws IllegalArgumentException si ya existe un artículo con ese código
+     */
     public static void agregarArticulo(Articulo articulo) {
+        // Verifica si ya existe un artículo con el mismo código (ignorando mayúsculas/minúsculas)
+        for (Articulo a : articulos) {
+            if (a.getCodigo().equalsIgnoreCase(articulo.getCodigo())) {
+                throw new IllegalArgumentException("Ya existe un artículo con el código: " + articulo.getCodigo());
+            }
+        }
         articulos.add(articulo);
     }
 
-
-
+    /**
+     * Agrega un cliente a la lista de clientes.
+     * @param cliente el cliente a agregar
+     * @throws IllegalArgumentException si ya existe un cliente con ese email
+     */
     public static void agregarCliente(Cliente cliente) {
+        // Verifica si ya existe un cliente con el mismo email (ignorando mayúsculas/minúsculas)
+        for (Cliente c : clientes) {
+            if (c.getEmail().equalsIgnoreCase(cliente.getEmail())) {
+                throw new IllegalArgumentException("Ya existe un cliente con el email: " + cliente.getEmail());
+            }
+        }
         clientes.add(cliente);
     }
 
-    
-
+    /**
+     * Agrega un pedido a la lista de pedidos.
+     * @param pedido el pedido a agregar
+     */
     public static void agregarPedido(Pedido pedido) {
         pedidos.add(pedido);
     }
 
+    /**
+     * Elimina un pedido de la lista de pedidos.
+     * @param pedido el pedido a eliminar
+     */
     public static void eliminarPedido(Pedido pedido) {
-        pedidos.remove(pedido);
+        pedidos.remove(pedido); // Elimina el objeto si existe en la lista
     }
-
-    public void mostrarPedidos() {
-        int count = 1;
-        for (Pedido p : pedidos){
-            System.out.println(count + ". " + "Pedido #" + p.getNumeroPedido());
-            count++;
-        }
-    }
-
 }
