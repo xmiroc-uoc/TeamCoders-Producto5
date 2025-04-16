@@ -1,10 +1,10 @@
 package dao.mysql;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,39 +31,39 @@ public class PedidoDAOMySQL implements IPedidoDAO {
      */
     @Override
     public void crearPedido(Pedido pedido) throws SQLException {
-        String sqlInsertarPedido = "INSERT INTO pedidos (unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?)";
+        String sqlInsertarPedido = "{CALL insertar_pedido(?, ?, ?, ?)}";
 
         Connection conexion = null;
-        PreparedStatement sentenciaPreparada = null;
+        CallableStatement callPreparada = null;
 
         try {
             // Obtiene la conexión
             conexion = ConexionBD.getConnection();
             // Prepara la sentencia con la consulta SQL
-            sentenciaPreparada = conexion.prepareStatement(sqlInsertarPedido, Statement.RETURN_GENERATED_KEYS);
+            callPreparada = conexion.prepareCall(sqlInsertarPedido);
 
             // Asigna los parametros a la consulta
-            sentenciaPreparada.setInt(1, pedido.getUnidades());
+            callPreparada.setInt(1, pedido.getUnidades());
 
             // Convierte LocalDateTime a Timestamp
             Timestamp timestampFecha = Timestamp.valueOf(pedido.getFechaPedido());
-            sentenciaPreparada.setTimestamp(2, timestampFecha);
+            callPreparada.setTimestamp(2, timestampFecha);
 
             // Se almacenan las claves foráneas: email del cliente y código del artículo
             // Suponemos que la tabla "pedido" guarda estos valores para relacionarse con
             // las tablas correspondientes
-            sentenciaPreparada.setString(3, pedido.getCliente().getEmail());
+            callPreparada.setString(3, pedido.getCliente().getEmail());
             // Se asume que Articulo tiene el método getCodigo() para identificarlo
-            sentenciaPreparada.setString(4, pedido.getArticulo().getCodigo());
+            callPreparada.setString(4, pedido.getArticulo().getCodigo());
 
-            // Ejecuta el INSERT
-            sentenciaPreparada.executeUpdate();
+            // Ejecuta la llamada
+            callPreparada.execute();
         } catch (SQLException ex) {
             throw ex;
         } finally {
-            if (sentenciaPreparada != null) {
+            if (callPreparada != null) {
                 try {
-                    sentenciaPreparada.close();
+                    callPreparada.close();
                 } catch (SQLException ex2) {
                     throw ex2;
                 }
