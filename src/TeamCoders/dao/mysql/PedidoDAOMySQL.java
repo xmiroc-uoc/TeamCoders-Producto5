@@ -39,10 +39,14 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         try {
             // Obtiene la conexión
             conexion = ConexionBD.getConnection();
-            // Prepara la sentencia con la consulta SQL
+
+            // Desactivar autocommit (inicia la transacción manualmente)
+            conexion.setAutoCommit(false);
+
+            // Prepara la sentencia con la llamada SQL
             callPreparada = conexion.prepareCall(sqlInsertarPedido);
 
-            // Asigna los parametros a la consulta
+            // Asigna los parametros al procedimineto
             callPreparada.setInt(1, pedido.getUnidades());
 
             // Convierte LocalDateTime a Timestamp
@@ -58,8 +62,19 @@ public class PedidoDAOMySQL implements IPedidoDAO {
 
             // Ejecuta la llamada
             callPreparada.execute();
+
+            // Confirmar la transacción (todo ha ido bien)
+            conexion.commit();
+
         } catch (SQLException ex) {
-            throw ex;
+            try {
+                // Si hay error, deshacer los cambios
+                if (conexion != null)
+                    conexion.rollback();
+            } catch (SQLException rollbackEx) {
+                System.err.println("Error al hacer rollback: " + rollbackEx.getMessage());
+            }
+            throw new RuntimeException("Error al crear pedido: " + ex.getMessage(), ex);
         } finally {
             if (callPreparada != null) {
                 try {
@@ -70,6 +85,8 @@ public class PedidoDAOMySQL implements IPedidoDAO {
             }
             if (conexion != null) {
                 try {
+                    // Reestablecer autocommit
+                    conexion.setAutoCommit(true);
                     conexion.close();
                 } catch (SQLException ex2) {
                     throw ex2;
