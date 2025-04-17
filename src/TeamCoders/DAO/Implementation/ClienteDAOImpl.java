@@ -67,28 +67,37 @@ public class ClienteDAOImpl implements ClienteDAO{
     @Override
     public void insert(Cliente cliente) throws SQLException {
         Connection con = DBConnection.getConnection();
+        PreparedStatement ps = null;
 
-        String sql = "INSERT INTO clientes (email, nombre, domicilio, nif, tipo, cuota_anual) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            con.setAutoCommit(false);
+            String sql = "INSERT INTO clientes (email, nombre, domicilio, nif, tipo, cuota_anual) VALUES (?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+    
+            ps.setString(1, cliente.getEmail());
+            ps.setString(2, cliente.getNombre());
+            ps.setString(3, cliente.getDomicilio());
+            ps.setString(4, cliente.getNif());
+    
+            if(cliente instanceof ClienteEstandar){
+                ps.setString(5, "estandar");
+                ps.setDouble(6, 0);
+            }else{
+                ps.setString(5, "premium");
+                ps.setDouble(6, ((ClientePremium) cliente).getCuotaAnual());
+            }
+    
+            ps.executeUpdate();
 
-        ps.setString(1, cliente.getEmail());
-        ps.setString(2, cliente.getNombre());
-        ps.setString(3, cliente.getDomicilio());
-        ps.setString(4, cliente.getNif());
-
-        if(cliente instanceof ClienteEstandar){
-            ps.setString(5, "estandar");
-            ps.setDouble(6, 0);
-        }else{
-            ps.setString(5, "premium");
-            ps.setDouble(6, ((ClientePremium) cliente).getCuotaAnual());
+            con.commit();
+        } catch (SQLException e) {
+            con.rollback();
+        } finally{
+            con.setAutoCommit(true);
+            ps.close();
+            con.close();
         }
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
     }
 
 }

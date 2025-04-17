@@ -55,21 +55,31 @@ public class ArticuloDAOImpl implements ArticuloDAO{
     @Override
     public void insert(Articulo articulo) throws SQLException {
         Connection con = DBConnection.getConnection();
+        PreparedStatement ps = null;
 
-        String sql = "INSERT INTO articulos (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES (?, ?, ?, ?, ?)";
+        try {
+            con.setAutoCommit(false);
 
-        PreparedStatement ps = con.prepareStatement(sql);
+            String sql = "INSERT INTO articulos (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES (?, ?, ?, ?, ?)";
+            ps = con.prepareStatement(sql);
 
-        ps.setString(1, articulo.getCodigo());
-        ps.setString(2, articulo.getDescripcion());
-        ps.setDouble(3, articulo.getPrecioVenta());
-        ps.setDouble(4, articulo.getGastosEnvio());
-        ps.setInt(5, articulo.getTiempoPreparacion());
+            ps.setString(1, articulo.getCodigo());
+            ps.setString(2, articulo.getDescripcion());
+            ps.setDouble(3, articulo.getPrecioVenta());
+            ps.setDouble(4, articulo.getGastosEnvio());
+            ps.setInt(5, articulo.getTiempoPreparacion());
 
-        ps.executeUpdate();
+            ps.executeUpdate();
 
-        ps.close();
-        con.close();
+            con.commit();
+        } catch (SQLException e) {
+            con.rollback();
+        }finally{
+            con.setAutoCommit(true);
+            ps.close();
+            con.close();
+        }
+        
 
     }
 

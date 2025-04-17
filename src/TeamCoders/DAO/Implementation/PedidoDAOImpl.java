@@ -83,39 +83,57 @@ public class PedidoDAOImpl implements PedidoDAO{
     @Override
     public void insert(Pedido pedido) throws SQLException {
         Connection con = DBConnection.getConnection();
+        PreparedStatement ps = null;
 
-        String sql = "INSERT INTO pedidos (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?, ?)";
+        try {
+            con.setAutoCommit(false);
+            String sql = "INSERT INTO pedidos (numero, unidades, fecha_pedido, cliente_email, articulo_codigo) VALUES (?, ?, ?, ?, ?)";
 
-        PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+    
+            ps.setInt(1, pedido.getNumeroPedido());
+            ps.setInt(2, pedido.getUnidades());
+    
+            Timestamp timestampFecha = Timestamp.valueOf(pedido.getFechaPedido());
+            ps.setTimestamp(3, timestampFecha);
+            ps.setString(4, pedido.getCliente().getEmail());
+            ps.setString(5, pedido.getArticulo().getCodigo());
+    
+            ps.executeUpdate();
 
-        ps.setInt(1, pedido.getNumeroPedido());
-        ps.setInt(2, pedido.getUnidades());
-
-        Timestamp timestampFecha = Timestamp.valueOf(pedido.getFechaPedido());
-        ps.setTimestamp(3, timestampFecha);
-        ps.setString(4, pedido.getCliente().getEmail());
-        ps.setString(5, pedido.getArticulo().getCodigo());
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
+            con.commit();
+        } catch (SQLException e) {
+            con.rollback();
+        } finally {
+            con.setAutoCommit(true);
+            ps.close();
+            con.close();
+        }
     }
 
     @Override
     public void delete(Pedido pedido) throws SQLException{
         Connection con = DBConnection.getConnection();
+        PreparedStatement ps = null;
 
-        String sql = "DELETE FROM pedidos WHERE numero = ?";
+        try {
+            con.setAutoCommit(false);
+            String sql = "DELETE FROM pedidos WHERE numero = ?";
 
-        PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+    
+            ps.setInt(1, pedido.getNumeroPedido());
+    
+            ps.executeUpdate();
 
-        ps.setInt(1, pedido.getNumeroPedido());
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
+            con.commit();
+        } catch (SQLException e) {
+            con.rollback();
+        } finally{
+            con.setAutoCommit(true);
+            ps.close();
+            con.close();
+        }
     }
 
     
