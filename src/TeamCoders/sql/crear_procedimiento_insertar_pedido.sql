@@ -1,3 +1,4 @@
+-- Procedimiento para insertar un pedido
 DELIMITER //
 
 CREATE PROCEDURE insertar_pedido (

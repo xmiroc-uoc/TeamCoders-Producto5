@@ -1,5 +1,6 @@
 package dao.mysql;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,24 +27,36 @@ public class ClienteDAOMySQL implements IClienteDAO {
      */
     @Override
     public void crearCliente(Cliente cliente) throws SQLException {
-        String sqlCrearCliente = "INSERT INTO clientes (email, nombre, domicilio, nif, tipo, cuota_anual) VALUES (?, ?, ?, ?, ?, ?)";
+        String sqlCrearCliente = "{CALL insertar_cliente(?, ?, ?, ?, ?, ?)}";
 
-        try (Connection conexion = ConexionBD.getConnection();
-                PreparedStatement sentenciaPreparada = conexion.prepareStatement(sqlCrearCliente)) {
-            sentenciaPreparada.setString(1, cliente.getEmail());
-            sentenciaPreparada.setString(2, cliente.getNombre());
-            sentenciaPreparada.setString(3, cliente.getDomicilio());
-            sentenciaPreparada.setString(4, cliente.getNif());
+        try (Connection conexion = ConexionBD.getConnection()) {
+            conexion.setAutoCommit(false); // Inicia la transacción
 
-            boolean esPremium = (cliente instanceof ClientePremium);
-            sentenciaPreparada.setString(5, esPremium ? "premium" : "estandar");
-            int cuota = 0;
-            if (esPremium) {
-                cuota = ((ClientePremium) cliente).getCuotaAnual();
+            try (CallableStatement callPreparada = conexion.prepareCall(sqlCrearCliente)) {
+                callPreparada.setString(1, cliente.getEmail());
+                callPreparada.setString(2, cliente.getNombre());
+                callPreparada.setString(3, cliente.getDomicilio());
+                callPreparada.setString(4, cliente.getNif());
+
+                boolean esPremium = (cliente instanceof ClientePremium);
+                callPreparada.setString(5, esPremium ? "premium" : "estandar");
+                int cuota = 0;
+                if (esPremium) {
+                    cuota = ((ClientePremium) cliente).getCuotaAnual();
+                }
+                callPreparada.setInt(6, cuota);
+
+                callPreparada.execute();
+            } catch (SQLException e) {
+                conexion.rollback(); // Deshacer si algo falla dentro del bloque de CallableStatement
+                throw new RuntimeException("Error al crear cliente: " + e.getMessage(), e);
             }
-            sentenciaPreparada.setInt(6, cuota);
 
-            sentenciaPreparada.executeUpdate();
+            conexion.commit(); // Confirmar la transacción
+        } catch (SQLException e) {
+            // Atención: si usamos try-with-resources, no podemos hacer rollback desde
+            // aquí directamente
+            throw new RuntimeException("Error al crear cliente: " + e.getMessage(), e);
         }
     }
 

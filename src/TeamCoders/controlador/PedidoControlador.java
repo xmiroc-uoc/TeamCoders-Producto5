@@ -147,26 +147,4 @@ public class PedidoControlador {
             throw new RuntimeException("Error al obtener pedidos enviados: " + e.getMessage(), e);
         }
     }
-
-    /**
-     * Genera un número de pedido incremental de forma sencilla.
-     * Este método debería reemplazarse por una secuencia de base de datos en un
-     * entorno real.
-     *
-     * @return Un número de pedido no repetido.
-     */
-    private static int generarNumeroPedido() {
-        try {
-            List<Pedido> todos = pedidoDAO.obtenerTodosLosPedidos();
-            int max = 0;
-            for (Pedido p : todos) {
-                if (p.getNumeroPedido() > max) {
-                    max = p.getNumeroPedido();
-                }
-            }
-            return max + 1;
-        } catch (Exception e) {
-            throw new RuntimeException("Error al generar número de pedido: " + e.getMessage(), e);
-        }
-    }
 }

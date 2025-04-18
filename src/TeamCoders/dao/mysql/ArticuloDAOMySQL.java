@@ -1,5 +1,6 @@
 package dao.mysql;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,33 +25,53 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
      */
     @Override
     public void crearArticulo(Articulo articulo) throws SQLException {
-        String sqlInsertarCliente = "INSERT INTO articulos (codigo, descripcion, precio_venta, gastos_envio, tiempo_preparacion) VALUES (?, ?, ?, ?, ?)";
+        String sqlInsertarCliente = "{CALL insertar_articulo(?, ?, ?, ?, ?)}";
+
         Connection conexion = null;
-        PreparedStatement sentenciaPreparada = null;
+        CallableStatement callPreparada = null;
 
         try {
+            // Obtiene la conexión
             conexion = ConexionBD.getConnection();
-            sentenciaPreparada = conexion.prepareStatement(sqlInsertarCliente);
 
-            sentenciaPreparada.setString(1, articulo.getCodigo());
-            sentenciaPreparada.setString(2, articulo.getDescripcion());
-            sentenciaPreparada.setDouble(3, articulo.getPrecioVenta());
-            sentenciaPreparada.setDouble(4, articulo.getGastosEnvio());
-            sentenciaPreparada.setInt(5, articulo.getTiempoPreparacion());
+            // Desactivar autocommit (inicia la transacción manualmente)
+            conexion.setAutoCommit(false);
 
-            sentenciaPreparada.executeUpdate();
+            // Prepara la sentencia con la llamada SQL
+            callPreparada = conexion.prepareCall(sqlInsertarCliente);
+
+            // Asigna los parametros al procedimineto
+            callPreparada.setString(1, articulo.getCodigo());
+            callPreparada.setString(2, articulo.getDescripcion());
+            callPreparada.setDouble(3, articulo.getPrecioVenta());
+            callPreparada.setDouble(4, articulo.getGastosEnvio());
+            callPreparada.setInt(5, articulo.getTiempoPreparacion());
+
+            // Ejecuta la llamada
+            callPreparada.execute();
+
+            // Confirmar la transacción (todo ha ido bien)
+            conexion.commit();
+
         } catch (SQLException ex) {
-            throw ex;
+            try {
+                if (conexion != null)
+                    conexion.rollback();
+            } catch (SQLException rollbackEx) {
+                System.err.println("Error al hacer rollback: " + rollbackEx.getMessage());
+            }
+            throw new RuntimeException("Error al crear artículo: " + ex.getMessage(), ex);
         } finally {
-            if (sentenciaPreparada != null) {
+            if (callPreparada != null) {
                 try {
-                    sentenciaPreparada.close();
+                    callPreparada.close();
                 } catch (SQLException ex2) {
                     throw ex2;
                 }
             }
             if (conexion != null) {
                 try {
+                    conexion.setAutoCommit(true);
                     conexion.close();
                 } catch (SQLException ex2) {
                     throw ex2;
