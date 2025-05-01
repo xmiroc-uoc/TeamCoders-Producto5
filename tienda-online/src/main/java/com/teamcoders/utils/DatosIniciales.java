@@ -9,6 +9,8 @@ import com.teamcoders.modelo.ClientePremium;
 import com.teamcoders.modelo.Datos;
 import com.teamcoders.modelo.Pedido;
 
+// Clase auxiliar para cargar datos de prueba. No utilizada actualmente en ejecución principal.
+
 /**
  * Clase utilitaria para cargar datos de prueba al iniciar la aplicación.
  * Incluye registros de clientes, artículos y pedidos simulados para facilitar
