@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "com.teamcoders.Main",
+      "projectName": "tienda-online"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "Main",
       "projectName": "TeamCoders-Producto3_a3008df4"
     },
