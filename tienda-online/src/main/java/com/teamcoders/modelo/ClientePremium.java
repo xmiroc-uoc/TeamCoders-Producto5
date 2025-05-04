@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
  * Cliente Premium con descuento fijo en el envío y cuota anual.
  */
 @Entity
-@DiscriminatorValue("premium")
+@DiscriminatorValue("Premium")
 public class ClientePremium extends Cliente {
 
     @Column(name = "cuota_anual")

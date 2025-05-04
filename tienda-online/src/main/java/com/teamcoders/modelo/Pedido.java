@@ -20,12 +20,13 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numeroPedido")
     private int numeroPedido;
     
     @Column(name = "unidades")
     private int unidades;
  
-    @Column(name = "fecha")
+    @Column(name = "fecha_pedido")
     private LocalDateTime fechaPedido;
 
     @ManyToOne
@@ -35,6 +36,12 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "articulo_codigo")
     private Articulo articulo;
+
+    /**
+     * Constructor sin argumentos (obligatorio para JPA)
+     */
+    public Pedido() {
+    }
 
     /**
      * Constructor de la clase Pedido.

@@ -28,10 +28,10 @@ public abstract class Cliente {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "direccion")
+    @Column(name = "domicilio")
     private String domicilio;
 
-    @Column(name = "dni")
+    @Column(name = "nif")
     private String nif;
 
     /**

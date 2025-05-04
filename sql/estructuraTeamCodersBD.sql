@@ -13,8 +13,8 @@ CREATE TABLE clientes (
     nombre VARCHAR(100) NOT NULL,
     domicilio VARCHAR(255),
     nif VARCHAR(20) NOT NULL,
-    tipo ENUM('estandar', 'premium') NOT NULL,
-    cuota_anual DOUBLE DEFAULT NULL
+    tipo VARCHAR(31) NOT NULL,
+    cuota_anual INT DEFAULT NULL
 );
 
 -- Tabla de artículos
@@ -28,7 +28,7 @@ CREATE TABLE articulos (
 
 -- Tabla de pedidos
 CREATE TABLE pedidos (
-    numero INT AUTO_INCREMENT PRIMARY KEY,
+    numeroPedido INT AUTO_INCREMENT PRIMARY KEY,
     unidades INT NOT NULL,
     fecha_pedido DATETIME NOT NULL,
     cliente_email VARCHAR(100),
