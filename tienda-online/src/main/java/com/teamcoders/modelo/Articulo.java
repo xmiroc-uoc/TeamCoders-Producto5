@@ -1,9 +1,10 @@
 package com.teamcoders.modelo;
-
 /**
  * Representa un artículo que puede ser adquirido por un cliente en la tienda
  * online.
  */
+
+
 public class Articulo {
     private String codigo;
     private String descripcion;
