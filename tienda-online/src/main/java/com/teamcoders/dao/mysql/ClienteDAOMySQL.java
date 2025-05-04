@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teamcoders.dao.IClienteDAO;
-import com.teamcoders.dao.util.ConexionBD;
-
+import com.teamcoders.dao.interfaces.IClienteDAO;
 import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.ClienteEstandar;
 import com.teamcoders.modelo.ClientePremium;
+import com.teamcoders.utils.MySQLConexionBD;
 
 // Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
 /**
@@ -31,7 +30,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     public void crearCliente(Cliente cliente) throws SQLException {
         String sqlCrearCliente = "{CALL insertar_cliente(?, ?, ?, ?, ?, ?)}";
 
-        try (Connection conexion = ConexionBD.getConnection()) {
+        try (Connection conexion = MySQLConexionBD.getConnection()) {
             conexion.setAutoCommit(false); // Inicia la transacción
 
             try (CallableStatement callPreparada = conexion.prepareCall(sqlCrearCliente)) {
@@ -72,7 +71,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     @Override
     public Cliente buscarClientePorEmail(String email) throws SQLException {
         String sql = "SELECT * FROM clientes WHERE email = ?";
-        try (Connection conexion = ConexionBD.getConnection();
+        try (Connection conexion = MySQLConexionBD.getConnection();
                 PreparedStatement sentenciaPreparada = conexion.prepareStatement(sql)) {
             sentenciaPreparada.setString(1, email);
             try (ResultSet conjuntoResultados = sentenciaPreparada.executeQuery()) {
@@ -94,7 +93,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     public List<Cliente> obtenerTodosLosClientes() throws SQLException {
         List<Cliente> listaClientes = new ArrayList<>();
         String sqlObtenerTodosLosClientes = "SELECT * FROM clientes";
-        try (Connection conexion = ConexionBD.getConnection();
+        try (Connection conexion = MySQLConexionBD.getConnection();
                 PreparedStatement sentenciaPreparada = conexion.prepareStatement(sqlObtenerTodosLosClientes);
                 ResultSet conjuntoResultados = sentenciaPreparada.executeQuery()) {
             while (conjuntoResultados.next()) {
@@ -113,7 +112,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     @Override
     public void actualizarCliente(Cliente cliente) throws SQLException {
         String sqlActualizarCliente = "UPDATE clientes SET nombre=?, domicilio=?, nif=?, tipo=?, cuota_anual=? WHERE email=?";
-        try (Connection conexion = ConexionBD.getConnection();
+        try (Connection conexion = MySQLConexionBD.getConnection();
                 PreparedStatement sentenciaPreparada = conexion.prepareStatement(sqlActualizarCliente)) {
 
             sentenciaPreparada.setString(1, cliente.getNombre());
@@ -143,7 +142,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     @Override
     public void borrarCliente(String email) throws SQLException {
         String sqlBorrarCliente = "DELETE FROM clientes WHERE email=?";
-        try (Connection conexion = ConexionBD.getConnection();
+        try (Connection conexion = MySQLConexionBD.getConnection();
                 PreparedStatement sentenciaPreparada = conexion.prepareStatement(sqlBorrarCliente)) {
             sentenciaPreparada.setString(1, email);
             sentenciaPreparada.executeUpdate();
@@ -161,7 +160,7 @@ public class ClienteDAOMySQL implements IClienteDAO {
     public List<Cliente> buscarTodosLosClientesPorTipo(String tipo) throws SQLException {
         List<Cliente> listaClientes = new ArrayList<>();
         String sqlBuscarTodosLosClientePorTipo = "SELECT * FROM clientes WHERE tipo = ?";
-        try (Connection conexion = ConexionBD.getConnection();
+        try (Connection conexion = MySQLConexionBD.getConnection();
                 PreparedStatement sentenciaPreparada = conexion.prepareStatement(sqlBuscarTodosLosClientePorTipo)) {
 
             sentenciaPreparada.setString(1, tipo);

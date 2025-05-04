@@ -3,8 +3,8 @@ package com.teamcoders.controlador;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.teamcoders.dao.DAOFactory;
-import com.teamcoders.dao.IClienteDAO;
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.factory.DAOFactory;
 import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.ClienteEstandar;
 import com.teamcoders.modelo.ClientePremium;

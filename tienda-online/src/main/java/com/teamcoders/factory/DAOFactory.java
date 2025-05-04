@@ -1,4 +1,8 @@
-package com.teamcoders.dao;
+package com.teamcoders.factory;
+
+import com.teamcoders.dao.interfaces.IArticuloDAO;
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
 
 /**
  * Clase abstracta base para las fábricas de DAO (Data Access Object).

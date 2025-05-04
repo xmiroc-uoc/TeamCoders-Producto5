@@ -1,4 +1,4 @@
-package com.teamcoders.dao.util;
+package com.teamcoders.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * Clase de utilidad que gestiona la conexión a la base de datos MySQL.
  */
-public class ConexionBD {
+public class MySQLConexionBD {
 
     // Cambia los valores si tu base de datos usa otras credenciales
     private static final String URL = "jdbc:mysql://localhost:3306/TeamCodersBD";

@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teamcoders.dao.DAOFactory;
-import com.teamcoders.dao.IArticuloDAO;
-import com.teamcoders.dao.IClienteDAO;
-import com.teamcoders.dao.IPedidoDAO;
+import com.teamcoders.dao.interfaces.IArticuloDAO;
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
+import com.teamcoders.factory.DAOFactory;
 import com.teamcoders.modelo.Articulo;
 import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.Pedido;

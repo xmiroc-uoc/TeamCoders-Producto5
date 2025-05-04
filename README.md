@@ -1,6 +1,96 @@
-# Proyecto Java - Gestión de Tienda Online
+## Tienda Online - Proyecto TeamCoders
 
-Este repositorio contiene el desarrollo de una aplicación en Java orientada a objetos con acceso a base de datos (MySQL), basada en el patrón MVC e integrando los patrones DAO y Factory. La aplicación se ejecuta en modo consola.
+Este proyecto corresponde a la cuarta entrega del caso práctico **"Online Store"** del módulo de Programación Orientada a Objetos con Acceso a Bases de Datos. En esta fase se ha implementado una aplicación de consola que utiliza **persistencia JPA (Hibernate)**, manteniendo la arquitectura **MVC** y aplicando los patrones **DAO** y **Factory**.
+
+---
+
+## 🔧 Tecnologías utilizadas
+
+- **Java 17**
+- **MySQL 8**
+- **Hibernate JPA**
+- **Maven**
+- **Visual Studio Code**
+
+---
+
+## 📦 Estructura del proyecto
+
+```
+TeamCoders/
+├── modelo/
+│   ├── Articulo.java
+│   ├── Cliente.java
+│   ├── ClienteEstandar.java
+│   ├── ClientePremium.java
+│   └── Pedido.java
+├── dao/
+│   ├── interfaces/
+│   ├── mysql/
+│   └── jpa/
+├── factory/
+│   ├── DAOFactory.java
+│   └── JPADAOFactory.java
+├── controlador/
+├── vista/
+├── utils/
+│   └── JpaUtil.java
+└── Main.java
+```
+
+---
+
+## ✅ Funcionalidades implementadas
+
+- Alta y listado de **Clientes Estándar** y **Clientes Premium**
+- Alta y listado de **Artículos**
+- Alta y visualización de **Pedidos**
+- Uso de **entidades JPA** con relaciones `@ManyToOne`
+- Acceso a datos con **DAO + Factory**
+- Persistencia con **Hibernate** y configuración a través de `persistence.xml`
+
+---
+
+## 📚 Documentación
+
+Todas las clases nuevas incorporan documentación **JavaDoc** siguiendo el mismo estándar que las clases anteriores (por ejemplo: `ArticuloDAOMySQL`). Esta documentación incluye:
+
+- Descripción general de la clase
+- Comentarios detallados en cada método
+- Parámetros (`@param`), valor de retorno (`@return`) y excepciones (`@throws`) documentados
+
+---
+
+## ▶️ Ejecución del programa
+
+1. Asegúrate de tener la base de datos `TeamCodersBD` creada y configurada correctamente.
+2. Compila el proyecto con Maven o desde VS Code.
+3. Ejecuta `Main.java`.
+4. Interactúa con el menú de consola para gestionar clientes, artículos y pedidos.
+
+---
+
+## 📝 Notas
+
+- Se utiliza una base de datos **MySQL local** con credenciales indicadas en `persistence.xml`.
+- La validación de tipos y estructuras se realiza al inicio mediante `hibernate.hbm2ddl.auto=validate`.
+
+---
+
+## 📽️ Requisitos de entrega
+
+- Implementación funcional en consola
+- Persistencia con JPA correctamente aplicada
+- Vídeo demostrativo mostrando las funcionalidades
+- Repositorio con código documentado y estructurado
+
+---
+
+## 👨‍💻 Autores
+
+**TeamCoders**
+
+---
 
 ## 👥 Integrantes del grupo
 
@@ -8,78 +98,3 @@ Este repositorio contiene el desarrollo de una aplicación en Java orientada a o
 - Ignacio Borrell Román
 - Marc Soler Fortó
 - Xavi Miró Carrera
-
-## 🛠️ Tecnologías utilizadas
-
-- Java 17
-- MySQL
-- JDBC
-- Visual Studio Code
-- Git
-
-## 📁 Estructura del proyecto
-
-```
-TeamCoders-Producto3/
-├── src/TeamCoders/         # Código fuente Java (modelo, vista, controlador, DAO)
-├── lib/                    # Librería del conector JDBC
-├── bin/                    # Archivos compilados
-├── .vscode/                # Configuración del proyecto en VS Code
-├── README.md               # Este archivo
-├── .classpath              # Configuración del classpath
-├── crear_procedimiento_insertar_pedido.sql  # Script SQL
-```
-
-## 🧩 Cómo usar el proyecto
-
-### 1. Requisitos previos
-
-- Tener instalado Java 17
-- Tener instalado MySQL y crear una base de datos (por ejemplo `TeamCodersBD`)
-- Tener el conector JDBC en la carpeta `lib/`
-
-### 2. Configuración de la base de datos
-
-1. Crea la base de datos en MySQL:
-
-```sql
-CREATE DATABASE TeamCodersBD;
-USE TeamCodersBD;
-```
-
-2. Ejecuta los archivos SQL necesarios:
-
-- **Estructura de tablas:**  
-  *(Incluir nombre del archivo si está separado, ej. `estructura.sql`)*
-
-- **Procedimiento almacenado:**  
-  Ejecuta el script `crear_procedimiento_insertar_pedido.sql` incluido en este repositorio:
-  
-```sql
-SOURCE crear_procedimiento_insertar_pedido.sql;
-```
-
-### 3. Compilación y ejecución
-
-Desde terminal o consola:
-
-```bash
-javac -cp "lib/mysql-connector-j-9.1.0.jar" -d bin src/TeamCoders/Main.java
-java -cp "bin:lib/mysql-connector-j-9.1.0.jar" TeamCoders.Main
-```
-
-O desde Visual Studio Code usando la configuración `launch.json`.
-
----
-
-## 💬 Comentarios
-
-- El campo `numero` del pedido se genera automáticamente (`AUTO_INCREMENT`).
-- La inserción de pedidos se realiza usando un procedimiento almacenado (`CALL insertar_pedido(...)`) desde Java.
-- Se ha añadido control de transacciones para garantizar la integridad de datos.
-
----
-
-## 📌 Créditos
-
-Este proyecto ha sido desarrollado como parte del módulo "Programación orientada a objetos con acceso a BBDD".

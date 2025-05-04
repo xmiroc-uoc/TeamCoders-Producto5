@@ -1,5 +1,8 @@
-package com.teamcoders.dao;
+package com.teamcoders.factory;
 
+import com.teamcoders.dao.interfaces.IArticuloDAO;
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
 import com.teamcoders.dao.jpa.ArticuloDAOJPA;
 import com.teamcoders.dao.jpa.ClienteDAOJPA;
 import com.teamcoders.dao.jpa.PedidoDAOJPA;

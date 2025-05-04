@@ -1,5 +1,8 @@
-package com.teamcoders.dao;
+package com.teamcoders.factory;
 
+import com.teamcoders.dao.interfaces.IArticuloDAO;
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
 import com.teamcoders.dao.mysql.ArticuloDAOMySQL;
 import com.teamcoders.dao.mysql.ClienteDAOMySQL;
 import com.teamcoders.dao.mysql.PedidoDAOMySQL;

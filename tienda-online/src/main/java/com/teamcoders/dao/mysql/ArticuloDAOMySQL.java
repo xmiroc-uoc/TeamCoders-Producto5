@@ -8,10 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teamcoders.dao.IArticuloDAO;
-import com.teamcoders.dao.util.ConexionBD;
-
+import com.teamcoders.dao.interfaces.IArticuloDAO;
 import com.teamcoders.modelo.Articulo;
+import com.teamcoders.utils.MySQLConexionBD;
 
 // Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
 
@@ -35,7 +34,7 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
 
         try {
             // Obtiene la conexión
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
 
             // Desactivar autocommit (inicia la transacción manualmente)
             conexion.setAutoCommit(false);
@@ -99,7 +98,7 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
         ResultSet conjuntoResultados = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlBuscarArticuloPorCodigo);
             sentenciaPreparada.setString(1, codigo);
             conjuntoResultados = sentenciaPreparada.executeQuery();
@@ -151,7 +150,7 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
         List<Articulo> listaArticulos = new ArrayList<>();
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlObtenerTodosLosArticulos);
             conjuntoResultados = sentenciaPreparada.executeQuery();
 
@@ -197,7 +196,7 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
         PreparedStatement sentenciaPreparada = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlActualizarCliente);
 
             sentenciaPreparada.setString(1, articulo.getDescripcion());
@@ -240,7 +239,7 @@ public class ArticuloDAOMySQL implements IArticuloDAO {
         PreparedStatement sentenciaPreparada = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlBorrarArticulo);
             sentenciaPreparada.setString(1, codigo);
             sentenciaPreparada.executeUpdate();

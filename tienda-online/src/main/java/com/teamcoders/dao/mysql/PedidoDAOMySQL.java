@@ -10,14 +10,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teamcoders.dao.DAOFactory;
-import com.teamcoders.dao.IClienteDAO;
-import com.teamcoders.dao.IPedidoDAO;
-import com.teamcoders.dao.util.ConexionBD;
-
+import com.teamcoders.dao.interfaces.IClienteDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
+import com.teamcoders.factory.DAOFactory;
 import com.teamcoders.modelo.Articulo;
 import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.Pedido;
+import com.teamcoders.utils.MySQLConexionBD;
 
 // Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
 
@@ -41,7 +40,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
 
         try {
             // Obtiene la conexión
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
 
             // Desactivar autocommit (inicia la transacción manualmente)
             conexion.setAutoCommit(false);
@@ -114,7 +113,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         ResultSet conjuntoResultados = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlBuscarPedidoPorNumero);
             sentenciaPreparada.setInt(1, numero);
             conjuntoResultados = sentenciaPreparada.executeQuery();
@@ -164,7 +163,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         List<Pedido> listaPedidos = new ArrayList<>();
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlBuscarTodosLosPedidos);
             conjuntoResultados = sentenciaPreparada.executeQuery();
 
@@ -211,7 +210,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         PreparedStatement sentenciaPreparada = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlActualizarPedido);
 
             sentenciaPreparada.setInt(1, pedido.getUnidades());
@@ -255,7 +254,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         PreparedStatement sentenciaPreparada = null;
 
         try {
-            conexion = ConexionBD.getConnection();
+            conexion = MySQLConexionBD.getConnection();
             sentenciaPreparada = conexion.prepareStatement(sqlBorrarPedido);
 
             sentenciaPreparada.setInt(1, numero);
@@ -341,7 +340,7 @@ public class PedidoDAOMySQL implements IPedidoDAO {
         DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         IClienteDAO clienteDAO = factory.getClienteDAO();
         // Se asume que existe un DAO para Artículo similar al de Cliente
-        com.teamcoders.dao.IArticuloDAO articuloDAO = factory.getArticuloDAO();
+        com.teamcoders.dao.interfaces.IArticuloDAO articuloDAO = factory.getArticuloDAO();
 
         Cliente cliente = clienteDAO.buscarClientePorEmail(emailDelCliente);
         Articulo articulo = articuloDAO.buscarArticuloPorCodigo(codigoDelArticulo);

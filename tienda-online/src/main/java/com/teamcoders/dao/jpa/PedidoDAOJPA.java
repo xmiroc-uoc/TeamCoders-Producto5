@@ -3,7 +3,7 @@ package com.teamcoders.dao.jpa;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.teamcoders.dao.IPedidoDAO;
+import com.teamcoders.dao.interfaces.IPedidoDAO;
 import com.teamcoders.modelo.Pedido;
 import com.teamcoders.utils.JpaUtil;
 
