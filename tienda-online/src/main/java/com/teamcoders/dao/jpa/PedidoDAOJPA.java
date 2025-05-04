@@ -22,37 +22,83 @@ public class PedidoDAOJPA implements IPedidoDAO {
 
      @Override
      public void crearPedido(Pedido pedido) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearPedido'");
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         try {
+            em.getTransaction().begin();
+            em.persist(pedido);
+            em.getTransaction().commit();
+         } finally {
+            if (em.getTransaction().isActive()) {
+               em.getTransaction().rollback();
+            }
+            em.close();
+         }
      }
 
      @Override
      public Pedido buscarPedidoPorNumero(int numero) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPedidoPorNumero'");
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         try {
+            return em.find(Pedido.class, numero);
+         } finally {
+            em.close();
+         }
      }
 
      @Override
      public void actualizarPedido(Pedido pedido) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actualizarPedido'");
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         try {
+            em.getTransaction().begin();
+            em.merge(pedido);
+            em.getTransaction().commit();
+         } finally {
+            if (em.getTransaction().isActive()) {
+               em.getTransaction().rollback();
+            }
+            em.close();
+         }
      }
 
      @Override
      public void borrarPedido(int numero) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'borrarPedido'");
+      EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+      try {
+         Pedido pedido = em.find(Pedido.class, numero);
+         if (pedido != null) {
+            em.getTransaction().begin();
+            em.remove(pedido);
+            em.getTransaction().commit();
+         }
+      } finally {
+         if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+         }
+         em.close();
+      }
      }
 
      @Override
      public List<Pedido> buscarPedidosPendientesEnvio() throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPedidosPendientesEnvio'");
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         try {
+            return em.createQuery(
+               "SELECT p FROM Pedido p WHERE p.fechaEnvio IS NULL", Pedido.class)
+               .getResultList();
+         } finally {
+            em.close();
+         }
      }
 
      @Override
      public List<Pedido> buscarPedidosEnviados() throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPedidosEnviados'");
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         try {
+            return em.createQuery(
+               "SELECT p FROM Pedido p WHERE p.fechaEnvio IS NOT NULL", Pedido.class)
+               .getResultList();
+         } finally {
+            em.close();
+         }
      }
 }
