@@ -18,7 +18,7 @@ import com.teamcoders.modelo.ClientePremium;
 public class ClienteControlador {
 
     // Obtenemos la fábrica específica de DAOs para MySQL
-    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.JPA);
     private static final IClienteDAO clienteDAO = factory.getClienteDAO();
 
     /**

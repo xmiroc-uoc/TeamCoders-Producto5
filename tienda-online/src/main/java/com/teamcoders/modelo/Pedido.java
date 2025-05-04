@@ -21,19 +21,19 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numeroPedido;
+    
+    @Column(name = "unidades")
+    private int unidades;
+ 
+    @Column(name = "fecha")
+    private LocalDateTime fechaPedido;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_dni")
-    private int unidades;
+    @JoinColumn(name = "cliente_email")
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "articulo_codigo")
-    private LocalDateTime fechaPedido;
-
-    @Column(name = "unidades")
-    private Cliente cliente;
-
-    @Column(name = "fecha")
     private Articulo articulo;
 
     /**

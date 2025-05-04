@@ -20,7 +20,7 @@ import com.teamcoders.modelo.Pedido;
 public class PedidoControlador {
 
     // Fábrica de DAOs para MySQL
-    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.JPA);
 
     // DAO específico para pedidos
     private static final IPedidoDAO pedidoDAO = factory.getPedidoDAO();

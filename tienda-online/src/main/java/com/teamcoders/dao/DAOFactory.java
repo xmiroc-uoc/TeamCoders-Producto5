@@ -7,6 +7,7 @@ package com.teamcoders.dao;
 public abstract class DAOFactory {
     // Podrías tener distintos tipos, p.ej. MYSQL, MEMORIA, etc.
     public static final int MYSQL = 1;
+    public static final int JPA = 2;
 
     /**
      * Obtiene un DAO específico para Cliente.
@@ -39,6 +40,8 @@ public abstract class DAOFactory {
         switch (tipo) {
             case MYSQL:
                 return new MySQLDAOFactory();
+            case JPA:
+                return new JPADAOFactory();
             default:
                 // Podrías lanzar excepción o retornar null
                 throw new RuntimeException("Tipo de DAOFactory no válido");

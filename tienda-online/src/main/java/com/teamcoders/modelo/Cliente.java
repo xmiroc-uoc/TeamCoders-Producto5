@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 public abstract class Cliente {
 
     @Id
-    @Column(name = "dni")
+    @Column(name = "email") 
     private String email;
 
     @Column(name = "nombre")
@@ -31,7 +31,7 @@ public abstract class Cliente {
     @Column(name = "direccion")
     private String domicilio;
 
-    @Column(name = "email")
+    @Column(name = "dni")
     private String nif;
 
     /**

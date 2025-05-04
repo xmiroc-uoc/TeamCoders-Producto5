@@ -5,7 +5,7 @@ import jakarta.persistence.Persistence;
 
 public class JpaUtil {
     private static final EntityManagerFactory emf =
-        Persistence.createEntityManagerFactory("tienda_online");
+        Persistence.createEntityManagerFactory("tienda-online");
 
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;

@@ -17,7 +17,7 @@ import com.teamcoders.modelo.Articulo;
 public class ArticuloControlador {
 
     // Obtenemos la fábrica de DAOs específica para MySQL
-    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    private static final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.JPA);
     private static final IArticuloDAO articuloDAO = factory.getArticuloDAO();
 
     /**
