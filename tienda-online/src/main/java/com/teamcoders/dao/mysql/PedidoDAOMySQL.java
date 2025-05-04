@@ -19,6 +19,8 @@ import com.teamcoders.modelo.Articulo;
 import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.Pedido;
 
+// Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
+
 /**
  * Implementación del DAO para pedidos usando JDBC y MySQL.
  */

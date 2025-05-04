@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+// Esta clase ya no se utiliza. Sustituida por JPA (JpaUtil).
+
 /**
  * Clase de utilidad que gestiona la conexión a la base de datos MySQL.
  */

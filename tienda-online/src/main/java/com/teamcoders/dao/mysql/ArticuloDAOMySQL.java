@@ -13,6 +13,8 @@ import com.teamcoders.dao.util.ConexionBD;
 
 import com.teamcoders.modelo.Articulo;
 
+// Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
+
 /**
  * Implementación del DAO para artículos usando JDBC y MySQL.
  */

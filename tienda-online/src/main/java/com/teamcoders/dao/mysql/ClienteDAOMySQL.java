@@ -15,6 +15,7 @@ import com.teamcoders.modelo.Cliente;
 import com.teamcoders.modelo.ClienteEstandar;
 import com.teamcoders.modelo.ClientePremium;
 
+// Clase obsoleta: sustituida por ClienteDAOJPA usando JPA
 /**
  * Implementación del DAO para clientes usando JDBC y MySQL.
  */
