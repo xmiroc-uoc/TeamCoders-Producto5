@@ -1,11 +1,24 @@
 package com.teamcoders.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
 /**
  * Cliente Premium con descuento fijo en el envío y cuota anual.
  */
+@Entity
+@DiscriminatorValue("premium")
 public class ClientePremium extends Cliente {
 
+    @Column(name = "cuota_anual")
     private int cuotaAnual;
+
+    /**
+     * Constructor sin argumentos (obligatorio para JPA)
+     */
+    public ClientePremium() {
+    }
 
     /**
      * Constructor para cliente premium.

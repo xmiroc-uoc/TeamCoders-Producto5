@@ -1,9 +1,20 @@
 package com.teamcoders.modelo;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
 /**
  * Cliente estándar sin descuento en el envío.
  */
+@Entity
+@DiscriminatorValue("estandar") // coincide con ENUM('estandar', 'premium')
 public class ClienteEstandar extends Cliente {
+
+    /**
+     * Constructor sin argumentos (obligatorio para JPA)
+     */
+    public ClienteEstandar() {
+    }
 
     /**
      * Constructor para cliente estándar.

@@ -1,16 +1,44 @@
 package com.teamcoders.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
+
 /**
  * Clase abstracta que representa un cliente de la tienda online.
  * Contiene atributos comunes a todos los tipos de clientes y un método
  * abstracto
  * para calcular el descuento en el envío.
  */
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "clientes")
 public abstract class Cliente {
+
+    @Id
+    @Column(name = "dni")
     private String email;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "direccion")
     private String domicilio;
+
+    @Column(name = "email")
     private String nif;
+
+    /**
+     * Constructor sin argumentos (obligatorio para JPA)
+     */
+    public Cliente() {
+    }
 
     /**
      * Constructor para inicializar un cliente.

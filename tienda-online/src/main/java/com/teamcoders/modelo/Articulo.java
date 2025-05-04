@@ -1,16 +1,37 @@
 package com.teamcoders.modelo;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**
- * Representa un artículo que puede ser adquirido por un cliente en la tienda
- * online.
+ * Representa un artículo que puede ser adquirido por un cliente en la tienda online.
  */
-
-
+@Entity
+@Table(name = "articulos")
 public class Articulo {
+    @Id
+    @Column(name = "codigo")
     private String codigo;
+
+    @Column(name = "descripcion")
     private String descripcion;
+
+    @Column(name = "precio_venta")
     private double precioVenta;
+
+    @Column(name = "gastos_envio")
     private double gastosEnvio;
+
+    @Column(name = "tiempo_preparacion")
     private int tiempoPreparacion;
+
+    /**
+     * Constructor sin argumentos (obligatorio para JPA)
+     */
+    public Articulo() {
+    }
 
     /**
      * Constructor para crear un artículo.

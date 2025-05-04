@@ -2,14 +2,38 @@ package com.teamcoders.modelo;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**
  * Representa un pedido realizado por un cliente para un artículo específico.
  */
+@Entity
+@Table(name = "pedidos")
 public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numeroPedido;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_dni")
     private int unidades;
+
+    @ManyToOne
+    @JoinColumn(name = "articulo_codigo")
     private LocalDateTime fechaPedido;
+
+    @Column(name = "unidades")
     private Cliente cliente;
+
+    @Column(name = "fecha")
     private Articulo articulo;
 
     /**
