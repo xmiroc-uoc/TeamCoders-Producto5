@@ -5,7 +5,19 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 /**
- * Cliente Premium con descuento fijo en el envío y cuota anual.
+ * Representa un cliente de tipo premium en la tienda online.
+ *
+ * <p>
+ * Esta clase extiende de {@link Cliente} y añade un atributo adicional {@code cuotaAnual},
+ * que representa la tarifa anual asociada a los beneficios premium del cliente.
+ * Se identifica mediante el valor de discriminador {@code Premium} en la tabla de herencia JPA.
+ * </p>
+ *
+ * <p>
+ * Se utiliza para distinguir clientes con ventajas especiales y permite aplicar lógica
+ * diferenciada en procesos de facturación, fidelización o análisis de clientes.
+ * </p>
+ *
  */
 @Entity
 @DiscriminatorValue("Premium")
@@ -15,7 +27,7 @@ public class ClientePremium extends Cliente {
     private int cuotaAnual;
 
     /**
-     * Constructor sin argumentos (obligatorio para JPA)
+     * Constructor vacío requerido por JPA.
      */
     public ClientePremium() {
     }

@@ -6,11 +6,28 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * Representa un artículo que puede ser adquirido por un cliente en la tienda online.
+ * Clase que representa un artículo dentro del catálogo de productos de la tienda.
+ * 
+ * <p>
+ * Cada artículo se identifica por un código único y contiene información básica 
+ * como su descripción y precio. Esta entidad está mapeada a la tabla {@code articulos} 
+ * en la base de datos mediante anotaciones JPA.
+ * </p>
+ * 
+ * <p>
+ * Es utilizada en operaciones CRUD sobre productos, en especial al registrar pedidos 
+ * o listar el catálogo disponible.
+ * </p>
+ * 
+ * <p>
+ * Esta clase no incluye lógica adicional, actuando únicamente como modelo de datos.
+ * </p>
+ * 
  */
 @Entity
 @Table(name = "articulos")
 public class Articulo {
+   
     @Id
     @Column(name = "codigo")
     private String codigo;
@@ -28,7 +45,7 @@ public class Articulo {
     private int tiempoPreparacion;
 
     /**
-     * Constructor sin argumentos (obligatorio para JPA)
+     * Constructor sin argumentos requerido por JPA.
      */
     public Articulo() {
     }

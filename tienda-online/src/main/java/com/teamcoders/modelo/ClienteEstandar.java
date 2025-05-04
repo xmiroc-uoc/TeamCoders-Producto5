@@ -4,14 +4,25 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 /**
- * Cliente estándar sin descuento en el envío.
+ * Representa un cliente de tipo estándar.
+ *
+ * <p>
+ * Hereda de la clase abstracta {@link Cliente} y no añade atributos adicionales.
+ * Se identifica mediante el valor de discriminador {@code Estandar} en la tabla única de clientes.
+ * </p>
+ *
+ * <p>
+ * Esta clase se usa para diferenciar clientes estándar en operaciones como filtrado,
+ * visualización y lógica de negocio específica.
+ * </p>
+ *
  */
 @Entity
 @DiscriminatorValue("Estandar") // coincide con ENUM('estandar', 'premium')
 public class ClienteEstandar extends Cliente {
 
     /**
-     * Constructor sin argumentos (obligatorio para JPA)
+     * Constructor vacío requerido por JPA.
      */
     public ClienteEstandar() {
     }

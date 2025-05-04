@@ -10,10 +10,19 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 /**
- * Clase abstracta que representa un cliente de la tienda online.
- * Contiene atributos comunes a todos los tipos de clientes y un método
- * abstracto
- * para calcular el descuento en el envío.
+ * Clase abstracta que representa a un cliente genérico de la tienda.
+ *
+ * <p>
+ * Esta clase se utiliza como clase base para los tipos de cliente específicos,
+ * como {@link ClienteEstandar} y {@link ClientePremium}, que extienden su comportamiento.
+ * Está mapeada a la tabla {@code clientes} mediante JPA y usa herencia JOINED.
+ * </p>
+ *
+ * <p>
+ * Los clientes se identifican por su correo electrónico, e incluyen información como
+ * nombre, dirección (domicilio) y número de identificación fiscal (nif).
+ * </p>
+ *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -35,7 +44,7 @@ public abstract class Cliente {
     private String nif;
 
     /**
-     * Constructor sin argumentos (obligatorio para JPA)
+     * Constructor vacío requerido por JPA.
      */
     public Cliente() {
     }

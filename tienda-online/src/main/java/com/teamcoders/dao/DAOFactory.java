@@ -1,40 +1,47 @@
 package com.teamcoders.dao;
 
 /**
- * Clase abstracta base para las fábricas de DAO.
- * Permite desacoplar la lógica del sistema del tipo de base de datos utilizada.
+ * Clase abstracta base para las fábricas de DAO (Data Access Object).
+ * 
+ * Esta clase define una interfaz para crear objetos DAO específicos según el tipo de persistencia
+ * utilizada (por ejemplo, JPA o MySQL). El uso del patrón Factory permite desacoplar la lógica
+ * de negocio del tipo de acceso a datos implementado.
  */
 public abstract class DAOFactory {
-    // Podrías tener distintos tipos, p.ej. MYSQL, MEMORIA, etc.
+
+    /** Constante que representa la implementación basada en MySQL. */
     public static final int MYSQL = 1;
+
+    /** Constante que representa la implementación basada en JPA. */
     public static final int JPA = 2;
 
     /**
-     * Obtiene un DAO específico para Cliente.
-     * 
-     * @return IClienteDAO
+     * Devuelve una instancia del DAO para la entidad Cliente.
+     *
+     * @return una implementación de {@link IClienteDAO}.
      */
     public abstract IClienteDAO getClienteDAO();
 
     /**
-     * Obtiene un DAO específico para Artículo.
-     * 
-     * @return IArticuloDAO
+     * Devuelve una instancia del DAO para la entidad Articulo.
+     *
+     * @return una implementación de {@link IArticuloDAO}.
      */
     public abstract IArticuloDAO getArticuloDAO();
 
     /**
-     * Obtiene un DAO específico para Pedido.
-     * 
-     * @return IPedidoDAO
+     * Devuelve una instancia del DAO para la entidad Pedido.
+     *
+     * @return una implementación de {@link IPedidoDAO}.
      */
     public abstract IPedidoDAO getPedidoDAO();
 
     /**
-     * Devuelve una instancia concreta de la fábrica según el tipo solicitado.
-     * 
-     * @param tipo Tipo de DAOFactory (ej: MYSQL).
-     * @return Instancia de DAOFactory concreta.
+     * Devuelve una instancia concreta de {@link DAOFactory} según el tipo solicitado.
+     *
+     * @param tipo el tipo de fábrica deseado (por ejemplo, {@link #MYSQL} o {@link #JPA}).
+     * @return una subclase de {@link DAOFactory} correspondiente al tipo indicado.
+     * @throws RuntimeException si el tipo especificado no está soportado.
      */
     public static DAOFactory getDAOFactory(int tipo) {
         switch (tipo) {

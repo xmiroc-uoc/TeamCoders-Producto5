@@ -12,7 +12,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * Representa un pedido realizado por un cliente para un artículo específico.
+ * Representa un pedido realizado en la tienda online.
+ *
+ * <p>
+ * La clase almacena la información de un pedido, incluyendo su identificador
+ * automático, la fecha de realización, el cliente que lo realiza y el artículo comprado.
+ * Utiliza anotaciones JPA para definir la persistencia del pedido en base de datos.
+ * </p>
+ *
+ * <p>
+ * Esta clase es clave en los procesos de facturación, seguimiento de ventas y gestión
+ * de clientes. Cada pedido se relaciona directamente con un {@link Cliente} y un {@link Articulo}.
+ * </p>
+ *
  */
 @Entity
 @Table(name = "pedidos")
@@ -38,7 +50,7 @@ public class Pedido {
     private Articulo articulo;
 
     /**
-     * Constructor sin argumentos (obligatorio para JPA)
+     * Constructor vacío requerido por JPA.
      */
     public Pedido() {
     }
