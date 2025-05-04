@@ -1,138 +1,90 @@
 package com.teamcoders.modelo;
 
-/**
- * Representa un artículo que puede ser adquirido por un cliente en la tienda
- * online.
- */
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "articulos")
 public class Articulo {
-    private String codigo;
-    private String descripcion;
-    private double precioVenta;
-    private double gastosEnvio;
-    private int tiempoPreparacion;
 
-    /**
-     * Constructor para crear un artículo.
-     * 
-     * @param codigo            Código único del artículo.
-     * @param tiempoPreparacion Tiempo necesario para preparar el artículo (en
-     *                          minutos).
-     * @param gastosEnvio       Coste de envío del artículo.
-     * @param precioVenta       Precio de venta del artículo.
-     * @param descripcion       Descripción del artículo.
-     */
-    public Articulo(String codigo, int tiempoPreparacion, double gastosEnvio, double precioVenta, String descripcion) {
-        this.codigo = codigo;
-        this.tiempoPreparacion = tiempoPreparacion;
-        this.gastosEnvio = gastosEnvio;
-        this.precioVenta = precioVenta;
-        this.descripcion = descripcion;
+  @Id
+  @Column(length = 10)
+  private String codigo;
 
-    }
+  @Column(nullable = false)
+  private String descripcion;
 
-    /**
-     * Devuelve el código del artículo.
-     * 
-     * @return Código del artículo.
-     */
-    public String getCodigo() {
-        return codigo;
-    }
+  @Column(name = "precio_venta")
+  private double precioVenta;
 
-    /**
-     * Devuelve la descripción del artículo.
-     * 
-     * @return Descripción del artículo.
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
+  @Column(name = "gastos_envio")
+  private double gastosEnvio;
 
-    /**
-     * Devuelve el precio de venta del artículo.
-     * 
-     * @return Precio de venta.
-     */
-    public double getPrecioVenta() {
-        return precioVenta;
-    }
+  @Column(name = "tiempo_preparacion")
+  private int tiempoPreparacion;
 
-    /**
-     * Devuelve los gastos de envío del artículo.
-     * 
-     * @return Gastos de envío.
-     */
-    public double getGastosEnvio() {
-        return gastosEnvio;
-    }
+  protected Articulo() {
+  }
 
-    /**
-     * Devuelve el tiempo de preparación del artículo en minutos.
-     * 
-     * @return Tiempo de preparación.
-     */
-    public int getTiempoPreparacion() {
-        return tiempoPreparacion;
-    }
+  public Articulo(String codigo, int tiempoPreparacion,
+      double gastosEnvio, double precioVenta, String descripcion) {
+    this.codigo = codigo;
+    this.tiempoPreparacion = tiempoPreparacion;
+    this.gastosEnvio = gastosEnvio;
+    this.precioVenta = precioVenta;
+    this.descripcion = descripcion;
+  }
 
-    /**
-     * Establece el código del artículo.
-     * 
-     * @param codigo Nuevo código del artículo.
-     */
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+  public String getCodigo() {
+    return codigo;
+  }
 
-    /**
-     * Establece la descripción del artículo.
-     * 
-     * @param descripcion Nueva descripción.
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
 
-    /**
-     * Establece el precio de venta del artículo.
-     * 
-     * @param precioVenta Nuevo precio.
-     */
-    public void setPrecioVenta(double precioVenta) {
-        this.precioVenta = precioVenta;
-    }
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-    /**
-     * Establece los gastos de envío del artículo.
-     * 
-     * @param gastosEnvio Nuevos gastos de envío.
-     */
-    public void setGastosEnvio(double gastosEnvio) {
-        this.gastosEnvio = gastosEnvio;
-    }
+  public void setDescripcion(String d) {
+    this.descripcion = d;
+  }
 
-    /**
-     * Establece el tiempo de preparación en minutos.
-     * 
-     * @param tiempoPreparacion Nuevo tiempo de preparación.
-     */
-    public void setTiempoPreparacion(int tiempoPreparacion) {
-        this.tiempoPreparacion = tiempoPreparacion;
-    }
+  public double getPrecioVenta() {
+    return precioVenta;
+  }
 
-    /**
-     * Devuelve una representación textual del artículo.
-     * 
-     * @return String con los datos del artículo.
-     */
-    @Override
-    public String toString() {
-        return "Articulo{" +
-                "codigo='" + codigo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precioVenta=" + precioVenta +
-                ", gastosEnvio=" + gastosEnvio +
-                ", tiempoPreparacion=" + tiempoPreparacion +
-                '}';
-    }
+  public void setPrecioVenta(double p) {
+    this.precioVenta = p;
+  }
+
+  public double getGastosEnvio() {
+    return gastosEnvio;
+  }
+
+  public void setGastosEnvio(double g) {
+    this.gastosEnvio = g;
+  }
+
+  public int getTiempoPreparacion() {
+    return tiempoPreparacion;
+  }
+
+  public void setTiempoPreparacion(int t) {
+    this.tiempoPreparacion = t;
+  }
+
+  @Override
+  public String toString() {
+    return "Articulo{" +
+        "codigo='" + codigo + '\'' +
+        ", descripcion='" + descripcion + '\'' +
+        ", precioVenta=" + precioVenta +
+        ", gastosEnvio=" + gastosEnvio +
+        ", tiempoPreparacion=" + tiempoPreparacion +
+        '}';
+  }
 }

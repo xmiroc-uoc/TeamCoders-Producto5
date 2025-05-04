@@ -1,61 +1,41 @@
 package com.teamcoders.modelo;
 
-/**
- * Cliente Premium con descuento fijo en el envío y cuota anual.
- */
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("premium")
 public class ClientePremium extends Cliente {
 
-    private int cuotaAnual;
+  @Column(name = "cuota_anual")
+  private int cuotaAnual;
 
-    /**
-     * Constructor para cliente premium.
-     * 
-     * @param nombre     Nombre del cliente.
-     * @param domicilio  Dirección del cliente.
-     * @param nif        Número de identificación fiscal.
-     * @param email      Correo electrónico del cliente.
-     * @param cuotaAnual Cuota anual en euros.
-     */
-    public ClientePremium(String nombre, String domicilio, String nif, String email, int cuotaAnual) {
-        super(nombre, domicilio, nif, email);
-        this.cuotaAnual = cuotaAnual;
-    }
+  protected ClientePremium() {
+  }
 
-    /**
-     * Obtiene la cuota anual del cliente premium.
-     * 
-     * @return cuota anual en euros.
-     */
-    public int getCuotaAnual() {
-        return cuotaAnual;
-    }
+  public ClientePremium(String nombre, String domicilio,
+      String nif, String email, int cuotaAnual) {
+    super(nombre, domicilio, nif, email);
+    this.cuotaAnual = cuotaAnual;
+  }
 
-    /**
-     * Establece la cuota anual del cliente premium.
-     * 
-     * @param cuotaAnual nueva cuota anual.
-     */
-    public void setCuotaAnual(int cuotaAnual) {
-        this.cuotaAnual = cuotaAnual;
-    }
+  public int getCuotaAnual() {
+    return cuotaAnual;
+  }
 
-    /**
-     * Devuelve un descuento fijo del 20% en los gastos de envío.
-     * 
-     * @return 0.20 como descuento.
-     */
-    @Override
-    public float descuentoEnvio() {
-        return 0.20f;
-    }
+  public void setCuotaAnual(int cuota) {
+    this.cuotaAnual = cuota;
+  }
 
-    /**
-     * Devuelve una representación textual del cliente premium.
-     * 
-     * @return String con los datos del cliente premium.
-     */
-    @Override
-    public String toString() {
-        return "ClientePremium: " + super.toString() + " [cuotaAnual=" + cuotaAnual + "]";
-    }
+  @Override
+  public float descuentoEnvio() {
+    return 0.20f;
+  }
+
+  @Override
+  public String toString() {
+    return "ClientePremium: " + super.toString() +
+        " [cuotaAnual=" + cuotaAnual + "]";
+  }
 }
