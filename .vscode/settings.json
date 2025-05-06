@@ -1,3 +1,7 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.project.sourcePaths": [
+        "src/TeamCoders"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.view": "hierarchical"
 }
