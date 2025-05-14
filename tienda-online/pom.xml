@@ -48,6 +48,27 @@
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.9</version>
     </dependency>
+
+    <!-- JavaFX -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>20.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>20.0.2</version>
+    </dependency>
+
+    <!-- (Opcional) Para sonido, web, gráficos adicionales -->
+    <!--
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId>
+        <version>20.0.2</version>
+    </dependency>
+    -->
   </dependencies>
 
   <build>
@@ -60,6 +81,16 @@
           <mainClass>com.teamcoders.Main</mainClass>
         </configuration>
       </plugin>
+
+      <!-- Plugin para compilar y ejecutar JavaFX -->
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <configuration>
+                <mainClass>com.teamcoders.vista.MainFX</mainClass>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
 
