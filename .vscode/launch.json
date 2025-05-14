@@ -5,7 +5,7 @@
       "type": "java",
       "name": "Ejecutar Tienda Online",
       "request": "launch",
-      "mainClass": "com.teamcoders.Main",
+      "mainClass": "com.teamcoders.vista.consola.Main",
       "projectName": "tienda-online"
     }
   ]

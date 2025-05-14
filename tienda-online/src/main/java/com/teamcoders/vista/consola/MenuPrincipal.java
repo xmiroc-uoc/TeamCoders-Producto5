@@ -1,4 +1,4 @@
-package com.teamcoders.vista;
+package com.teamcoders.vista.consola;
 
 /**
  * Clase principal encargada de mostrar el menú principal de la aplicación.

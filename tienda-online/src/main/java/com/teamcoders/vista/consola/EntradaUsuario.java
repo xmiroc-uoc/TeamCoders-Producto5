@@ -1,4 +1,4 @@
-package com.teamcoders.vista;
+package com.teamcoders.vista.consola;
 
 import java.util.Scanner;
 

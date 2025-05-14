@@ -1,7 +1,4 @@
-package com.teamcoders;
-
-import com.teamcoders.vista.EntradaUsuario;
-import com.teamcoders.vista.MenuPrincipal;
+package com.teamcoders.vista.consola;
 
 public class Main {
 
