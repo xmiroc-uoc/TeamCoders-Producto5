@@ -3,7 +3,20 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Ejecutar Tienda Online",
+      "name": "Ejecutar Tienda Online (JavaFX)",
+      "request": "launch",
+      "mainClass": "com.teamcoders.vista.fx.MainFX",
+      "projectName": "tienda-online",
+      "vmArgs": [
+        "--module-path",
+        "${workspaceFolder}/tienda-online/javafx-sdk/lib",
+        "--add-modules",
+        "javafx.controls,javafx.fxml"
+      ]
+    },
+    {
+      "type": "java",
+      "name": "Ejecutar Tienda Online (Consola)",
       "request": "launch",
       "mainClass": "com.teamcoders.vista.consola.Main",
       "projectName": "tienda-online"

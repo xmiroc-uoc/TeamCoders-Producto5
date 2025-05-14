@@ -98,3 +98,22 @@ Todas las clases nuevas incorporan documentación **JavaDoc** siguiendo el mismo
 - Ignacio Borrell Román
 - Marc Soler Fortó
 - Xavi Miró Carrera
+
+## 🔧 Requisitos y configuración de JavaFX
+
+Este proyecto incluye una interfaz gráfica implementada con JavaFX. Para que funcione correctamente en todos los entornos, es importante seguir estas indicaciones:
+
+### ✅ Versión del JDK
+
+- Puedes usar **JDK 17** (recomendado) o **JDK 21**.
+- Es importante que la versión del **JavaFX SDK** coincida con la del JDK utilizado.
+
+### 📦 JavaFX SDK
+
+- El proyecto utiliza **JavaFX 17**, y el SDK se incluye en la carpeta local `javafx-sdk-17` dentro del proyecto.
+- Si prefieres usar JavaFX 21, deberás cambiar la ruta en tu archivo `launch.json` por tu SDK local compatible con la versión.
+
+### ⚙️ Ejecución desde la terminal (recomendado)
+
+```bash
+mvn clean javafx:run

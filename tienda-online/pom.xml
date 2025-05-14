@@ -1,8 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.teamcoders</groupId>
@@ -13,9 +11,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+    <javafx.version>21.0.2</javafx.version>
   </properties>
 
   <dependencies>
+
     <!-- JPA API -->
     <dependency>
       <groupId>jakarta.persistence</groupId>
@@ -49,65 +49,44 @@
       <version>2.0.9</version>
     </dependency>
 
-    <!-- JavaFX -->
+    <!-- JavaFX Dependencies -->
     <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>20.0.2</version>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
     </dependency>
     <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>20.0.2</version>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx.version}</version>
     </dependency>
 
-    <!-- (Opcional) Para sonido, web, gráficos adicionales -->
-    <!--
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-media</artifactId>
-        <version>20.0.2</version>
-    </dependency>
-    -->
   </dependencies>
 
   <build>
     <plugins>
+
+      <!-- Compiler plugin -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
         <configuration>
-          <mainClass>com.teamcoders.Main</mainClass>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
 
-      <!-- Plugin para compilar y ejecutar JavaFX -->
-        <plugin>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>0.0.8</version>
-            <configuration>
-                <mainClass>com.teamcoders.vista.MainFX</mainClass>
-            </configuration>
-        </plugin>
+      <!-- JavaFX Maven Plugin compatible -->
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>com.teamcoders.vista.fx.MainFX</mainClass>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
-
-
-  <dependencyManagement>
-  
-
-    <dependencies>
-    
-
-      <dependency>
-        <groupId>jakarta.activation</groupId>
-        <artifactId>jakarta.activation-api</artifactId>
-        <version>2.1.1</version>
-      </dependency>
-
-    </dependencies>
-
-  </dependencyManagement>
 </project>
