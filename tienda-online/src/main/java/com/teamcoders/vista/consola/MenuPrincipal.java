@@ -1,5 +1,7 @@
 package com.teamcoders.vista.consola;
 
+import com.teamcoders.utils.EntradaUsuario;
+
 /**
  * Clase principal encargada de mostrar el menú principal de la aplicación.
  * Gestiona la navegación del usuario hacia los submenús de clientes, artículos

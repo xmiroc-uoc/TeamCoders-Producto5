@@ -1,5 +1,7 @@
 package com.teamcoders.vista.consola;
 
+import com.teamcoders.utils.EntradaUsuario;
+
 public class Main {
 
     public static void main(String[] args) {

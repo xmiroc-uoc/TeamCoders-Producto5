@@ -37,7 +37,7 @@ public class InicioController {
     @FXML
     public void irAGestionClientes(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_menu.fxml"));
             Pane root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();

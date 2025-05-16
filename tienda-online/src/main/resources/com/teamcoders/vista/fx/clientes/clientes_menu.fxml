@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.clientes.ClientesMenuController">
+   <children>
+      <Label text=" Gestion de Clientes" textAlignment="CENTER" />
+      <Button fx:id="btnAnadirCliente" mnemonicParsing="false" onAction="#anadirCliente" text="Añadir Cliente" />
+      <Button fx:id="btnMostrarClientes" mnemonicParsing="false" onAction="#mostrarClientes" text="Mostrar los Clientes" />
+      <Button fx:id="btnVolverInicio" mnemonicParsing="false" onAction="#volverInicio" text="Volver" />
+   </children>
+</VBox>

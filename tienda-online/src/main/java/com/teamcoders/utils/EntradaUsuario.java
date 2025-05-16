@@ -1,10 +1,10 @@
-package com.teamcoders.vista.consola;
+package com.teamcoders.utils;
 
 import java.util.Scanner;
 
 /**
- * Clase utilitaria encargada de gestionar las entradas por teclado del usuario.
- * Ofrece métodos estáticos para leer textos, números y confirmar opciones.
+ * Clase auxiliar para gestionar la entrada de datos del usuario desde consola
+ * y validar datos introducidos desde interfaces gráficas (JavaFX).
  */
 public class EntradaUsuario {
     // Scanner estático compartido por todos los métodos para capturar entrada del
@@ -12,7 +12,7 @@ public class EntradaUsuario {
     private static final Scanner inputScanner = new Scanner(System.in);
 
     /**
-     * Solicita al usuario una cadena de texto.
+     * Solicita al usuario una cadena de texto desde consola.
      * 
      * @param mensaje Mensaje mostrado al usuario.
      * @return Texto introducido por el usuario.
@@ -23,7 +23,7 @@ public class EntradaUsuario {
     }
 
     /**
-     * Solicita al usuario un número entero.
+     * Solicita al usuario un número entero desde consola.
      * 
      * @param mensaje Mensaje mostrado al usuario.
      * @return Número entero introducido por el usuario.
@@ -120,5 +120,68 @@ public class EntradaUsuario {
      */
     public static void cerrarScanner() {
         inputScanner.close();
+    }
+
+    // ------------- Métodos para validación desde JavaFX -------------
+
+    /**
+     * Valida que un texto no esté vacío.
+     *
+     * @param valor Texto a validar.
+     * @param campo Nombre del campo (para mostrar en el mensaje de error).
+     * @return El texto validado sin espacios iniciales ni finales.
+     * @throws IllegalArgumentException si el valor es nulo o está vacío.
+     */
+    public static String validarTexto(String valor, String campo) {
+        if (valor == null || valor.trim().isEmpty()) {
+            throw new IllegalArgumentException("El campo '" + campo + "' no puede estar vacío.");
+        }
+        return valor.trim();
+    }
+
+    /**
+     * Valida que el texto introducido sea un email con formato válido.
+     *
+     * @param valor Texto a validar.
+     * @return El email validado sin espacios.
+     * @throws IllegalArgumentException si el email no tiene un formato válido.
+     */
+    public static String validarEmail(String valor) {
+        if (valor == null || !valor.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            throw new IllegalArgumentException("El email introducido no es válido.");
+        }
+        return valor.trim();
+    }
+
+    /**
+     * Valida que el texto introducido se pueda convertir en un número entero.
+     *
+     * @param valor Texto a validar.
+     * @param campo Nombre del campo (para mostrar en el mensaje de error).
+     * @return El número entero equivalente al texto introducido.
+     * @throws IllegalArgumentException si el valor no es un número entero válido.
+     */
+    public static int validarEntero(String valor, String campo) {
+        try {
+            return Integer.parseInt(valor.trim());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("El campo '" + campo + "' debe ser un número entero válido.");
+        }
+    }
+
+    /**
+     * Valida que el texto introducido se pueda convertir en un número decimal.
+     *
+     * @param valor Texto a validar.
+     * @param campo Nombre del campo (para mostrar en el mensaje de error).
+     * @return El número decimal equivalente al texto introducido.
+     * @throws IllegalArgumentException si el valor no es un número válido.
+     */
+    public static double validarDouble(String valor, String campo) {
+        try {
+            return Double.parseDouble(valor.trim());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("El campo '" + campo + "' debe ser un número válido.");
+        }
     }
 }

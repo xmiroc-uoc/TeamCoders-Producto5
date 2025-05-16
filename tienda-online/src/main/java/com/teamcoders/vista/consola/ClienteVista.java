@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.teamcoders.controlador.ClienteControlador;
 import com.teamcoders.modelo.Cliente;
+import com.teamcoders.utils.EntradaUsuario;
 
 /**
  * Clase de la vista responsable de la interacción con el usuario para la
