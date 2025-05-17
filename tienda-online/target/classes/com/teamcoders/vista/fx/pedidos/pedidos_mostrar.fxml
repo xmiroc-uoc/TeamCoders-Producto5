@@ -21,19 +21,20 @@
             xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="com.teamcoders.vista.fx.pedidos.PedidosMostrarController">
    
-   <!-- Cabecera con título y filtros -->
+   <!-- Cabecera con título y botones de filtrado -->
    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <!-- Título de la sección -->
+            <!-- Título principal -->
             <Label alignment="CENTER" text="Listado de Pedidos" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Label>
             
-            <!-- Botones de filtrado y navegación -->
+            <!-- Barra de botones: filtros y navegación -->
             <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
+                  <!-- Botones para filtrar pedidos -->
                   <Button fx:id="btnTodosLosPedidos" mnemonicParsing="false" onAction="#mostrarTodosLosPedidos" text="Mostrar Todos" />
                   <Button fx:id="btnPedidosEnviados" mnemonicParsing="false" onAction="#mostrarPedidosEnviados" text="Mostrar Pedidos Enviados" />
                   <Button fx:id="btnPedidosPendientesDeEnvio" mnemonicParsing="false" onAction="#mostrarPedidosPendientesDeEnvio" text="Mostrar Pendiente de Envio" />
@@ -49,6 +50,8 @@
                </padding>
             </HBox>
          </children>
+
+         <!-- Márgenes del bloque superior -->
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </BorderPane.margin>
