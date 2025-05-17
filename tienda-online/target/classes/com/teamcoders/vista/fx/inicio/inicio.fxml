@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importaciones necesarias para elementos JavaFX -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,10 +8,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.inicio.InicioController">
+<!-- Vista principal de inicio: utiliza un BorderPane para estructurar el contenido -->
+<BorderPane maxHeight="1.7976931348623157E308" 
+            maxWidth="1.7976931348623157E308" 
+            minHeight="0.0" 
+            minWidth="0.0" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.teamcoders.vista.fx.inicio.InicioController">
+
+      <!-- Zona superior: título principal -->
    <top>
-      <!-- Título -->
-       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="¡Bienvenido a la Tienda Online!" textAlignment="CENTER" BorderPane.alignment="CENTER">
+       <Label  alignment="CENTER" 
+               maxWidth="1.7976931348623157E308" 
+               text="¡Bienvenido a la Tienda Online!" 
+               textAlignment="CENTER" 
+               BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -22,13 +35,35 @@
          </padding>
       </Label>
    </top>
+
+   <!-- Zona central: menú con botones de acceso a cada módulo -->
    <center>
-      <!-- Botones -->
-      <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" 
+            spacing="30.0" 
+            style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" 
+            BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnGestionClientes" mnemonicParsing="false" onAction="#irAGestionClientes" text="Gestión de Clientes" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-            <Button fx:id="btnGestioinArticulos" mnemonicParsing="false" onAction="#irAGestionArticulos" text="Gestión de Artículos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-            <Button fx:id="btnGestionPedidos" mnemonicParsing="false" onAction="#irAGestionPedidos" text="Gestión de Pedidos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <!-- Botón para acceder al módulo de gestión de clientes -->
+            <Button  fx:id="btnGestionClientes" 
+                     mnemonicParsing="false" 
+                     onAction="#irAGestionClientes" 
+                     text="Gestión de Clientes" 
+                     textAlignment="CENTER" 
+                     VBox.vgrow="ALWAYS" />
+            <!-- Botón para acceder al módulo de gestión de artículos -->
+            <Button  fx:id="btnGestionArticulos" 
+                     mnemonicParsing="false" 
+                     onAction="#irAGestionArticulos" 
+                     text="Gestión de Artículos" 
+                     textAlignment="CENTER" 
+                     VBox.vgrow="ALWAYS" />
+            <!-- Botón para acceder al módulo de gestión de pedidos -->
+            <Button  fx:id="btnGestionPedidos" 
+                     mnemonicParsing="false" 
+                     onAction="#irAGestionPedidos" 
+                     text="Gestión de Pedidos" 
+                     textAlignment="CENTER" 
+                     VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>

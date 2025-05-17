@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importación de componentes JavaFX necesarios -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,18 +8,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.pedidos.PedidosMenuController">
-   <center>
-      <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnAnadirPedido" mnemonicParsing="false" onAction="#anadirPedido" text="Añadir Pedido" />
-            <Button fx:id="btnMostrarPedido" mnemonicParsing="false" onAction="#mostrarPedidos" text="Mostrar los Pedidos" />
-            <Button fx:id="btnVolverInicio" mnemonicParsing="false" onAction="#volverInicio" text="Volver" />
-         </children>
-      </VBox>
-   </center>
+<!-- Vista principal del módulo de gestión de pedidos -->
+<BorderPane maxHeight="1.7976931348623157E308" 
+            maxWidth="1.7976931348623157E308" 
+            minHeight="0.0" 
+            minWidth="0.0" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.teamcoders.vista.fx.pedidos.PedidosMenuController">
+
+   <!-- Cabecera con título de la sección -->
    <top>
-      <Label text=" Gestion de Pedidos" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label   text="Gestion de Pedidos" 
+               textAlignment="CENTER" 
+               BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </BorderPane.margin>
@@ -29,4 +32,33 @@
             <Font name="System Bold" size="24.0" />
          </font></Label>
    </top>
+
+   <!-- Cuerpo central con botones de navegación -->
+   <center>
+      <VBox alignment="CENTER" 
+            spacing="30.0" 
+            style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" 
+            BorderPane.alignment="CENTER">
+         <children>
+
+            <!-- Botón para ir al formulario de alta de pedidos -->
+            <Button  fx:id="btnAnadirPedido" 
+                     mnemonicParsing="false" 
+                     onAction="#anadirPedido" 
+                     text="Añadir Pedido" />
+
+            <!-- Botón para mostrar todos los pedidos registrados -->
+            <Button  fx:id="btnMostrarPedido" 
+                     mnemonicParsing="false" 
+                     onAction="#mostrarPedidos" 
+                     text="Mostrar los Pedidos" />
+
+            <!-- Botón para regresar a la pantalla de inicio -->
+            <Button  fx:id="btnVolverInicio" 
+                     mnemonicParsing="false" 
+                     onAction="#volverInicio" 
+                     text="Volver" />
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

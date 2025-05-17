@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importación de componentes de JavaFX necesarios para la vista -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,50 +12,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.articulos.ArticulosAnadirController">
-   <center>
-      <GridPane alignment="CENTER" hgap="10.0" prefHeight="270.0" prefWidth="314.0" vgap="10.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-         <children>
-            <Label fx:id="lblCodigo" text="Código:" />
-            <TextField fx:id="txtCodigo" promptText="Introduce el código" GridPane.columnIndex="1" />
-            <Label fx:id="lblDescripcion" text="Descripción:" GridPane.rowIndex="1" />
-            <Label fx:id="lblPrecioVenta" text="Precio Venta:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDescripcion" promptText="Introduce la descripción" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtPrecioVenta" promptText="Introduce el precio de venta:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtGastosEnvio" promptText="Introduce los gastos de envio:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="lblGastosEnvio" text="Gastos envio:" GridPane.rowIndex="3" />
-            <Label fx:id="lblTiempoPreparacion" text="Tiempo preparación:" GridPane.rowIndex="4" />
-            <TextField fx:id="txtTiempoPreparacion" promptText="Introduce  el tiempo de preparación" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-         </children>
-      </GridPane>
-   </center>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnGuardarArticulo" mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
-            <Button fx:id="btnVolverArticulo" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-   </bottom>
+<!-- Vista de formulario para añadir un nuevo artículo -->
+<BorderPane maxHeight="1.7976931348623157E308" 
+            maxWidth="1.7976931348623157E308" 
+            minHeight="0.0" 
+            minWidth="0.0" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.teamcoders.vista.fx.articulos.ArticulosAnadirController">
+   
+   <!-- Zona superior con título -->
    <top>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Añadir un nuevo articulo" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label   alignment="CENTER" 
+               maxWidth="1.7976931348623157E308" 
+               text="Añadir un nuevo articulo" 
+               textAlignment="CENTER" 
+               BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -66,4 +39,66 @@
          </padding>
       </Label>
    </top>
+
+   <!-- Formulario central con campos alineados mediante GridPane -->
+   <center>
+      <GridPane   alignment="CENTER" 
+                  hgap="10.0" 
+                  prefHeight="270.0" 
+                  prefWidth="314.0" 
+                  vgap="10.0" 
+                  BorderPane.alignment="CENTER">
+         <!-- Estructura del layout -->
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+
+         <!-- Campos de entrada del formulario -->
+         <children>
+            <Label fx:id="lblCodigo" text="Código:" />
+            <TextField fx:id="txtCodigo" promptText="Introduce el código" GridPane.columnIndex="1" />
+
+            <Label fx:id="lblDescripcion" text="Descripción:" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDescripcion" promptText="Introduce la descripción" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label fx:id="lblPrecioVenta" text="Precio Venta:" GridPane.rowIndex="2" />
+            <TextField fx:id="txtPrecioVenta" promptText="Introduce el precio de venta:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label fx:id="lblGastosEnvio" text="Gastos envio:" GridPane.rowIndex="3" />
+            <TextField fx:id="txtGastosEnvio" promptText="Introduce los gastos de envio:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label fx:id="lblTiempoPreparacion" text="Tiempo preparación:" GridPane.rowIndex="4" />
+            <TextField fx:id="txtTiempoPreparacion" promptText="Introduce  el tiempo de preparación" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </center>
+
+   <!-- Zona inferior con botones de acción -->
+   <bottom>
+      <HBox alignment="CENTER" 
+            prefHeight="100.0" 
+            prefWidth="200.0" 
+            spacing="30.0" 
+            style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" 
+            BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnGuardarArticulo" mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
+            <Button fx:id="btnVolverArticulo" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>

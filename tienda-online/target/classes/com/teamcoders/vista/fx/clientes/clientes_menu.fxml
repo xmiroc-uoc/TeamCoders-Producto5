@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importación de elementos de JavaFX necesarios para la estructura de la vista -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,18 +8,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.clientes.ClientesMenuController">
-   <center>
-      <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnAnadirCliente" mnemonicParsing="false" onAction="#anadirCliente" text="Añadir Cliente" />
-            <Button fx:id="btnMostrarClientes" mnemonicParsing="false" onAction="#mostrarClientes" text="Mostrar los Clientes" />
-            <Button fx:id="btnVolverInicio" mnemonicParsing="false" onAction="#volverInicio" text="Volver" />
-         </children>
-      </VBox>
-   </center>
+<!-- Vista del menú principal del módulo de gestión de clientes -->
+<BorderPane maxHeight="1.7976931348623157E308" 
+            maxWidth="1.7976931348623157E308" 
+            minHeight="0.0" 
+            minWidth="0.0" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.teamcoders.vista.fx.clientes.ClientesMenuController">
+
+   <!-- Encabezado con el título del módulo -->
    <top>
-      <Label text=" Gestion de Clientes" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label   text=" Gestion de Clientes" 
+               textAlignment="CENTER" 
+               BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </BorderPane.margin>
@@ -29,4 +32,29 @@
             <Font name="System Bold" size="24.0" />
          </font></Label>
    </top>
+   <!-- Cuerpo principal con los botones de navegación -->
+   <center>
+      <VBox alignment="CENTER" 
+            spacing="30.0" 
+            style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" 
+            BorderPane.alignment="CENTER">
+         <children>
+            <!-- Botón para ir al formulario de creación de nuevos clientes -->
+            <Button  fx:id="btnAnadirCliente" 
+                     mnemonicParsing="false" 
+                     onAction="#anadirCliente" 
+                     text="Añadir Cliente" />
+            <!-- Botón para visualizar el listado completo de clientes -->
+            <Button  fx:id="btnMostrarClientes" 
+                     mnemonicParsing="false" 
+                     onAction="#mostrarClientes" 
+                     text="Mostrar los Clientes" />
+            <!-- Botón para volver a la vista de inicio -->
+            <Button  fx:id="btnVolverInicio" 
+                     mnemonicParsing="false" 
+                     onAction="#volverInicio" 
+                     text="Volver" />
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
