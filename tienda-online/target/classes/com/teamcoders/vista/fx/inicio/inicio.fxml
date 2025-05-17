@@ -28,7 +28,7 @@
          <children>
             <Button fx:id="btnGestionClientes" mnemonicParsing="false" onAction="#irAGestionClientes" text="Gestión de Clientes" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
             <Button fx:id="btnGestioinArticulos" mnemonicParsing="false" onAction="#irAGestionArticulos" text="Gestión de Artículos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-            <Button fx:id="btnGestionPedidos" mnemonicParsing="false" onAction="#onGestionPedidos" text="Gestión de Pedidos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnGestionPedidos" mnemonicParsing="false" onAction="#irAGestionPedidos" text="Gestión de Pedidos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>

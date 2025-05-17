@@ -57,4 +57,16 @@ public class InicioController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void irAGestionPedidos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/pedidos/pedidos_menu.fxml"));
+            Pane root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.getScene().setRoot(root); // Cambia solo el contenido de la escena, manteniendo maximización
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
