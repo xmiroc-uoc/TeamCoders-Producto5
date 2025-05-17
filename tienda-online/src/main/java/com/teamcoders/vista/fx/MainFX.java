@@ -14,6 +14,7 @@ public class MainFX extends Application{
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Tienda Online");
         stage.setScene(scene);
+        stage.setMaximized(true); // Maximizar solo al iniciar
         stage.show();
     }
 

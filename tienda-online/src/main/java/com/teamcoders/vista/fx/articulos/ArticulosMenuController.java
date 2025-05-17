@@ -1,4 +1,4 @@
-package com.teamcoders.vista.fx.clientes;
+package com.teamcoders.vista.fx.articulos;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientesMenuController {
+public class ArticulosMenuController {
 
    @FXML
-    private void anadirCliente(ActionEvent event) {
+    private void anadirArticulo(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_anadir.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/articulos/articulos_anadir.fxml"));
             Pane root = loader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.getScene().setRoot(root);
@@ -24,9 +24,9 @@ public class ClientesMenuController {
     }
 
     @FXML
-    public void mostrarClientes(ActionEvent event) {
+    public void mostrarArticulos(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_mostrar.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/articulos/articulos_mostrar.fxml"));
             Pane root = loader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.getScene().setRoot(root);

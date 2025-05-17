@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.clientes.ClientesAnadirController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.articulos.ArticulosAnadirController">
    <center>
       <GridPane alignment="CENTER" hgap="10.0" prefHeight="270.0" prefWidth="314.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -25,37 +24,29 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label fx:id="lblNombre" text="Nombre:" />
-            <TextField fx:id="txtNombre" promptText="Introduce el nombre" GridPane.columnIndex="1" />
-            <Label fx:id="lblNif" text="NIF:" GridPane.rowIndex="1" />
-            <Label fx:id="lblDomicilio" text="Domicilio:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtNif" promptText="Introduce el NIF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtDomicilio" promptText="Introduce el domicilio" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtEmail" promptText="Introduce el email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="lblEmail" text="Email:" GridPane.rowIndex="3" />
-            <Label fx:id="txtTipoCliente" text="Tipo de Cliente:" GridPane.rowIndex="4" />
-            <HBox fx:id="boxTipoCliente" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <children>
-                  <RadioButton fx:id="rbtEstandar" mnemonicParsing="false" text="Estándar" />
-                  <RadioButton fx:id="rbtPremium" mnemonicParsing="false" text="Premium" />
-               </children>
-            </HBox>
-            <Label fx:id="lblCuota" text="Cuota Anual:" GridPane.rowIndex="5" />
-            <TextField fx:id="txtCuota" promptText="Introduce la cuota" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="lblCodigo" text="Código:" />
+            <TextField fx:id="txtCodigo" promptText="Introduce el código" GridPane.columnIndex="1" />
+            <Label fx:id="lblDescripcion" text="Descripción:" GridPane.rowIndex="1" />
+            <Label fx:id="lblPrecioVenta" text="Precio Venta:" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDescripcion" promptText="Introduce la descripción" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtPrecioVenta" promptText="Introduce el precio de venta:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtGastosEnvio" promptText="Introduce los gastos de envio:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="lblGastosEnvio" text="Gastos envio:" GridPane.rowIndex="3" />
+            <Label fx:id="lblTiempoPreparacion" text="Tiempo preparación:" GridPane.rowIndex="4" />
+            <TextField fx:id="txtTiempoPreparacion" promptText="Introduce  el tiempo de preparación" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnGuardarCliente" mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
-            <Button fx:id="btnVolverCliente" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+            <Button fx:id="btnGuardarArticulo" mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
+            <Button fx:id="btnVolverArticulo" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -63,7 +54,7 @@
       </HBox>
    </bottom>
    <top>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Añadir un nuevo cliente" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Añadir un nuevo articulo" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

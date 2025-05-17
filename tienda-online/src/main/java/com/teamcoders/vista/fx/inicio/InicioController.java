@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -39,9 +39,20 @@ public class InicioController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_menu.fxml"));
             Pane root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.getScene().setRoot(root); // Cambia solo el contenido de la escena, manteniendo maximización
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void irAGestionArticulos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/articulos/articulos_menu.fxml"));
+            Pane root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.getScene().setRoot(root); // Cambia solo el contenido de la escena, manteniendo maximización
         } catch (IOException e) {
             e.printStackTrace();
         }

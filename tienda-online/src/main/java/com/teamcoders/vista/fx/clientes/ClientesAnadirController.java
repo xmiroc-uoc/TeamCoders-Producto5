@@ -5,14 +5,13 @@ import com.teamcoders.utils.EntradaUsuario;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ClientesAnadirController {
@@ -23,7 +22,6 @@ public class ClientesAnadirController {
 
     @FXML private RadioButton rbtEstandar;
     @FXML private RadioButton rbtPremium;
-    //@FXML private ToggleGroup tgTipoCliente;
 
     @FXML private TextField txtCuota;
     @FXML private Label lblCuota;
@@ -74,10 +72,9 @@ public class ClientesAnadirController {
     @FXML
     private void handleVolver() {
         try {
-            VBox menuClientes = FXMLLoader.load(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_menu.fxml"));
-            Scene scene = new Scene(menuClientes);
+            Parent root = FXMLLoader.load(getClass().getResource("/com/teamcoders/vista/fx/clientes/clientes_menu.fxml"));
             Stage stage = (Stage) btnVolverCliente.getScene().getWindow();
-            stage.setScene(scene);
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
             mostrarAlerta("Error", "No se pudo volver al menú de clientes.", Alert.AlertType.ERROR);

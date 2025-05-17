@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.clientes.ClientesMenuController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamcoders.vista.fx.articulos.ArticulosMenuController">
    <center>
       <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: #f0f0f0; -fx-padding: 20px; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAnadirCliente" mnemonicParsing="false" onAction="#anadirCliente" text="Añadir Cliente" />
-            <Button fx:id="btnMostrarClientes" mnemonicParsing="false" onAction="#mostrarClientes" text="Mostrar los Clientes" />
+            <Button fx:id="btnAnadirArticulo" mnemonicParsing="false" onAction="#anadirArticulo" text="Añadir Articulo" />
+            <Button fx:id="btnMostrarArticulos" mnemonicParsing="false" onAction="#mostrarArticulos" text="Mostrar los Articulos" />
             <Button fx:id="btnVolverInicio" mnemonicParsing="false" onAction="#volverInicio" text="Volver" />
          </children>
       </VBox>
    </center>
    <top>
-      <Label text=" Gestion de Clientes" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label text=" Gestion de Articulos" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </BorderPane.margin>
