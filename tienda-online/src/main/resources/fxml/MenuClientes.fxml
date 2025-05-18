@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.teamcoders.controlador.MenuClientesController" alignment="CENTER" spacing="10.0" prefWidth="400" prefHeight="300">
+  <Label text="Menú Gestión de Clientes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+  <Button text="1. Añadir Cliente" onAction="#anadirCliente"/>
+  <Button text="2. Mostrar Clientes" onAction="#mostrarClientes"/>
+  <Button text="3. Mostrar Clientes Estándar" onAction="#mostrarClientesEstandar"/>
+  <Button text="4. Mostrar Clientes Premium" onAction="#mostrarClientesPremium"/>
+  <Button text="0. Volver" onAction="#volverAlMenuPrincipal"/>
+</VBox>

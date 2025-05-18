@@ -14,7 +14,7 @@ public class MySQLConexionBD {
     // Cambia los valores si tu base de datos usa otras credenciales
     private static final String URL = "jdbc:mysql://localhost:3306/TeamCodersBD";
     private static final String USER = "root";
-    private static final String PASS = "root1234";
+    private static final String PASS = "root";
 
     /**
      * Establece y retorna una conexión con la base de datos MySQL.

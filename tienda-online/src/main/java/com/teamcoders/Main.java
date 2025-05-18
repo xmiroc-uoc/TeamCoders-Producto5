@@ -1,20 +1,22 @@
 package com.teamcoders;
 
-import com.teamcoders.vista.EntradaUsuario;
-import com.teamcoders.vista.MenuPrincipal;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MenuPrincipal.fxml"));
+        primaryStage.setTitle("Tienda Online - Menú Principal");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 
     public static void main(String[] args) {
-
-        // Carga inicial de datos para pruebas
-        // DatosIniciales.cargar();
-
-        // Muestra el menú principal de la aplicación
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.mostrarMenuPrincipal();
-
-        // Cierra el Scanner para liberar recursos
-        EntradaUsuario.cerrarScanner();
+        launch(args);
     }
 }

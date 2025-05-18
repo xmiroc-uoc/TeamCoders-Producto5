@@ -20,7 +20,7 @@ import jakarta.persistence.Entity;
  *
  */
 @Entity
-@DiscriminatorValue("Premium")
+@DiscriminatorValue("premium")
 public class ClientePremium extends Cliente {
 
     @Column(name = "cuota_anual")

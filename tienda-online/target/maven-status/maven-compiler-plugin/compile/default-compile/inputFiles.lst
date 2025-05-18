@@ -1,25 +1,31 @@
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/Main.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/controlador/ArticuloControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/controlador/ClienteControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/controlador/PedidoControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/DAOFactory.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/IArticuloDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/IClienteDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/IPedidoDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/MySQLDAOFactory.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/mysql/ArticuloDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/mysql/ClienteDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/mysql/PedidoDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/dao/util/ConexionBD.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/Articulo.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/Cliente.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/ClienteEstandar.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/ClientePremium.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/Datos.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/modelo/Pedido.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/utils/DatosIniciales.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/vista/ArticuloVista.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/vista/ClienteVista.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/vista/EntradaUsuario.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/vista/MenuPrincipal.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto4/TeamCoders-Producto4/tienda-online/src/main/java/com/teamcoders/vista/PedidoVista.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\controlador\ArticuloControlador.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\controlador\ClienteControlador.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\controlador\MenuPrincipalController.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\controlador\PedidoControlador.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\interfaces\IArticuloDAO.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\interfaces\IClienteDAO.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\interfaces\IPedidoDAO.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\jpa\ArticuloDAOJPA.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\jpa\ClienteDAOJPA.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\jpa\PedidoDAOJPA.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\mysql\ArticuloDAOMySQL.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\mysql\ClienteDAOMySQL.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\dao\mysql\PedidoDAOMySQL.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\factory\DAOFactory.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\factory\JPADAOFactory.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\factory\MySQLDAOFactory.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\Main.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\Articulo.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\Cliente.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\ClienteEstandar.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\ClientePremium.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\Datos.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\modelo\Pedido.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\utils\DatosIniciales.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\utils\JpaUtil.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\utils\MySQLConexionBD.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\vista\ArticuloVista.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\vista\ClienteVista.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\vista\EntradaUsuario.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\vista\MenuPrincipal.java
+C:\Users\Alejandro\Documents\GitHub\TeamCoders-Producto5\tienda-online\src\main\java\com\teamcoders\vista\PedidoVista.java
