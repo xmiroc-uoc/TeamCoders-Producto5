@@ -62,6 +62,27 @@ public class PedidosMenuController {
     }
 
     /**
+     * Acción asociada al botón "Eliminar Pedido".
+     * 
+     * Carga la vista `pedidos_eliminar.fxml`, que contiene una tabla con los pedidos
+     * almacenados en el sistema. El contenido de la escena es reemplazado sin alterar
+     * el estado de la ventana.
+     * 
+     * @param event evento generado por el usuario.
+     */
+    @FXML
+    public void eliminarPedido(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/teamcoders/vista/fx/pedidos/pedidos_eliminar.fxml"));
+            Pane root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Acción asociada al botón "Volver".
      * 
      * Permite regresar a la vista de inicio de la aplicación desde el menú

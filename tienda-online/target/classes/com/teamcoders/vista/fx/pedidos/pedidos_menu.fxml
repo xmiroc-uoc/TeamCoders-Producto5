@@ -52,6 +52,12 @@
                      mnemonicParsing="false" 
                      onAction="#mostrarPedidos" 
                      text="Mostrar los Pedidos" />
+            
+            <!-- Botón para eliminar un pedido pendiente de enviar -->
+            <Button  fx:id="btnEliminarPedido" 
+                     mnemonicParsing="false" 
+                     onAction="#eliminarPedido" 
+                     text="Eliminar pedido" />
 
             <!-- Botón para regresar a la pantalla de inicio -->
             <Button  fx:id="btnVolverInicio" 
