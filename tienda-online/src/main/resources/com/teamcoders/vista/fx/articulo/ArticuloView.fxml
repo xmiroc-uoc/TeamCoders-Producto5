@@ -8,10 +8,19 @@
 
     <top>
         <ToolBar>
-            <Button text="Nuevo"     onAction="#nueva"/>
-            <Button text="Refrescar" onAction="#cargar"/>
-            <Button text="Volver"    onAction="#volver"/>
-        </ToolBar>
+    <Button text="Nuevo"     onAction="#nueva"/>
+    <Button text="Refrescar" onAction="#cargar"/>
+
+    <!-- 🔍 Búsqueda por código -->
+    <Separator orientation="VERTICAL"/>
+    <Label text="Código:"/>
+    <TextField fx:id="txtCodigo" prefWidth="90"/>
+    <Button text="Buscar" onAction="#buscarArticulo"/>
+
+    <Separator orientation="VERTICAL"/>
+    <Button text="Volver"    onAction="#volver"/>
+</ToolBar>
+
     </top>
 
     <center>

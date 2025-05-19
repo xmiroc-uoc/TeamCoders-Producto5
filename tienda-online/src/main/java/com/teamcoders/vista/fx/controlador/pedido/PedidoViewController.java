@@ -29,6 +29,8 @@ public class PedidoViewController {
   private TableColumn<Pedido, Integer> colUni;
   @FXML
   private TableColumn<Pedido, String> colEstado;
+  @FXML
+  private TextField txtNumero; // del FXML
 
   /* ───────── INIT ───────── */
   @FXML
@@ -49,6 +51,25 @@ public class PedidoViewController {
   @FXML
   private void cargarTodos() {
     tabla.setItems(FXCollections.observableArrayList(PedidoControlador.obtenerPedidos()));
+  }
+
+  @FXML
+  private void buscarPedido() {
+    String txt = txtNumero.getText().trim();
+    if (txt.isBlank()) { // vacía = quita filtro
+      cargarTodos();
+      return;
+    }
+    try {
+      int num = Integer.parseInt(txt);
+      tabla.setItems(FXCollections.observableArrayList(
+          PedidoControlador.obtenerPedidos().stream()
+              .filter(p -> p.getNumeroPedido() == num)
+              .toList()));
+    } catch (NumberFormatException e) {
+      new Alert(Alert.AlertType.WARNING,
+          "Introduce un número de pedido válido").showAndWait();
+    }
   }
 
   @FXML

@@ -7,15 +7,23 @@
             fx:controller="com.teamcoders.vista.fx.controlador.pedido.PedidoViewController">
 
     <top>
-        <ToolBar>
-            <Button text="Nuevo"      onAction="#nuevo"/>
-            <Button text="Pendientes" onAction="#cargarPendientes"/>
-            <Button text="Enviados"   onAction="#cargarEnviados"/>
-            <Button text="Eliminar"   onAction="#eliminarSeleccionado"/>
-            <Button text="Refrescar"  onAction="#cargarTodos"/>
-            <Separator orientation="VERTICAL"/>
-            <Button text="Volver"     onAction="#volver"/>
-        </ToolBar>
+  <ToolBar>
+    <Button text="Nuevo"      onAction="#nuevo"/>
+    <Button text="Pendientes" onAction="#cargarPendientes"/>
+    <Button text="Enviados"   onAction="#cargarEnviados"/>
+    <Button text="Eliminar"   onAction="#eliminarSeleccionado"/>
+
+    <!-- 🔍 Búsqueda por Nº de pedido -->
+    <Separator orientation="VERTICAL"/>
+    <Label text="Nº:"/>
+    <TextField fx:id="txtNumero" prefWidth="70"/>
+    <Button text="Buscar" onAction="#buscarPedido"/>
+
+    <Separator orientation="VERTICAL"/>
+    <Button text="Refrescar" onAction="#cargarTodos"/>
+    <Button text="Volver"    onAction="#volver"/>
+</ToolBar>
+
     </top>
 
     <center>

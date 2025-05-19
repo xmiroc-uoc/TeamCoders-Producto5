@@ -27,6 +27,8 @@ public class ArticuloViewController {
   private TableColumn<Articulo, Double> colEnvio;
   @FXML
   private TableColumn<Articulo, Integer> colTiempo;
+  @FXML
+  private TextField txtCodigo; // vinculado con el TextField del FXML
 
   @FXML
   private void initialize() {
@@ -56,6 +58,23 @@ public class ArticuloViewController {
           a.getGastosEnvio(), a.getTiempoPreparacion());
       cargar();
     });
+  }
+
+  @FXML
+  private void buscarArticulo() {
+    String cod = txtCodigo.getText().trim();
+    if (cod.isBlank()) { // sin texto = quita filtro
+      cargar();
+      return;
+    }
+
+    var art = ArticuloControlador.buscarArticuloPorCodigo(cod);
+    if (art == null) {
+      new Alert(Alert.AlertType.INFORMATION,
+          "No existe el artículo con código: " + cod).showAndWait();
+      return;
+    }
+    tabla.setItems(FXCollections.observableArrayList(art));
   }
 
   @FXML
