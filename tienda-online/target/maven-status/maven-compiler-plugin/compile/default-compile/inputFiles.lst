@@ -1,32 +1,37 @@
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/MySQLConexionBD.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/MenuPrincipal.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/JPADAOFactory.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/DatosIniciales.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/MySQLDAOFactory.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/ClienteControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Pedido.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/ArticuloDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/PedidoDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/DAOFactory.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IClienteDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/EntradaUsuario.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/InicioController.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/ArticuloDAOJPA.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/Main.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IArticuloDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/MainFX.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Datos.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/ClienteDAOMySQL.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/PedidoVista.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/ArticuloControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Articulo.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/ArticuloVista.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/PedidoDAOJPA.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Cliente.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/ClienteDAOJPA.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/ClienteEstandar.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IPedidoDAO.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/JpaUtil.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/PedidoControlador.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/ClientePremium.java
-/Users/xavi/UOC/FP - DAW/TeamCoders-Producto5/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/ClienteVista.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Articulo.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/Main.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IArticuloDAO.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/MySQLConexionBD.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/JPADAOFactory.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/MainFX.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/cliente/ClienteViewController.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/ClienteEstandar.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/PedidoVista.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/articulo/ArticuloViewController.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/PedidoControlador.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/DAOFactory.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/ArticuloDAOJPA.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/DatosIniciales.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/MenuPrincipal.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/ClienteControlador.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Pedido.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/JpaUtil.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IClienteDAO.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/ArticuloDAOMySQL.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/articulo/NuevoArticuloDialog.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IPedidoDAO.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/PedidoDAOJPA.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/cliente/NuevoClienteDialog.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Cliente.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/controlador/ArticuloControlador.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/EntradaUsuario.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/PedidoDAOMySQL.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/ClienteVista.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Datos.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/ArticuloVista.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/jpa/ClienteDAOJPA.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/ClientePremium.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/factory/MySQLDAOFactory.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/mysql/ClienteDAOMySQL.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/pedido/PedidoViewController.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/InicioController.java

@@ -6,23 +6,30 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.teamcoders.vista.fx.controlador.cliente.ClienteViewController">
 
+    <!-- ───────── BARRA DE BOTONES ───────── -->
     <top>
-        <ToolBar>
-            <Button text="Todos"      onAction="#cargarTodos"/>
-            <Button text="Estándar"   onAction="#cargarEstandar"/>
-            <Button text="Premium"    onAction="#cargarPremium"/>
-            <Button text="Volver"     onAction="#volver"/>
-        </ToolBar>
+       <ToolBar>
+    <Button text="Nuevo"      onAction="#nuevo"/>
+    <Button text="Eliminar"   onAction="#eliminarSeleccionado"/>
+    <Separator/>
+    <Button text="Todos"      onAction="#cargarTodos"/>
+    <Button text="Estándar"   onAction="#cargarEstandar"/>
+    <Button text="Premium"    onAction="#cargarPremium"/>
+    <Separator/>
+    <Button text="Volver"     onAction="#volver"/>
+</ToolBar>
+
     </top>
 
+    <!-- ───────── TABLA ───────── -->
     <center>
         <TableView fx:id="tabla">
             <columns>
-                <TableColumn fx:id="colEmail"     text="Email"      prefWidth="150"/>
-                <TableColumn fx:id="colNombre"    text="Nombre"     prefWidth="150"/>
-                <TableColumn fx:id="colDomicilio" text="Domicilio"  prefWidth="150"/>
+                <TableColumn fx:id="colEmail"     text="Email"      prefWidth="160"/>
+                <TableColumn fx:id="colNombre"    text="Nombre"     prefWidth="140"/>
+                <TableColumn fx:id="colDomicilio" text="Domicilio"  prefWidth="180"/>
                 <TableColumn fx:id="colNif"       text="NIF"        prefWidth="100"/>
-                <TableColumn fx:id="colTipo"      text="Tipo"       prefWidth="100"/>
+                <TableColumn fx:id="colTipo"      text="Tipo"       prefWidth="80"/>
             </columns>
         </TableView>
     </center>

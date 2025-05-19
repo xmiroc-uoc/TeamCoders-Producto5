@@ -3,6 +3,7 @@ package com.teamcoders.vista.fx.controlador.pedido;
 import com.teamcoders.controlador.PedidoControlador;
 import com.teamcoders.modelo.Pedido;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,66 +12,67 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class PedidoViewController {
 
+  /* ---------- FXML ---------- */
   @FXML
   private TableView<Pedido> tabla;
   @FXML
-  private TableColumn<Pedido, Integer> colNumero;
+  private TableColumn<Pedido, Integer> colNum;
   @FXML
-  private TableColumn<Pedido, String> colCliente;
+  private TableColumn<Pedido, String> colEmail;
   @FXML
-  private TableColumn<Pedido, String> colArticulo;
-  @FXML
-  private TableColumn<Pedido, Integer> colUnidades;
+  private TableColumn<Pedido, String> colArt;
   @FXML
   private TableColumn<Pedido, String> colFecha;
+  @FXML
+  private TableColumn<Pedido, Integer> colUnid;
+  @FXML
+  private TableColumn<Pedido, String> colEstado;
 
+  private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+  /* ---------- INIT ---------- */
   @FXML
   private void initialize() {
-    colNumero.setCellValueFactory(new PropertyValueFactory<>("numeroPedido"));
-    colCliente.setCellValueFactory(new PropertyValueFactory<>("emailCliente"));
-    colArticulo.setCellValueFactory(new PropertyValueFactory<>("codigoArticulo"));
-    colUnidades.setCellValueFactory(new PropertyValueFactory<>("unidades"));
-    colFecha.setCellValueFactory(new PropertyValueFactory<>("fechaPedido"));
+    colNum.setCellValueFactory(new PropertyValueFactory<>("numeroPedido"));
+    colUnid.setCellValueFactory(new PropertyValueFactory<>("unidades"));
+
+    colEmail.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCliente().getEmail()));
+    colArt.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArticulo().getCodigo()));
+    colFecha.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFechaPedido().format(fmt)));
+    colEstado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().cancelable() ? "Pendiente" : "Enviado"));
 
     cargarTodos();
   }
 
+  /* ---------- REFRESCOS ---------- */
   @FXML
   private void cargarTodos() {
-    tabla.setItems(FXCollections.observableArrayList(
-        PedidoControlador.obtenerPedidos()));
+    tabla.setItems(FXCollections.observableArrayList(PedidoControlador.obtenerPedidos()));
   }
 
   @FXML
   private void cargarPendientes() {
-    tabla.setItems(FXCollections.observableArrayList(
-        PedidoControlador.obtenerPedidosPendientesDeEnvio()));
+    tabla.setItems(FXCollections.observableArrayList(PedidoControlador.obtenerPedidosPendientesDeEnvio()));
   }
 
   @FXML
   private void cargarEnviados() {
-    tabla.setItems(FXCollections.observableArrayList(
-        PedidoControlador.obtenerPedidosEnviados()));
+    tabla.setItems(FXCollections.observableArrayList(PedidoControlador.obtenerPedidosEnviados()));
   }
 
-  @FXML
-  private void eliminarSeleccionado() {
-    Pedido p = tabla.getSelectionModel().getSelectedItem();
-    if (p != null) {
-      PedidoControlador.eliminarPedidoSiNoEnviado(p.getNumeroPedido());
-      cargarTodos();
-    }
-  }
-
+  /* ---------- NUEVO ---------- */
   @FXML
   private void nuevo() {
     TextInputDialog d = new TextInputDialog();
     d.setHeaderText("email,codigoArticulo,unidades");
     Optional<String> r = d.showAndWait();
+
     r.ifPresent(line -> {
       String[] t = line.split(",");
       if (t.length == 3) {
@@ -81,10 +83,21 @@ public class PedidoViewController {
     });
   }
 
+  /* ---------- ELIMINAR ---------- */
+  @FXML
+  private void eliminarSeleccionado() {
+    Pedido p = tabla.getSelectionModel().getSelectedItem();
+    if (p != null && PedidoControlador.eliminarPedidoSiNoEnviado(p.getNumeroPedido())) {
+      cargarTodos();
+    }
+  }
+
+  /* ---------- VOLVER ---------- */
   @FXML
   private void volver() {
     try {
-      Parent root = FXMLLoader.load(getClass().getResource("/com/teamcoders/vista/fx/inicio.fxml"));
+      Parent root = FXMLLoader.load(
+          getClass().getResource("/com/teamcoders/vista/fx/inicio.fxml"));
       Stage stage = (Stage) tabla.getScene().getWindow();
       stage.setTitle("Tienda Online");
       stage.setScene(new Scene(root));

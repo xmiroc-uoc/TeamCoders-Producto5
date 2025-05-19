@@ -12,6 +12,8 @@
             <Button text="Pendientes" onAction="#cargarPendientes"/>
             <Button text="Enviados"   onAction="#cargarEnviados"/>
             <Button text="Eliminar"   onAction="#eliminarSeleccionado"/>
+            <Button text="Refrescar"  onAction="#cargarTodos"/>
+            <Separator orientation="VERTICAL"/>
             <Button text="Volver"     onAction="#volver"/>
         </ToolBar>
     </top>
@@ -19,11 +21,12 @@
     <center>
         <TableView fx:id="tabla">
             <columns>
-                <TableColumn fx:id="colNumero"   text="Nº Pedido"    prefWidth="100"/>
-                <TableColumn fx:id="colCliente"  text="Cliente"      prefWidth="150"/>
-                <TableColumn fx:id="colArticulo" text="Artículo"     prefWidth="100"/>
-                <TableColumn fx:id="colUnidades" text="Unidades"     prefWidth="100"/>
-                <TableColumn fx:id="colFecha"    text="Fecha Pedido" prefWidth="150"/>
+                <TableColumn fx:id="colNum"     text="Número"     prefWidth="70"/>
+                <TableColumn fx:id="colEmail"   text="Cliente"    prefWidth="140"/>
+                <TableColumn fx:id="colArt"     text="Artículo"   prefWidth="80"/>
+                <TableColumn fx:id="colFecha"   text="Fecha"      prefWidth="160"/>
+                <TableColumn fx:id="colUnid"    text="Unidades"   prefWidth="70"/>
+                <TableColumn fx:id="colEstado"  text="Estado"     prefWidth="80"/>
             </columns>
         </TableView>
     </center>

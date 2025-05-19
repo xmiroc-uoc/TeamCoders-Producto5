@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Nombre:"        GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Domicilio:"        GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtDom"       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="NIF:"              GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNif"       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Email:"            GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEmail"     GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Tipo:"             GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <ChoiceBox fx:id="cbTipo"       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Cuota Premium:"             GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCuota"              GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType text="Crear"   buttonData="OK_DONE"/>
+        <ButtonType text="Cancelar"   buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+</DialogPane>
