@@ -47,8 +47,4 @@ public class NuevoArticuloDialog extends Dialog<Articulo> {
     });
   }
 
-  @Override
-  public Optional<Articulo> showAndWait() {
-    return super.showAndWait();
-  }
 }

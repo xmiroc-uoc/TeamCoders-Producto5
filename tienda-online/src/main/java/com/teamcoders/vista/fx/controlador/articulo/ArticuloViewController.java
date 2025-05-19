@@ -49,6 +49,7 @@ public class ArticuloViewController {
   @FXML
   private void nueva() {
     NuevoArticuloDialog dlg = new NuevoArticuloDialog();
+
     dlg.showAndWait().ifPresent(a -> {
       ArticuloControlador.añadirArticuloDesdeVista(
           a.getCodigo(), a.getDescripcion(), a.getPrecioVenta(),
