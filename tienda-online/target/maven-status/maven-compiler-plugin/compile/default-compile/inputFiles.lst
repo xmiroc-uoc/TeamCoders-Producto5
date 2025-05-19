@@ -1,4 +1,5 @@
 /Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/modelo/Articulo.java
+/Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/fx/controlador/pedido/NuevoPedidoDialog.java
 /Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/vista/consola/Main.java
 /Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/dao/interfaces/IArticuloDAO.java
 /Users/borrell/Desktop/TeamCoders-Producto5/tienda-online/src/main/java/com/teamcoders/utils/MySQLConexionBD.java

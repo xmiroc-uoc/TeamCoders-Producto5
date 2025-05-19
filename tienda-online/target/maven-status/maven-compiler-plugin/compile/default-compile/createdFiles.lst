@@ -8,6 +8,7 @@ com/teamcoders/dao/jpa/PedidoDAOJPA.class
 com/teamcoders/modelo/Articulo.class
 com/teamcoders/vista/consola/EntradaUsuario.class
 com/teamcoders/dao/interfaces/IArticuloDAO.class
+com/teamcoders/vista/fx/controlador/pedido/NuevoPedidoDialog.class
 com/teamcoders/factory/JPADAOFactory.class
 com/teamcoders/vista/consola/MenuPrincipal.class
 com/teamcoders/vista/consola/ClienteVista.class
@@ -19,6 +20,7 @@ com/teamcoders/vista/fx/MainFX.class
 com/teamcoders/vista/fx/controlador/cliente/NuevoClienteDialog.class
 com/teamcoders/factory/MySQLDAOFactory.class
 com/teamcoders/factory/DAOFactory.class
+com/teamcoders/vista/fx/controlador/pedido/NuevoPedidoDialog$2.class
 com/teamcoders/vista/fx/controlador/articulo/ArticuloViewController.class
 com/teamcoders/utils/JpaUtil.class
 com/teamcoders/modelo/Pedido.class
@@ -31,6 +33,7 @@ com/teamcoders/vista/consola/ArticuloVista.class
 com/teamcoders/vista/fx/controlador/pedido/PedidoViewController.class
 com/teamcoders/modelo/Datos.class
 com/teamcoders/dao/interfaces/IClienteDAO.class
+com/teamcoders/vista/fx/controlador/pedido/NuevoPedidoDialog$1.class
 com/teamcoders/vista/fx/controlador/articulo/NuevoArticuloDialog.class
 com/teamcoders/vista/fx/controlador/cliente/ClienteViewController.class
 com/teamcoders/dao/mysql/ClienteDAOMySQL.class

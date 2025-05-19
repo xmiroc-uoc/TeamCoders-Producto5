@@ -19,15 +19,16 @@
     </top>
 
     <center>
-        <TableView fx:id="tabla">
-            <columns>
-                <TableColumn fx:id="colNum"     text="Número"     prefWidth="70"/>
-                <TableColumn fx:id="colEmail"   text="Cliente"    prefWidth="140"/>
-                <TableColumn fx:id="colArt"     text="Artículo"   prefWidth="80"/>
-                <TableColumn fx:id="colFecha"   text="Fecha"      prefWidth="160"/>
-                <TableColumn fx:id="colUnid"    text="Unidades"   prefWidth="70"/>
-                <TableColumn fx:id="colEstado"  text="Estado"     prefWidth="80"/>
-            </columns>
-        </TableView>
+      <TableView fx:id="tabla">
+    <columns>
+        <TableColumn fx:id="colNum"  text="Número"   prefWidth="80"/>
+        <TableColumn fx:id="colCli"  text="Cliente"  prefWidth="150"/>
+        <TableColumn fx:id="colArt"  text="Artículo" prefWidth="120"/>
+        <TableColumn fx:id="colFecha" text="Fecha"   prefWidth="160"/>
+        <TableColumn fx:id="colUni"  text="Unidades" prefWidth="80"/>
+        <TableColumn fx:id="colEstado" text="Estado" prefWidth="90"/>
+    </columns>
+</TableView>
+
     </center>
 </BorderPane>

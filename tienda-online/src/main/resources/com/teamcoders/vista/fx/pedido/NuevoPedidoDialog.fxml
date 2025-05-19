@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Cliente (email)"                 GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ChoiceBox fx:id="cbCliente" prefWidth="220"  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Artículo (código)"               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ChoiceBox fx:id="cbArticulo" prefWidth="220" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Unidades"                        GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtUnidades"                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType text="Crear"    buttonData="OK_DONE"/>
+        <ButtonType text="Cancelar" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+</DialogPane>
