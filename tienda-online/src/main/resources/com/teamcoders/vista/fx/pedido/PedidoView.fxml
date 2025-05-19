@@ -17,6 +17,14 @@
     </top>
 
     <center>
-        <TableView fx:id="tabla"/>
+        <TableView fx:id="tabla">
+            <columns>
+                <TableColumn fx:id="colNumero"   text="Nº Pedido"    prefWidth="100"/>
+                <TableColumn fx:id="colCliente"  text="Cliente"      prefWidth="150"/>
+                <TableColumn fx:id="colArticulo" text="Artículo"     prefWidth="100"/>
+                <TableColumn fx:id="colUnidades" text="Unidades"     prefWidth="100"/>
+                <TableColumn fx:id="colFecha"    text="Fecha Pedido" prefWidth="150"/>
+            </columns>
+        </TableView>
     </center>
 </BorderPane>

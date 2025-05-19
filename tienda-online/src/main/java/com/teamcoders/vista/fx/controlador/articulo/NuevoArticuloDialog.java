@@ -4,7 +4,6 @@ import com.teamcoders.modelo.Articulo;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import java.util.Optional;
 
 public class NuevoArticuloDialog extends Dialog<Articulo> {
 

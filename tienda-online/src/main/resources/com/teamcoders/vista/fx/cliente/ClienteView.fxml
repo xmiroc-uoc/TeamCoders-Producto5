@@ -16,6 +16,14 @@
     </top>
 
     <center>
-        <TableView fx:id="tabla"/>
+        <TableView fx:id="tabla">
+            <columns>
+                <TableColumn fx:id="colEmail"     text="Email"      prefWidth="150"/>
+                <TableColumn fx:id="colNombre"    text="Nombre"     prefWidth="150"/>
+                <TableColumn fx:id="colDomicilio" text="Domicilio"  prefWidth="150"/>
+                <TableColumn fx:id="colNif"       text="NIF"        prefWidth="100"/>
+                <TableColumn fx:id="colTipo"      text="Tipo"       prefWidth="100"/>
+            </columns>
+        </TableView>
     </center>
 </BorderPane>
