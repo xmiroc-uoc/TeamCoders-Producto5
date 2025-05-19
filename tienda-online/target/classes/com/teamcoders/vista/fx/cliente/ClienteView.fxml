@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamcoders.vista.fx.controlador.cliente.ClienteViewController">
+
+    <top>
+        <ToolBar>
+            <Button text="Todos"      onAction="#cargarTodos"/>
+            <Button text="Estándar"   onAction="#cargarEstandar"/>
+            <Button text="Premium"    onAction="#cargarPremium"/>
+            <Button text="Volver"     onAction="#volver"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <TableView fx:id="tabla"/>
+    </center>
+</BorderPane>

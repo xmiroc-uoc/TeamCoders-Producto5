@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamcoders.vista.fx.controlador.articulo.ArticuloViewController">
+
+    <top>
+        <ToolBar>
+            <Button text="Nuevo"     onAction="#nueva"/>
+            <Button text="Refrescar" onAction="#cargar"/>
+            <Button text="Volver"    onAction="#volver"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <TableView fx:id="tabla">
+            <columns>
+                <TableColumn fx:id="colCodigo" text="Código"        prefWidth="80"/>
+                <TableColumn fx:id="colDesc"   text="Descripción"   prefWidth="180"/>
+                <TableColumn fx:id="colPrecio" text="Precio"        prefWidth="80"/>
+                <TableColumn fx:id="colEnvio"  text="G.Envio"       prefWidth="80"/>
+                <TableColumn fx:id="colTiempo" text="T.Prep"        prefWidth="60"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

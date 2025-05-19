@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teamcoders.vista.fx.controlador.pedido.PedidoViewController">
+
+    <top>
+        <ToolBar>
+            <Button text="Nuevo"      onAction="#nuevo"/>
+            <Button text="Pendientes" onAction="#cargarPendientes"/>
+            <Button text="Enviados"   onAction="#cargarEnviados"/>
+            <Button text="Eliminar"   onAction="#eliminarSeleccionado"/>
+            <Button text="Volver"     onAction="#volver"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <TableView fx:id="tabla"/>
+    </center>
+</BorderPane>

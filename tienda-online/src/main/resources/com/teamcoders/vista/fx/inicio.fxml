@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.teamcoders.vista.fx.controlador.InicioController"
-      spacing="10" alignment="CENTER" prefWidth="400" prefHeight="200">
-    <Label text="¡Bienvenido a la Tienda Online!"/>
+      spacing="12" alignment="CENTER" prefWidth="400" prefHeight="220">
+
+    <Label text="Tienda Online" style="-fx-font-size:18;" />
+    <Button text="Gestión de Clientes"  fx:id="botonClientes" onAction="#abrirClientes"  prefWidth="200"/>
+    <Button text="Gestión de Artículos"                onAction="#abrirArticulos" prefWidth="200"/>
+    <Button text="Gestión de Pedidos"                  onAction="#abrirPedidos"   prefWidth="200"/>
 </VBox>
