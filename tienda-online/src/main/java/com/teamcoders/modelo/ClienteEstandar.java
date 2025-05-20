@@ -21,7 +21,7 @@ import jakarta.persistence.Entity;
  *
  */
 @Entity
-@DiscriminatorValue("estandar") // coincide con ENUM('estandar', 'premium')
+@DiscriminatorValue("Estandar") // coincide con ENUM('estandar', 'premium')
 public class ClienteEstandar extends Cliente {
 
   /**
